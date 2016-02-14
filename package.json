@@ -11,5 +11,8 @@
     "Angular2"
   ],
   "author": "Dave F. Baskin <dfbaskin@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
 }
