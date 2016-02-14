@@ -5,6 +5,29 @@
     <title>Complex UI Demo</title>
 </head>
 <body>
+
 <demo-app>Loading ...</demo-app>
+
+<script src="/vendor/es6-shim/es6-shim.min.js"></script>
+<script src="/vendor/systemjs/system-polyfills.js"></script>
+<script src="/vendor/angular2/angular2-polyfills.js"></script>
+<script src="/vendor/systemjs/system.src.js"></script>
+<script src="/vendor/rxjs/Rx.js"></script>
+<script src="/vendor/angular2/angular2.dev.js"></script>
+
+<script>
+    System.config({
+        packages: {
+            app: {
+                format: 'register',
+                defaultExtension: 'js'
+            }
+        }
+    });
+    System
+        .import('app/app-bootstrap')
+        .then(null, console.error.bind(console));
+</script>
+
 </body>
 </html>
