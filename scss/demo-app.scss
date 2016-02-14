@@ -1,0 +1,10 @@
+
+@import 'foundation';
+@include foundation-everything;
+
+$site-bk-color: #f0fff6;
+
+body {
+  background: $site-bk-color;
+  background: linear-gradient(to left, $site-bk-color 0%, lighten($site-bk-color,40%) 100%);
+}
