@@ -1,0 +1,15 @@
+{
+  "name": "complex-ui-with-redux",
+  "version": "1.0.0",
+  "description": "Demo application for complex UI and the benefits of using Redux.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Redux",
+    "Angular2"
+  ],
+  "author": "Dave F. Baskin <dfbaskin@gmail.com>",
+  "license": "ISC"
+}
