@@ -1,36 +1,32 @@
-"use strict";
+import _ from 'lodash'
+import FS from 'fs'
+import Q from 'q'
+import sass from 'node-sass'
 
-var _ = require('lodash');
-var FS = require('fs');
-var Q = require('q');
-var sass = require('node-sass');
-
-var sassRender = Q.nbind(sass.render, sass);
-var writeFile = Q.nbind(FS.writeFile, FS);
-var sassDefaults = {
-    includePaths: [
-        'node_modules/foundation-sites/scss/'
-    ],
-    indentedSyntax: true
-};
+let sassRender = Q.nbind(sass.render, sass)
+let writeFile = Q.nbind(FS.writeFile, FS)
+let sassDefaults = {
+  includePaths: [
+    'node_modules/foundation-sites/scss/'
+  ],
+  indentedSyntax: true
+}
 
 buildSassFile('demo-app')
-    .then(function() {
-        console.log("Compiled SASS CSS.");
-    })
-    .catch(function(err) {
-        console.log("SASS Error:");
-        console.log(err);
-        done();
-    });
+  .then(() => {
+    console.log('Compiled SASS CSS.')
+  })
+  .catch((err) => {
+    console.log('SASS Error:')
+    console.log(err)
+  })
 
-function buildSassFile(name) {
-    var srcFile = ['scss/', name, '.scss'].join("");
-    var dstFile = ['src/css/', name, '.css'].join("");
-    return sassRender(_.defaults({
-        file: srcFile
-    }, sassDefaults))
-        .then(function(result) {
-            return writeFile(dstFile, result.css);
-        });
+function buildSassFile (name) {
+  let srcFile = [ 'scss/', name, '.scss' ].join('')
+  let dstFile = [ 'src/css/', name, '.css' ].join('')
+  let sassOptions = _.defaults({ file: srcFile }, sassDefaults)
+  return sassRender(sassOptions)
+    .then((result) => {
+      return writeFile(dstFile, result.css)
+    })
 }

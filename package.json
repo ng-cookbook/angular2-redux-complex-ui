@@ -13,6 +13,11 @@
   ],
   "author": "Dave F. Baskin <dfbaskin@gmail.com>",
   "license": "ISC",
+  "standard": {
+    "ignore": [
+      "src/"
+    ]
+  },
   "dependencies": {
     "angular2": "^2.0.0-beta.6",
     "es6-promise": "^3.1.2",
@@ -31,6 +36,7 @@
     "lodash": "^4.3.0",
     "node-sass": "^3.4.2",
     "q": "^1.4.1",
+    "standard": "^6.0.5",
     "typescript": "^1.7.5",
     "typings": "^0.6.8"
   }

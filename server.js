@@ -1,8 +1,7 @@
+import app from './server/routes'
 
-import app from "./server/routes";
+const portNum = process.env.PORT || 9988
 
-const portNum = process.env.PORT || 9988;
-
-app.listen(portNum, function() {
-    console.log("Web application listening on port " + portNum);
-});
+app.listen(portNum, () => {
+  console.log('Web application listening on port ' + portNum)
+})
