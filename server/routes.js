@@ -1,4 +1,5 @@
 import express from 'express'
+import imagesRouter from './api/imagesApi'
 
 let app = express()
 
@@ -11,11 +12,11 @@ var vendorFiles = {
   'jquery': 'node_modules/foundation-sites/node_modules/jquery/dist',
   'what-input': 'node_modules/foundation-sites/node_modules/what-input'
 }
-
 for (let [name, path] of Object.entries(vendorFiles)) {
   app.use('/vendor/' + name, express.static(path))
 }
 
+app.use('/api', imagesRouter)
 app.use('/', express.static('src'))
 
 export default app
