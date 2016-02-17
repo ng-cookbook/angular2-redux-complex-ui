@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build-css": "node scripts/build-css",
-    "web": "babel-node server"
+    "web": "babel-node server",
+    "lint": "npm-run-all lint:js lint:ts",
+    "lint:ts": "tslint src/**/*.ts",
+    "lint:js": "standard"
   },
   "keywords": [
     "Redux",
@@ -24,6 +27,7 @@
     "es6-shim": "^0.33.13",
     "express": "^4.13.4",
     "foundation-sites": "^6.1.2",
+    "npm-run-all": "^1.5.1",
     "reflect-metadata": "^0.1.2",
     "rxjs": "^5.0.0-beta.0",
     "systemjs": "^0.19.20",
@@ -37,6 +41,7 @@
     "node-sass": "^3.4.2",
     "q": "^1.4.1",
     "standard": "^6.0.5",
+    "tslint": "^3.3.0",
     "typescript": "^1.7.5",
     "typings": "^0.6.8"
   }
