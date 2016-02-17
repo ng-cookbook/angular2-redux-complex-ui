@@ -10,7 +10,9 @@ var vendorFiles = {
   'rxjs': 'node_modules/rxjs',
   'foundation': 'node_modules/foundation-sites/dist',
   'jquery': 'node_modules/foundation-sites/node_modules/jquery/dist',
-  'what-input': 'node_modules/foundation-sites/node_modules/what-input'
+  'what-input': 'node_modules/foundation-sites/node_modules/what-input',
+  'redux': 'node_modules/redux/dist',
+  'lodash': 'node_modules/lodash'
 }
 for (let [name, path] of Object.entries(vendorFiles)) {
   app.use('/vendor/' + name, express.static(path))

@@ -9,7 +9,7 @@
     "ban": false,
     "class-name": true,
     "comment-format": [
-      true,
+      false,
       "check-space",
       "check-lowercase"
     ],
@@ -80,7 +80,7 @@
     ],
     "quotemark": [
       true,
-      "double",
+      "single",
       "avoid-escape"
     ],
     "radix": true,
@@ -98,7 +98,7 @@
       "allow-null-check"
     ],
     "typedef": [
-      true,
+      false,
       "call-signature",
       "parameter",
       "arrow-parameter",
