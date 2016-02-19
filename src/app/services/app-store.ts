@@ -1,6 +1,7 @@
 
 import {Injectable} from 'angular2/core'
 import {createStore, applyMiddleware} from 'redux/redux'
+import Rx from 'rxjs/Rx'
 import * as thunkMiddleware from 'redux-thunk/redux-thunk'
 
 function counter(state = 0, action) {
@@ -24,6 +25,9 @@ function counterActionCreator() {
                 dispatch({ type: 'INCREMENT' })
                 setTimeout(() => {
                     dispatch({ type: 'DECREMENT' })
+                    setTimeout(() => {
+                        dispatch({ type: 'DECREMENT' })
+                    }, 1000)
                 }, 1000)
             }, 1000)
         }, 1000)
@@ -32,23 +36,31 @@ function counterActionCreator() {
 
 @Injectable()
 export class AppStore {
+
     private appStore
+    private stateObservable
 
     constructor() {
-        this.appStore = createStore(counter, applyMiddleware(thunkMiddleware.default))
 
-        this.appStore.subscribe(() => {
-            console.log(this.appStore.getState())
+        this.appStore = createStore(counter, applyMiddleware(thunkMiddleware.default))
+        this.stateObservable = Rx.Observable.create(observer => {
+            let dispose = this.appStore.subscribe(() => observer.next(this.currentState))
+            observer.next(this.currentState)
+            return dispose
         })
 
-        setTimeout(() => this.testDispatch(), 1000)
+        setTimeout(() => this.appStore.dispatch(counterActionCreator()), 1000)
     }
 
     public dispatch(action) {
         this.appStore.dispatch(action)
     }
 
-    public testDispatch() {
-        this.appStore.dispatch(counterActionCreator())
+    public get source() {
+        return this.stateObservable;
+    }
+
+    public get currentState() {
+        return this.appStore.getState();
     }
 }
