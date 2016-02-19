@@ -1,5 +1,7 @@
 
-import {createStore} from 'redux/redux'
+import {Injectable} from 'angular2/core'
+import {createStore, applyMiddleware} from 'redux/redux'
+import * as thunkMiddleware from 'redux-thunk/redux-thunk'
 
 function counter(state = 0, action) {
     'use strict';
@@ -13,19 +15,40 @@ function counter(state = 0, action) {
     }
 }
 
-// Create a Redux store holding the state of your app.
-// Its API is { subscribe, dispatch, getState }.
-let store = createStore(counter)
+function counterActionCreator() {
+    'use strict';
+    return dispatch => {
+        setTimeout(() => {
+            dispatch({ type: 'INCREMENT' })
+            setTimeout(() => {
+                dispatch({ type: 'INCREMENT' })
+                setTimeout(() => {
+                    dispatch({ type: 'DECREMENT' })
+                }, 1000)
+            }, 1000)
+        }, 1000)
+    }
+}
 
-// You can subscribe to the updates manually, or use bindings to your view layer.
-store.subscribe(() =>
-    console.log(store.getState())
-)
+@Injectable()
+export class AppStore {
+    private appStore
 
-// The only way to mutate the internal state is to dispatch an action.
-// The actions can be serialized, logged or stored and later replayed.
-store.dispatch({ type: 'INCREMENT' })
-// 1
-store.dispatch({ type: 'INCREMENT' })
-// 2
-store.dispatch({ type: 'DECREMENT' })
+    constructor() {
+        this.appStore = createStore(counter, applyMiddleware(thunkMiddleware.default))
+
+        this.appStore.subscribe(() => {
+            console.log(this.appStore.getState())
+        })
+
+        setTimeout(() => this.testDispatch(), 1000)
+    }
+
+    public dispatch(action) {
+        this.appStore.dispatch(action)
+    }
+
+    public testDispatch() {
+        this.appStore.dispatch(counterActionCreator())
+    }
+}

@@ -1,5 +1,5 @@
 import express from 'express'
-import imagesRouter from './api/imagesApi'
+import imagesRouter from './api/images-api'
 
 let app = express()
 
@@ -12,6 +12,7 @@ var vendorFiles = {
   'jquery': 'node_modules/foundation-sites/node_modules/jquery/dist',
   'what-input': 'node_modules/foundation-sites/node_modules/what-input',
   'redux': 'node_modules/redux/dist',
+  'redux-thunk': 'node_modules/redux-thunk/lib',
   'lodash': 'node_modules/lodash'
 }
 for (let [name, path] of Object.entries(vendorFiles)) {
