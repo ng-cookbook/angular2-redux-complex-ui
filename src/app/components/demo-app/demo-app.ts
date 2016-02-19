@@ -8,11 +8,23 @@ import {LogViewer} from '../log-viewer/log-viewer'
     directives: [LogViewer],
     template: `
         <p>Demo App</p>
-        <log-viewer></log-viewer>
+        <p>{{progressText}}</p>
+        <log-viewer *ngIf="!isFinished"></log-viewer>
     `
 })
 export class DemoApp {
 
+    public isFinished = false
+
     constructor(appStore: AppStore) {
+        appStore
+            .source
+            .subscribe((state) => {
+                this.isFinished = state === 3
+            })
+    }
+
+    get progressText() {
+        return this.isFinished ? 'Finished!' : 'Working ...'
     }
 }

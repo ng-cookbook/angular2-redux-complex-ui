@@ -15,13 +15,15 @@ export class LogViewer {
 
     public logMessages: string[]
 
+    private stateSubscription;
+
     constructor(appStore: AppStore) {
 
         this.logMessages = [
             'Initialized'
         ]
 
-        appStore
+        this.stateSubscription = appStore
             .source
             .subscribe((state) => {
                 this.logMessages.push(state)
@@ -30,5 +32,6 @@ export class LogViewer {
 
     public ngOnDestroy() {
         console.log('Destroyed!!');
+        this.stateSubscription.unsubscribe()
     }
 }

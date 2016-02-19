@@ -19,18 +19,16 @@ function counter(state = 0, action) {
 function counterActionCreator() {
     'use strict';
     return dispatch => {
-        setTimeout(() => {
-            dispatch({ type: 'INCREMENT' })
-            setTimeout(() => {
-                dispatch({ type: 'INCREMENT' })
-                setTimeout(() => {
-                    dispatch({ type: 'DECREMENT' })
-                    setTimeout(() => {
-                        dispatch({ type: 'DECREMENT' })
-                    }, 1000)
-                }, 1000)
-            }, 1000)
-        }, 1000)
+        let list = [true, true, false, true, true];
+        Rx.Observable
+            .interval(500)
+            .take(list.length)
+            .map(idx => list[idx])
+            .subscribe(incr => {
+                dispatch({
+                    type: incr ? 'INCREMENT' : 'DECREMENT'
+                })
+            })
     }
 }
 
@@ -46,10 +44,13 @@ export class AppStore {
         this.stateObservable = Rx.Observable.create(observer => {
             let dispose = this.appStore.subscribe(() => observer.next(this.currentState))
             observer.next(this.currentState)
-            return dispose
+            return function() {
+                console.log('Observer unsubscribed.')
+                dispose()
+            }
         })
 
-        setTimeout(() => this.appStore.dispatch(counterActionCreator()), 1000)
+        setTimeout(() => this.appStore.dispatch(counterActionCreator()), 500)
     }
 
     public dispatch(action) {
