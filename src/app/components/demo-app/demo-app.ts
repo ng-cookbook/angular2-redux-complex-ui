@@ -7,9 +7,25 @@ import {LogViewer} from '../log-viewer/log-viewer'
     selector: 'demo-app',
     directives: [LogViewer],
     template: `
-        <p>Demo App</p>
-        <p>{{progressText}}</p>
-        <log-viewer *ngIf="!isFinished"></log-viewer>
+        <div class="row">
+            <div class="small-12 columns">
+                <h1>Demo App</h1>
+            </div>
+            <div class="small-12 columns">
+                <p>{{progressText}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-4 columns">
+                <log-viewer *ngIf="!isFinished"></log-viewer>
+            </div>
+            <div class="small-4 columns">
+                <log-viewer *ngIf="!isFinished"></log-viewer>
+            </div>
+            <div class="small-4 columns">
+                <log-viewer *ngIf="!isFinished"></log-viewer>
+            </div>
+        </div>
     `
 })
 export class DemoApp {
