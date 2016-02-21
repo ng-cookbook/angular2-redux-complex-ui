@@ -1,7 +1,6 @@
 
 import {Component} from 'angular2/core'
-import {AppStore} from '../../services/app-store'
-import {AppStoreSubscriber} from '../../decorators/app-store-subscriber'
+import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 
 @Component({
     selector: 'log-viewer',
@@ -13,27 +12,16 @@ import {AppStoreSubscriber} from '../../decorators/app-store-subscriber'
     `
 })
 @AppStoreSubscriber()
-export class LogViewer {
+export class LogViewer implements IAppStoreSubscriber {
 
-    public logMessages: string[]
+    public logMessages: string[] = [
+        'Initialized'
+    ]
 
-    private stateSubscription;
-
-    constructor(appStore: AppStore) {
-
-        this.logMessages = [
-            'Initialized'
-        ]
-
-        this.stateSubscription = appStore
-            .source
+    public onInitAppStoreSubscription(source: any): void {
+        return source
             .subscribe((state) => {
                 this.logMessages.push(state)
             })
-    }
-
-    public ngOnDestroy() {
-        console.log('LogViewer Destroyed!!');
-        this.stateSubscription.unsubscribe()
     }
 }
