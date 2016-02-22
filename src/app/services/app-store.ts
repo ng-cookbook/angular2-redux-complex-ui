@@ -1,5 +1,5 @@
 
-import {Injectable, provide} from 'angular2/core'
+import {provide} from 'angular2/core'
 import {createStore, applyMiddleware} from 'redux/redux'
 import Rx from 'rxjs/Rx'
 import * as thunkMiddleware from 'redux-thunk/redux-thunk'

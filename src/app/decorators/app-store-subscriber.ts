@@ -5,6 +5,7 @@ const { defineProperty } = Object
 const onDestroyName = 'ngOnDestroy'
 const onInitName = 'ngOnInit'
 const onInitAppStoreSubscriptionName = 'onInitAppStoreSubscription'
+const componentSubscriptionsName = '__component_subscriptions__'
 
 export interface IAppStoreSubscriber {
     onInitAppStoreSubscription(source: any): void
@@ -16,7 +17,6 @@ export function AppStoreSubscriber() {
 
         console.log('Calling AppStoreSubscriber')
 
-        let subscriptionList: any[] = []
         let ngOnDestroyOriginal, ngOnInitOriginal, onInitAppStoreSubscription
         const targetPrototype = target.prototype;
 
@@ -46,7 +46,7 @@ export function AppStoreSubscriber() {
                     if (!Array.isArray(subscription)) {
                         subscription = [subscription]
                     }
-                    subscriptionList = [...subscriptionList, ...subscription]
+                    this[componentSubscriptionsName] = [...subscription]
                     console.log('Decorator ngOnInit()')
                 }
             }
@@ -60,6 +60,7 @@ export function AppStoreSubscriber() {
                     if (ngOnDestroyOriginal) {
                         ngOnDestroyOriginal.bind(this)()
                     }
+                    let subscriptionList = this[componentSubscriptionsName]
                     console.log(`Unsubscribing from ${subscriptionList.length} subscription(s).`)
                     subscriptionList.forEach(subscription => subscription.unsubscribe())
                     console.log('Decorator ngOnDestroy()')
