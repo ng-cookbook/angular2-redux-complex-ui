@@ -1,8 +1,8 @@
 
 import {provide} from 'angular2/core'
-import {createStore, applyMiddleware} from 'redux'
+import {createStore, applyMiddleware} from 'redux/redux'
 import * as Rx from 'rxjs/Rx'
-import thunkMiddleware from 'redux-thunk'
+import thunkMiddleware from 'redux-thunk/redux-thunk'
 
 import {counter} from '../reducers/counter'
 import {counterActionCreator} from '../actions/counterActions'

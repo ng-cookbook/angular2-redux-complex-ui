@@ -48,6 +48,7 @@
   "devDependencies": {
     "babel-cli": "^6.5.1",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.5.2",
+    "babel-plugin-transform-es2015-modules-systemjs": "^6.5.0",
     "babel-preset-es2015": "^6.5.0",
     "node-mv": "^0.1.3",
     "node-sass": "^3.4.2",
