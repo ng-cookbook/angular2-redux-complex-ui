@@ -42,7 +42,6 @@ export class AppStore {
 }
 
 export function provideAppStore() {
-    'use strict';
     return new Provider(AppStore, {
         useFactory: reducers => {
             let combinedReducers = reducers.reduce((combined, reducer) => Object.assign(combined, reducer), {})
@@ -54,7 +53,6 @@ export function provideAppStore() {
 }
 
 export function provideReducer(stateName: string, reducer: (state: any, action: any) => any) {
-    'use strict';
     return new Provider(APP_STORE_REDUCERS, {
         useValue: {
             [stateName]: reducer

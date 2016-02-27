@@ -11,7 +11,6 @@ export interface IAppStoreSubscriber {
 }
 
 export function AppStoreSubscriber() {
-    'use strict'
     const { defineProperty } = Object
     return function(target) {
 

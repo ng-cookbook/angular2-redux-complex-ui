@@ -5,21 +5,18 @@ export const INCREMENT = 'INCREMENT'
 export const DECREMENT = 'DECREMENT'
 
 export function increment() {
-    'use strict';
     return {
         type: INCREMENT
     }
 }
 
 export function decrement() {
-    'use strict';
     return {
         type: DECREMENT
     }
 }
 
 export function counterActionCreator() {
-    'use strict';
     return dispatch => {
         let list = [true, true, false, true, true];
         Rx.Observable

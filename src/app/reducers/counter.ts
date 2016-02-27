@@ -1,6 +1,5 @@
 
 export function counter(state = 0, action) {
-    'use strict';
     switch (action.type) {
         case 'INCREMENT':
             return state + 1
