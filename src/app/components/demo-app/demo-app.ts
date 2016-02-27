@@ -1,7 +1,9 @@
 
 import {Component} from 'angular2/core'
 import {AppStore} from '../../services/app-store'
+import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 import {LogViewer} from '../log-viewer/log-viewer'
+import {counterActionCreator} from '../../actions/counterActions'
 
 @Component({
     selector: 'demo-app',
@@ -28,15 +30,19 @@ import {LogViewer} from '../log-viewer/log-viewer'
         </div>
     `
 })
-export class DemoApp {
+@AppStoreSubscriber()
+export class DemoApp implements IAppStoreSubscriber {
 
     public isFinished = false
 
     constructor(appStore: AppStore) {
-        appStore
-            .source
+        setTimeout(() => appStore.dispatch(counterActionCreator()), 2000);
+    }
+
+    public onInitAppStoreSubscription(source: any): void {
+        return source
             .subscribe((state) => {
-                this.isFinished = state === 3
+                this.isFinished = state.counter === 3
             })
     }
 

@@ -21,7 +21,7 @@ export class LogViewer implements IAppStoreSubscriber {
     public onInitAppStoreSubscription(source: any): void {
         return source
             .subscribe((state) => {
-                this.logMessages.push(state)
+                this.logMessages.push(state.counter)
             })
     }
 

@@ -1,5 +1,5 @@
 
-import {appStoreInstance} from '../services/app-store'
+import {AppStore} from '../services/app-store'
 
 const onDestroyName = 'ngOnDestroy'
 const onInitName = 'ngOnInit'
@@ -42,7 +42,7 @@ export function AppStoreSubscriber() {
                         ngOnInitOriginal.bind(this)()
                     }
                     console.log(`Subscribing ...`)
-                    let subscription = onInitAppStoreSubscription.bind(this)(appStoreInstance.source)
+                    let subscription = onInitAppStoreSubscription.bind(this)(AppStore.instance.source)
                     if (!Array.isArray(subscription)) {
                         subscription = [subscription]
                     }

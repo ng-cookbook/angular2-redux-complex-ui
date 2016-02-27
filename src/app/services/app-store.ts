@@ -1,20 +1,22 @@
 
-import {provide} from 'angular2/core'
-import {createStore, applyMiddleware} from 'redux'
+import {Provider} from 'angular2/core'
+import {OpaqueToken} from 'angular2/router'
+import {createStore, applyMiddleware, combineReducers} from 'redux'
 import * as Rx from 'rxjs/Rx'
 import thunkMiddleware from 'redux-thunk'
 
-import {counter} from '../reducers/counter'
-import {counterActionCreator} from '../actions/counterActions'
+export const APP_STORE_REDUCERS: OpaqueToken = new OpaqueToken('AppStoreReducers')
 
 export class AppStore {
+
+    public static instance: AppStore
 
     private appStore
     private stateObservable
 
-    constructor() {
+    constructor(reducer) {
 
-        this.appStore = createStore(counter, applyMiddleware(thunkMiddleware))
+        this.appStore = createStore(reducer, applyMiddleware(thunkMiddleware))
         this.stateObservable = Rx.Observable.create(observer => {
             let dispose = this.appStore.subscribe(() => observer.next(this.currentState))
             observer.next(this.currentState)
@@ -24,7 +26,6 @@ export class AppStore {
             }
         })
 
-        setTimeout(() => this.appStore.dispatch(counterActionCreator()), 500)
     }
 
     public dispatch(action) {
@@ -40,6 +41,24 @@ export class AppStore {
     }
 }
 
-export const appStoreInstance = new AppStore()
+export function provideAppStore() {
+    'use strict';
+    return new Provider(AppStore, {
+        useFactory: reducers => {
+            let combinedReducers = reducers.reduce((combined, reducer) => Object.assign(combined, reducer), {})
+            AppStore.instance = new AppStore(combineReducers(combinedReducers))
+            return AppStore.instance
+        },
+        deps: [APP_STORE_REDUCERS]
+    })
+}
 
-provide(AppStore, appStoreInstance)
+export function provideReducer(stateName: string, reducer: (state: any, action: any) => any) {
+    'use strict';
+    return new Provider(APP_STORE_REDUCERS, {
+        useValue: {
+            [stateName]: reducer
+        },
+        multi: true
+    })
+}
