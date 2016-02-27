@@ -1,7 +1,7 @@
 {
-  "name": "complex-ui-with-redux",
+  "name": "angular2-redux-decorators-example",
   "version": "1.0.0",
-  "description": "Demo application for complex UI and the benefits of using Redux.",
+  "description": "Example of using Angular2 and Redux with Application Store subscription decorators.",
   "main": "index.js",
   "scripts": {
     "web": "babel-node server",
@@ -23,6 +23,10 @@
   ],
   "author": "Dave F. Baskin <dfbaskin@gmail.com>",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dfbaskin/angular2-redux-decorators-example.git"
+  },
   "standard": {
     "ignore": [
       "dist/"
