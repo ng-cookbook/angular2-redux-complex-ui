@@ -9,7 +9,8 @@
     "removeComments": false,
     "noImplicitAny": false,
     "outDir": "dist/es6",
-    "declaration": true
+    "declaration": true,
+    "allowSyntheticDefaultImports": true
   },
   "filesGlob": [
     "src/app/**/*.ts"
