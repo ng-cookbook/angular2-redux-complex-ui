@@ -1,11 +1,10 @@
 
 import {appStoreInstance} from '../services/app-store'
 
-const { defineProperty } = Object
 const onDestroyName = 'ngOnDestroy'
 const onInitName = 'ngOnInit'
 const onInitAppStoreSubscriptionName = 'onInitAppStoreSubscription'
-const componentSubscriptionsName = '__component_subscriptions__'
+const componentSubscriptionsName = Symbol('ComponentSubscriptions')
 
 export interface IAppStoreSubscriber {
     onInitAppStoreSubscription(source: any): void
@@ -13,6 +12,7 @@ export interface IAppStoreSubscriber {
 
 export function AppStoreSubscriber() {
     'use strict'
+    const { defineProperty } = Object
     return function(target) {
 
         console.log('Calling AppStoreSubscriber')

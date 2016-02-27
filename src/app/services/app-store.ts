@@ -1,8 +1,8 @@
 
 import {provide} from 'angular2/core'
-import {createStore, applyMiddleware} from 'redux/redux'
+import {createStore, applyMiddleware} from 'redux'
 import * as Rx from 'rxjs/Rx'
-import * as thunkMiddleware from 'redux-thunk/redux-thunk'
+import thunkMiddleware from 'redux-thunk'
 
 import {counter} from '../reducers/counter'
 import {counterActionCreator} from '../actions/counterActions'
@@ -14,7 +14,7 @@ export class AppStore {
 
     constructor() {
 
-        this.appStore = createStore(counter, applyMiddleware(thunkMiddleware.default))
+        this.appStore = createStore(counter, applyMiddleware(thunkMiddleware))
         this.stateObservable = Rx.Observable.create(observer => {
             let dispose = this.appStore.subscribe(() => observer.next(this.currentState))
             observer.next(this.currentState)

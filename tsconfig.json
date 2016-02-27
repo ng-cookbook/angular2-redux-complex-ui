@@ -1,15 +1,22 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "module": "system",
     "moduleResolution": "node",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "removeComments": false,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "outDir": "dist/es6",
+    "declaration": true
   },
+  "filesGlob": [
+    "src/app/**/*.ts"
+  ],
   "exclude": [
+    ".git",
+    "dist",
     "node_modules",
     "typings/main",
     "typings/main.d.ts"
