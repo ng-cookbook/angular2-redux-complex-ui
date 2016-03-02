@@ -10,6 +10,7 @@ Example of using Angular2 and Redux with Application Store subscription decorato
 git clone https://github.com/dfbaskin/angular2-redux-decorators-example.git
 cd angular2-redux-decorators-example
 npm install
+npm run typings
 npm run build
 npm run web
 ```
