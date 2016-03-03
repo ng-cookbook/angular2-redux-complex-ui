@@ -24,12 +24,4 @@ export class LogViewer implements IAppStoreSubscriber {
                 this.logMessages.push(state.counter)
             })
     }
-
-    public ngOnInit() {
-        console.log('Log Viewer init')
-    }
-
-    public ngOnDestroy() {
-        console.log('Log Viewer destroy')
-    }
 }

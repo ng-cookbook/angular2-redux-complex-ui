@@ -21,7 +21,6 @@ export class AppStore {
             let dispose = this.appStore.subscribe(() => observer.next(this.currentState))
             observer.next(this.currentState)
             return function() {
-                console.log('Observer unsubscribed.')
                 dispose()
             }
         })

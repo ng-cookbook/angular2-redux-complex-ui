@@ -14,8 +14,6 @@ export function AppStoreSubscriber() {
     const { defineProperty } = Object
     return function(target) {
 
-        console.log('Calling AppStoreSubscriber')
-
         let ngOnDestroyOriginal, ngOnInitOriginal, onInitAppStoreSubscription
         const targetPrototype = target.prototype;
 
@@ -40,13 +38,11 @@ export function AppStoreSubscriber() {
                     if (ngOnInitOriginal) {
                         ngOnInitOriginal.bind(this)()
                     }
-                    console.log(`Subscribing ...`)
                     let subscription = onInitAppStoreSubscription.bind(this)(AppStore.instance.source)
                     if (!Array.isArray(subscription)) {
                         subscription = [subscription]
                     }
                     this[componentSubscriptionsName] = [...subscription]
-                    console.log('Decorator ngOnInit()')
                 }
             }
         });
@@ -60,10 +56,8 @@ export function AppStoreSubscriber() {
                         ngOnDestroyOriginal.bind(this)()
                     }
                     let subscriptionList = this[componentSubscriptionsName]
-                    console.log(`Unsubscribing from ${subscriptionList.length} subscription(s).`)
                     subscriptionList.forEach(subscription => subscription.unsubscribe())
-                    console.log('Decorator ngOnDestroy()')
-                    subscriptionList = undefined
+                    delete this[componentSubscriptionsName]
                 }
             }
         });
