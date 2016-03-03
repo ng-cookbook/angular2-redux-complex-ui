@@ -56,7 +56,7 @@ export function AppStoreSubscriber() {
                         ngOnDestroyOriginal.bind(this)()
                     }
                     let subscriptionList = this[componentSubscriptionsName]
-                    subscriptionList.forEach(subscription => subscription.unsubscribe())
+                    subscriptionList.forEach((subscription: any) => subscription.unsubscribe())
                     delete this[componentSubscriptionsName]
                 }
             }
