@@ -1,7 +1,7 @@
 {
-  "name": "angular2-redux-decorators-example",
+  "name": "angular2-redux-complex-ui",
   "version": "1.0.0",
-  "description": "Example of using Angular2 and Redux with Application Store subscription decorators.",
+  "description": "Example of using Angular2 and Redux together to manage a \"complex\" user interface.",
   "main": "index.js",
   "scripts": {
     "web": "babel-node server",
