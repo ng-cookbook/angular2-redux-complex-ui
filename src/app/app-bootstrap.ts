@@ -1,11 +1,13 @@
 
 import {bootstrap} from 'angular2/platform/browser'
+import {HTTP_PROVIDERS} from 'angular2/http'
 import {DemoApp} from './components/demo-app/demo-app'
 
 import {provideAppStore, provideReducer} from './services/app-store'
-import {counter} from './reducers/counter'
+import {imageData} from './reducers/imageData'
 
 bootstrap(DemoApp, [
-    provideReducer('counter', counter),
+    HTTP_PROVIDERS,
+    provideReducer('imageData', imageData),
     provideAppStore()
 ])
