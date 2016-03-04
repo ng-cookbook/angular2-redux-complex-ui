@@ -6,7 +6,7 @@ import {
 } from '../actions/imagesActions'
 
 const defaultState = {
-    images: {}
+    list: {}
 }
 
 export function imageData(state = defaultState, action) {
@@ -28,6 +28,6 @@ function loadImageData(state, action) {
         })
     }
 
-    let images = _.fromPairs(action.payload.map(img => [img.id, img]))
-    return Object.assign({}, state, { images })
+    let list = _.fromPairs(action.payload.map(img => [img.id, img]))
+    return Object.assign({}, state, { list })
 }

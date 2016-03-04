@@ -5,10 +5,11 @@ import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 import {imageDataRequest} from '../../actions/imagesActions'
 import {LoadingIndicator} from '../loading-indicator/loading-indicator'
+import {ImageDetailList} from '../image-detail-list/image-detail-list'
 
 @Component({
     selector: 'demo-app',
-    directives: [LoadingIndicator],
+    directives: [LoadingIndicator, ImageDetailList],
     template: `
         <div class="row">
             <div class="small-12 columns">
@@ -16,6 +17,11 @@ import {LoadingIndicator} from '../loading-indicator/loading-indicator'
                     Demo App
                     <loading-indicator [isLoading]="isLoading" [loadingMessage]="loadingMessage"></loading-indicator>
                 </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 columns">
+                <image-detail-list></image-detail-list>
             </div>
         </div>
     `

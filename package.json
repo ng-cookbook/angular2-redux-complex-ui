@@ -16,7 +16,8 @@
     "build:ts": "tsc",
     "prebuild:es6": "rimraf dist/temp dist/es5",
     "build:es6": "babel dist/es6/**/*.js --out-dir dist/temp",
-    "postbuild:es6": "node-mv dist/temp/dist/es6 dist/es5 && rimraf dist/temp"
+    "postbuild:es6": "node-mv dist/temp/dist/es6 dist/es5 && rimraf dist/temp",
+    "watch:src": "npm watch 'npm run build:src' src/app"
   },
   "keywords": [
     "Redux",
@@ -63,6 +64,7 @@
     "standard": "^6.0.5",
     "tslint": "^3.3.0",
     "typescript": "^1.7.5",
-    "typings": "^0.6.8"
+    "typings": "^0.6.8",
+    "watch": "^0.17.1"
   }
 }
