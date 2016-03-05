@@ -43,31 +43,25 @@ function loadImageData(state, action) {
 function sortImageData(state, action) {
 
     let images = _.values(state.list)
-    let sortImages = (sortCriteria) => {
-        return _(images)
-            .sortBy(sortCriteria)
-            .map((img: any) => img.id)
-            .value()
+    let handleSort = (sortBy: ImageSortBy, sortCriteria) => {
+        return Object.assign({}, state, {
+            sortBy: action.payload.sortBy,
+            sorted: _(images)
+                .sortBy(sortCriteria)
+                .map((img: any) => img.id)
+                .value()
+        })
     }
 
     switch (action.payload.sortBy) {
         case ImageSortBy.size:
-            state = Object.assign({}, state, {
-                sortBy: action.payload.sortBy,
-                sorted: sortImages((v: any) => v.size)
-            })
+            state = handleSort(ImageSortBy.size, (v: any) => v.size)
             break
         case ImageSortBy.date:
-            state = Object.assign({}, state, {
-                sortBy: action.payload.sortBy,
-                sorted: sortImages((v: any) => v.dateTaken)
-            })
+            state = handleSort(ImageSortBy.date, (v: any) => v.dateTaken)
             break
         default:
-            state = Object.assign({}, state, {
-                sortBy: ImageSortBy.name,
-                sorted: sortImages((v: any) => v.name.toLocaleLowerCase())
-            })
+            state = handleSort(ImageSortBy.name, (v: any) => v.name.toLocaleLowerCase())
             break
     }
     return state;
