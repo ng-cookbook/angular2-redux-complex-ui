@@ -3,7 +3,7 @@ import {Component} from 'angular2/core'
 import {Http} from 'angular2/http'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
-import {imageDataRequest} from '../../actions/imagesActions'
+import {imageDataRequest} from '../../actions/images-actions'
 import {LoadingIndicator} from '../loading-indicator/loading-indicator'
 import {ImageDetailList} from '../image-detail-list/image-detail-list'
 
@@ -40,11 +40,11 @@ export class DemoApp implements IAppStoreSubscriber {
     public onInitAppStoreSubscription(source: any): void {
         return source
             .subscribe((state: any) => {
+                this.isLoading = state.imageData.isLoading
             })
     }
 
     public ngOnInit() {
         this.appStore.dispatch(imageDataRequest(this.http))
-        setTimeout(() => this.isLoading = false, 3000)
     }
 }
