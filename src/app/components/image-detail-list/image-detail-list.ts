@@ -19,6 +19,8 @@ import {ImageDetailTable} from './image-detail-table'
         </p>
         <image-detail-table
             [tableData]="imageList"
+            [sortBy]="sortBy"
+            [isAscending]="isAscending"
             (toggleNameSort)="sortByName()"
             (toggleSizeSort)="sortBySize()"
             (toggleDateSort)="sortByDate()"
