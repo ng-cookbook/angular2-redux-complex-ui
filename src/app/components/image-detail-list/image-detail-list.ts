@@ -17,7 +17,12 @@ import {ImageDetailTable} from './image-detail-table'
             <button (click)="sortBySize()" class="button">Size</button>
             <button (click)="sortByDate()" class="button">Date</button>
         </p>
-        <image-detail-table [tableData]="imageList"></image-detail-table>
+        <image-detail-table
+            [tableData]="imageList"
+            (toggleNameSort)="sortByName()"
+            (toggleSizeSort)="sortBySize()"
+            (toggleDateSort)="sortByDate()"
+            ></image-detail-table>
     `
 })
 @AppStoreSubscriber()
