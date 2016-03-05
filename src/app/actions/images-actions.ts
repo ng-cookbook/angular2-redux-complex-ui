@@ -3,6 +3,12 @@ import {Http, Response} from 'angular2/http'
 
 export const LOADING_IMAGE_DATA = 'LOADING_IMAGE_DATA'
 export const LOAD_IMAGE_DATA = 'LOAD_IMAGE_DATA'
+export const SORT_IMAGES = 'SORT_IMAGES'
+export enum ImageSortBy {
+    name,
+    size,
+    date
+}
 
 export function loadingImages() {
     return {
@@ -27,13 +33,23 @@ export function loadImageDataError(errorMessage) {
     }
 }
 
+export function sortImages(sortBy: ImageSortBy) {
+    return {
+        type: SORT_IMAGES,
+        payload: { sortBy }
+    }
+}
+
 export function imageDataRequest(http: Http) {
     return dispatch => {
         dispatch(loadingImages())
         http.get('/api/images')
             .map(res => res.json())
             .subscribe(
-                (imageData: any) => dispatch(loadImageData(imageData)),
+                (imageData: any) => {
+                    dispatch(loadImageData(imageData))
+                    dispatch(sortImages(ImageSortBy.name))
+                },
                 (err: Response) => dispatch(loadImageDataError(err.json().error || 'Server error'))
             )
     }
