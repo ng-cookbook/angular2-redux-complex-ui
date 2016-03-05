@@ -33,10 +33,10 @@ export function loadImageDataError(errorMessage) {
     }
 }
 
-export function sortImages(sortBy: ImageSortBy) {
+export function sortImages(sortBy: ImageSortBy, isAscending: boolean = true) {
     return {
         type: SORT_IMAGES,
-        payload: { sortBy }
+        payload: { sortBy, isAscending }
     }
 }
 

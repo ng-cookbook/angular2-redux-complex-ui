@@ -9,6 +9,7 @@ import {
 
 const defaultState = {
     sortBy: ImageSortBy.name,
+    isAscending: true,
     isLoading: true,
     list: {},
     sorted: []
@@ -46,8 +47,9 @@ function sortImageData(state, action) {
     let handleSort = (sortBy: ImageSortBy, sortCriteria) => {
         return Object.assign({}, state, {
             sortBy: action.payload.sortBy,
+            isAscending: action.payload.isAscending,
             sorted: _(images)
-                .sortBy(sortCriteria)
+                .orderBy([sortCriteria], [action.payload.isAscending ? 'asc' : 'desc'])
                 .map((img: any) => img.id)
                 .value()
         })

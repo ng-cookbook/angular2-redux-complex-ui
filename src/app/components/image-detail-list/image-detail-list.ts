@@ -24,6 +24,8 @@ import {ImageDetailTable} from './image-detail-table'
 export class ImageDetailList implements IAppStoreSubscriber {
 
     public imageList: any[] = [];
+    private sortBy: ImageSortBy = ImageSortBy.name;
+    private isAscending: boolean = true;
 
     constructor(private appStore: AppStore) {
     }
@@ -31,6 +33,8 @@ export class ImageDetailList implements IAppStoreSubscriber {
     public onInitAppStoreSubscription(source: any): void {
         return source
             .subscribe((state: any) => {
+                this.sortBy = state.imageData.sortBy;
+                this.isAscending = state.imageData.isAscending;
                 this.imageList = _.map(state.imageData.sorted, (v: any) => {
                     return state.imageData.list[v]
                 })
@@ -38,14 +42,18 @@ export class ImageDetailList implements IAppStoreSubscriber {
     }
 
     public sortByName() {
-        this.appStore.dispatch(sortImages(ImageSortBy.name))
+        this.appStore.dispatch(sortImages(ImageSortBy.name, this.sortAscending(ImageSortBy.name)))
     }
 
     public sortBySize() {
-        this.appStore.dispatch(sortImages(ImageSortBy.size))
+        this.appStore.dispatch(sortImages(ImageSortBy.size, this.sortAscending(ImageSortBy.size)))
     }
 
     public sortByDate() {
-        this.appStore.dispatch(sortImages(ImageSortBy.date))
+        this.appStore.dispatch(sortImages(ImageSortBy.date, this.sortAscending(ImageSortBy.date)))
+    }
+
+    private sortAscending(requestedSortBy: ImageSortBy) {
+        return this.sortBy === requestedSortBy ? !this.isAscending : true
     }
 }
