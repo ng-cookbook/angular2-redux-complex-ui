@@ -45,6 +45,9 @@ export function imageDataRequest(http: Http) {
         dispatch(loadingImages())
         http.get('/api/images')
             .map(res => res.json())
+            .map(imageData => _.map(imageData, (img: any) => Object.assign(img, {
+                dateTaken: new Date(img.dateTaken)
+            })))
             .subscribe(
                 (imageData: any) => {
                     dispatch(loadImageData(imageData))

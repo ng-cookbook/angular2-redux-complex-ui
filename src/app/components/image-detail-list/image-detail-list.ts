@@ -4,9 +4,11 @@ import {Component} from 'angular2/core'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 import {sortImages, ImageSortBy} from '../../actions/images-actions'
+import {ImageDetailTable} from './image-detail-table'
 
 @Component({
     selector: 'image-detail-list',
+    directives: [ImageDetailTable],
     template: `
         <p>Image Details</p>
         <p>
@@ -15,11 +17,7 @@ import {sortImages, ImageSortBy} from '../../actions/images-actions'
             <button (click)="sortBySize()" class="button">Size</button>
             <button (click)="sortByDate()" class="button">Date</button>
         </p>
-        <ul>
-            <li *ngFor="#img of imageList">
-                {{img.name}}
-            </li>
-        </ul>
+        <image-detail-table [tableData]="imageList"></image-detail-table>
     `
 })
 @AppStoreSubscriber()
