@@ -11,12 +11,6 @@ import {ImageDetailTable} from './image-detail-table'
     directives: [ImageDetailTable],
     template: `
         <p>Image Details</p>
-        <p>
-            Sort By
-            <button (click)="sortByName()" class="button">Name</button>
-            <button (click)="sortBySize()" class="button">Size</button>
-            <button (click)="sortByDate()" class="button">Date</button>
-        </p>
         <image-detail-table
             [tableData]="imageList"
             [sortBy]="sortBy"
