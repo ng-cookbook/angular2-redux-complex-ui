@@ -13,7 +13,8 @@ var vendorFiles = {
   'what-input': 'node_modules/foundation-sites/node_modules/what-input',
   'redux': 'node_modules/redux/dist',
   'redux-thunk': 'node_modules/redux-thunk/lib',
-  'lodash': 'node_modules/lodash'
+  'lodash': 'node_modules/lodash',
+  'font-awesome': 'node_modules/font-awesome'
 }
 for (let [name, path] of Object.entries(vendorFiles)) {
   app.use('/vendor/' + name, express.static(path))
