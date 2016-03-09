@@ -3,11 +3,16 @@ import {Component, Input, Output, EventEmitter} from 'angular2/core'
 import {ImageDetailRow} from './image-detail-row'
 import {AppStore} from '../../services/app-store'
 import {SortableColumnHeader} from './sortable-column-header'
+import {ImageTagSelector} from './image-tag-selector'
 import {ImageSortBy} from '../../actions/images-actions'
 
 @Component({
     selector: 'image-detail-table',
-    directives: [ImageDetailRow, SortableColumnHeader],
+    directives: [
+        ImageDetailRow,
+        SortableColumnHeader,
+        ImageTagSelector
+    ],
     template: `
         <table class="hover">
             <thead>
@@ -17,7 +22,14 @@ import {ImageSortBy} from '../../actions/images-actions'
                 <th class="sortable-column-header" [sortIndicator]="dateSortIndicator" (toggleSort)="sortByDate()">Taken</th>
                 <th>Dimensions</th>
                 <th>Orientation</th>
-                <th>Tags</th>
+                <th>
+                    <a (click)="toggleTagSelector()"><i class="fa fa-folder-open-o"></i></a>
+                    Tags
+                </th>
+            </tr>
+            <tr *ngIf="showTagSelector">
+                <th colspan="6" image-tag-selector>
+                </th>
             </tr>
             </thead>
             <tbody>
@@ -27,12 +39,15 @@ import {ImageSortBy} from '../../actions/images-actions'
     `
 })
 export class ImageDetailTable {
+
     @Input() public tableData: any;
     @Input() public sortBy: ImageSortBy;
     @Input() public isAscending: boolean;
     @Output() public toggleNameSort: EventEmitter<any> = new EventEmitter();
     @Output() public toggleSizeSort: EventEmitter<any> = new EventEmitter();
     @Output() public toggleDateSort: EventEmitter<any> = new EventEmitter();
+
+    public showTagSelector: boolean = false;
 
     constructor(private appStore: AppStore) {
     }
@@ -59,5 +74,9 @@ export class ImageDetailTable {
 
     public sortByDate() {
         this.toggleDateSort.emit(null);
+    }
+
+    public toggleTagSelector() {
+        this.showTagSelector = !this.showTagSelector;
     }
 }
