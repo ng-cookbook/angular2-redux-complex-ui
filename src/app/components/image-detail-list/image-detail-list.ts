@@ -36,8 +36,8 @@ export class ImageDetailList implements IAppStoreSubscriber {
             .subscribe((state: any) => {
                 this.sortBy = state.imageData.sortBy;
                 this.isAscending = state.imageData.isAscending;
-                this.imageList = _.map(state.imageData.sorted, (v: any) => {
-                    return state.imageData.list[v]
+                this.imageList = _.map(state.imageData.displayedItems, (v: any) => {
+                    return state.imageData.dataSet[v]
                 })
             })
     }

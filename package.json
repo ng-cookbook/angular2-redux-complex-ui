@@ -8,7 +8,7 @@
     "lint": "npm-run-all lint:js lint:ts",
     "lint:ts": "tslint src/**/*.ts",
     "lint:js": "standard",
-    "clean": "rimraf dist/es6 dist/es5",
+    "clean": "rimraf dist/es6 dist/es5 dist/temp",
     "typings": "typings install",
     "build": "npm-run-all lint clean build:css build:ts build:es6",
     "build:css": "babel-node scripts/build-css",
@@ -58,14 +58,15 @@
     "babel-plugin-transform-es2015-modules-commonjs": "^6.5.2",
     "babel-plugin-transform-es2015-modules-systemjs": "^6.5.0",
     "babel-preset-es2015": "^6.5.0",
+    "jasmine": "^2.4.1",
     "node-mv": "^0.1.3",
     "node-sass": "^3.4.2",
     "q": "^1.4.1",
     "rimraf": "^2.5.2",
-    "standard": "^6.0.5",
+    "standard": "^6.0.8",
     "tslint": "^3.3.0",
     "typescript": "^1.7.5",
-    "typings": "^0.6.8",
+    "typings": "^0.7.7",
     "watch": "^0.17.1"
   }
 }

@@ -45,14 +45,11 @@ export function imageDataRequest(http: Http) {
         dispatch(loadingImages())
         http.get('/api/images')
             .map(res => res.json())
-            .map(imageData => _.map(imageData, (img: any) => Object.assign(img, {
+            .map(imageData => imageData.map((img: any) => Object.assign(img, {
                 dateTaken: new Date(img.dateTaken)
             })))
             .subscribe(
-                (imageData: any) => {
-                    dispatch(loadImageData(imageData))
-                    dispatch(sortImages(ImageSortBy.name))
-                },
+                (imageData: any) => dispatch(loadImageData(imageData)),
                 (err: Response) => dispatch(loadImageDataError(err.json().error || 'Server error'))
             )
     }

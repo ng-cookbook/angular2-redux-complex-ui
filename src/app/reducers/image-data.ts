@@ -11,11 +11,12 @@ const defaultState = {
     sortBy: ImageSortBy.name,
     isAscending: true,
     isLoading: true,
-    list: {},
-    sorted: []
+    dataSet: {},
+    displayedItems: [],
+    excludedTags: []
 }
 
-export function imageData(state = defaultState, action) {
+export function imageData(state: any = defaultState, action: any = {}) {
     switch (action.type) {
         case LOADING_IMAGE_DATA:
             return Object.assign({}, defaultState)
@@ -37,34 +38,66 @@ function loadImageData(state, action) {
         })
     }
 
-    let list = _.fromPairs(action.payload.map(img => [img.id, img]))
-    return Object.assign({}, state, { isLoading: false, list })
+    let dataSet = _.fromPairs(action.payload.map(img => [img.id, img]))
+    return Object.assign({}, state, {
+        isLoading: false,
+        dataSet,
+        displayedItems: getDisplayedItems({
+            dataSet,
+            sortBy: state.sortBy,
+            isAscending: state.isAscending,
+            excludedTags: state.excludedTags
+        })
+    })
 }
 
 function sortImageData(state, action) {
-
-    let images = _.values(state.list)
-    let handleSort = (sortBy: ImageSortBy, sortCriteria) => {
-        return Object.assign({}, state, {
-            sortBy: action.payload.sortBy,
-            isAscending: action.payload.isAscending,
-            sorted: _(images)
-                .orderBy([sortCriteria], [action.payload.isAscending ? 'asc' : 'desc'])
-                .map((img: any) => img.id)
-                .value()
+    return Object.assign({}, state, {
+        sortBy: action.payload.sortBy,
+        isAscending: action.payload.isAscending,
+        displayedItems: getDisplayedItems({
+            dataSet: state.dataSet,
+            sortBy: state.sortBy,
+            isAscending: state.isAscending,
+            excludedTags: state.excludedTags
         })
-    }
+    })
+}
 
-    switch (action.payload.sortBy) {
+function getDisplayedItems(options) {
+
+    let sortOperator: any;
+    switch (options.sortBy) {
         case ImageSortBy.size:
-            state = handleSort(ImageSortBy.size, (v: any) => v.size)
+            sortOperator = (v: any) => v.size
             break
         case ImageSortBy.date:
-            state = handleSort(ImageSortBy.date, (v: any) => v.dateTaken)
+            sortOperator = (v: any) => v.dateTaken
             break
         default:
-            state = handleSort(ImageSortBy.name, (v: any) => v.name.toLocaleLowerCase())
+            sortOperator = (v: any) => v.name.toLocaleLowerCase()
             break
     }
-    return state;
+
+    return _(_.values(options.dataSet))
+        //.filter((img: any) => !containsSelectedTag(img.tags, options.excludedTags))
+        .orderBy([sortOperator], [options.isAscending ? 'asc' : 'desc'])
+        .map((img: any) => img.id)
+        .value()
+}
+
+function containsSelectedTag(tagList, selectedTags) {
+    return _.some(tagList || [], tag => isSelectedTag(tag, selectedTags))
+}
+
+function isSelectedTag(tag, selectedTags) {
+    return _.some(selectedTags || [], selectedTag => isMatchingTag(selectedTag, tag));
+}
+
+function isMatchingTag(tag1, tag2) {
+    return tagCompareValue(tag1) === tagCompareValue(tag2);
+}
+
+function tagCompareValue(tag) {
+    return (tag || '').toLocaleLowerCase();
 }
