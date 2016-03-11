@@ -4,6 +4,7 @@ import {
     LOADING_IMAGE_DATA,
     LOAD_IMAGE_DATA,
     SORT_IMAGES,
+    EXCLUDE_IMAGE_TAGS,
     ImageSortBy
 } from '../actions/images-actions'
 
@@ -24,6 +25,8 @@ export function imageData(state: any = defaultState, action: any = {}) {
             return loadImageData(state, action)
         case SORT_IMAGES:
             return sortImageData(state, action)
+        case EXCLUDE_IMAGE_TAGS:
+            return excludeImageTags(state, action)
         default:
             return state
     }
@@ -60,6 +63,18 @@ function sortImageData(state, action) {
             sortBy: action.payload.sortBy,
             isAscending: action.payload.isAscending,
             excludedTags: state.excludedTags
+        })
+    })
+}
+
+function excludeImageTags(state, action) {
+    return Object.assign({}, state, {
+        excludedTags: action.payload.excludedTags,
+        displayedItems: getDisplayedItems({
+            dataSet: state.dataSet,
+            sortBy: state.sortBy,
+            isAscending: state.isAscending,
+            excludedTags: action.payload.excludedTags
         })
     })
 }

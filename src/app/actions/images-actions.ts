@@ -4,6 +4,7 @@ import {Http, Response} from 'angular2/http'
 export const LOADING_IMAGE_DATA = 'LOADING_IMAGE_DATA'
 export const LOAD_IMAGE_DATA = 'LOAD_IMAGE_DATA'
 export const SORT_IMAGES = 'SORT_IMAGES'
+export const EXCLUDE_IMAGE_TAGS = 'EXCLUDE_IMAGE_TAGS'
 export enum ImageSortBy {
     name,
     size,
@@ -37,6 +38,13 @@ export function sortImages(sortBy: ImageSortBy, isAscending: boolean = true) {
     return {
         type: SORT_IMAGES,
         payload: { sortBy, isAscending }
+    }
+}
+
+export function excludeImageTags(excludedTags: string[]) {
+    return {
+        type: EXCLUDE_IMAGE_TAGS,
+        payload: { excludedTags }
     }
 }
 
