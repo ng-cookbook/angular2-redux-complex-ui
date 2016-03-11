@@ -57,8 +57,8 @@ function sortImageData(state, action) {
         isAscending: action.payload.isAscending,
         displayedItems: getDisplayedItems({
             dataSet: state.dataSet,
-            sortBy: state.sortBy,
-            isAscending: state.isAscending,
+            sortBy: action.payload.sortBy,
+            isAscending: action.payload.isAscending,
             excludedTags: state.excludedTags
         })
     })
