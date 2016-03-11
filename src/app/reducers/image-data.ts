@@ -80,7 +80,7 @@ function getDisplayedItems(options) {
     }
 
     return _(_.values(options.dataSet))
-        //.filter((img: any) => !containsSelectedTag(img.tags, options.excludedTags))
+        .filter((img: any) => !containsSelectedTag(img.tags, options.excludedTags))
         .orderBy([sortOperator], [options.isAscending ? 'asc' : 'desc'])
         .map((img: any) => img.id)
         .value()

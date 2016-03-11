@@ -3,6 +3,4 @@ node_modules/
 src/app/**/*.js
 src/app/**/*.js.map
 typings/
-dist/es5/
-dist/es6/
-dist/temp/
+dist/
