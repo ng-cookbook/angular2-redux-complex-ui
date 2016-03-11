@@ -14,7 +14,7 @@ import {excludeImageTags} from '../../actions/images-actions'
         </div>
         <div>
             <label *ngFor="#tag of imageTags">
-                <input type="checkbox" [checked]="tag.isSelected" (change)="onSelectionChanged()">
+                <input type="checkbox" [(ngModel)]="tag.isSelected" (change)="onSelectionChanged()">
                 {{tag.tag}}
             </label>
         </div>
@@ -42,7 +42,6 @@ export class ImageTagSelector implements IAppStoreSubscriber {
                         isSelected: !_.some(state.excludedTags, (exTag: string) => isMatchingTag(tag, exTag))
                     }))
                     .value()
-                console.log(this.imageTags);
             })
     }
 
