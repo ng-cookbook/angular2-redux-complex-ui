@@ -13,7 +13,8 @@
     "allowSyntheticDefaultImports": true
   },
   "filesGlob": [
-    "src/app/**/*.ts"
+    "src/app/**/*.ts",
+    "tests/**/*.ts"
   ],
   "exclude": [
     ".git",

@@ -21,7 +21,7 @@ for (let [name, path] of Object.entries(vendorFiles)) {
 }
 
 app.use('/api', imagesRouter)
-app.use('/app', express.static('dist/es5'))
+app.use('/app', express.static('dist/es5/src/app'))
 app.use('/', express.static('src'))
 
 export default app

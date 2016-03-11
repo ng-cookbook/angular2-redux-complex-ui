@@ -1,7 +1,10 @@
 {
   "dependencies": {
     "lodash": "registry:npm/lodash#4.0.0+20160305082308",
-    "redux": "github:andrew-w-ross/typings-redux#2e0b57e18c6240d17fde045573d74e649762437b",
-    "redux-thunk": "github:andrew-w-ross/typings-redux-thunk#11edd7b7e5add9721b60bcf6994e814b0eeaa3f6"
+    "redux": "registry:npm/redux#3.0.6+20160214194820",
+    "redux-thunk": "registry:npm/redux-thunk#1.0.4+20160207154919"
+  },
+  "ambientDependencies": {
+    "jasmine": "registry:dt/jasmine#2.2.0+20160308082659"
   }
 }

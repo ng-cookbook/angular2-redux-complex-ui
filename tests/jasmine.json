@@ -1,0 +1,6 @@
+{
+  "spec_dir": "dist/es6/tests/specs",
+  "spec_files": [
+    "**/*.spec.js"
+  ]
+}
