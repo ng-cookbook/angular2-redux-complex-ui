@@ -4,6 +4,7 @@ import {Component} from 'angular2/core'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 import {excludeImageTags} from '../../actions/images-actions'
+import {isMatchingTag, tagCompareValue} from '../../utils/tag-utils'
 
 @Component({
     selector: '[image-tag-selector]',
@@ -62,12 +63,4 @@ export class ImageTagSelector implements IAppStoreSubscriber {
             .value()
         this.appStore.dispatch(excludeImageTags(excludedTags))
     }
-}
-
-function isMatchingTag(tag1: string, tag2: string) {
-    return tagCompareValue(tag1) === tagCompareValue(tag2);
-}
-
-function tagCompareValue(tag: string) {
-    return (tag || '').toLocaleLowerCase();
 }
