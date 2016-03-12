@@ -4,6 +4,7 @@ import {
     LOADING_IMAGE_DATA,
     LOAD_IMAGE_DATA,
     SORT_IMAGES,
+    EXCLUDE_IMAGE_TAGS,
     ImageSortBy
 } from '../../../src/app/actions/images-actions'
 import {imageData} from '../../../src/app/reducers/image-data'
@@ -133,7 +134,7 @@ describe('Image Data reducer', () => {
                     isAscending: true
                 }
             })
-            expect(state).toEqual(Object.assign(initialLoadedState, {
+            expect(state).toEqual(Object.assign({}, initialLoadedState, {
                 sortBy: ImageSortBy.name,
                 isAscending: true,
                 displayedItems: ['a', 'b', 'c']
@@ -148,7 +149,7 @@ describe('Image Data reducer', () => {
                     isAscending: false
                 }
             })
-            expect(state).toEqual(Object.assign(initialLoadedState, {
+            expect(state).toEqual(Object.assign({}, initialLoadedState, {
                 sortBy: ImageSortBy.name,
                 isAscending: false,
                 displayedItems: ['c', 'b', 'a']
@@ -163,7 +164,7 @@ describe('Image Data reducer', () => {
                     isAscending: true
                 }
             })
-            expect(state).toEqual(Object.assign(initialLoadedState, {
+            expect(state).toEqual(Object.assign({}, initialLoadedState, {
                 sortBy: ImageSortBy.date,
                 isAscending: true,
                 displayedItems: ['b', 'c', 'a']
@@ -178,7 +179,7 @@ describe('Image Data reducer', () => {
                     isAscending: false
                 }
             })
-            expect(state).toEqual(Object.assign(initialLoadedState, {
+            expect(state).toEqual(Object.assign({}, initialLoadedState, {
                 sortBy: ImageSortBy.date,
                 isAscending: false,
                 displayedItems: ['a', 'c', 'b']
@@ -193,7 +194,7 @@ describe('Image Data reducer', () => {
                     isAscending: true
                 }
             })
-            expect(state).toEqual(Object.assign(initialLoadedState, {
+            expect(state).toEqual(Object.assign({}, initialLoadedState, {
                 sortBy: ImageSortBy.size,
                 isAscending: true,
                 displayedItems: ['c', 'a', 'b']
@@ -208,10 +209,53 @@ describe('Image Data reducer', () => {
                     isAscending: false
                 }
             })
-            expect(state).toEqual(Object.assign(initialLoadedState, {
+            expect(state).toEqual(Object.assign({}, initialLoadedState, {
                 sortBy: ImageSortBy.size,
                 isAscending: false,
                 displayedItems: ['b', 'a', 'c']
+            }));
+        })
+
+    })
+
+    describe('EXCLUDE_IMAGE_TAGS action', () => {
+
+        it('should exclude no images', () => {
+            let state = imageData(initialLoadedState, {
+                type: 'EXCLUDE_IMAGE_TAGS',
+                payload: {
+                    excludedTags: []
+                }
+            })
+            expect(state).toEqual(Object.assign({}, initialLoadedState, {
+                displayedItems: ['a', 'b', 'c'],
+                excludedTags: []
+            }));
+        })
+
+        it('should exclude all images', () => {
+            let state = imageData(initialLoadedState, {
+                type: 'EXCLUDE_IMAGE_TAGS',
+                payload: {
+                    excludedTags: ['bb', 'dd', 'ee']
+                }
+            })
+            expect(state).toEqual(Object.assign({}, initialLoadedState, {
+                displayedItems: [],
+                excludedTags: ['bb', 'dd', 'ee']
+            }));
+        })
+
+        it('should exclude some images', () => {
+            let state = imageData(initialLoadedState, {
+                type: 'EXCLUDE_IMAGE_TAGS',
+                payload: {
+                    excludedTags: ['cc']
+                }
+            })
+            expect(state).toEqual(Object.assign({}, initialLoadedState, {
+                displayedItems: ['c'],
+                excludedTags: ['cc']
             }));
         })
 
