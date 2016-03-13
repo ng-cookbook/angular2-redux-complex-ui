@@ -1,8 +1,23 @@
-<div class="row expanded">
-    <div class="small-12 columns">
-        <h1>
-            Demo App
-            <loading-indicator [isLoading]="isLoading" [loadingMessage]="loadingMessage"></loading-indicator>
-        </h1>
+<div class="top-bar">
+    <div class="top-bar-left">
+        <ul class="menu">
+            <li class="menu-text">
+                Images Demo
+            </li>
+        </ul>
+    </div>
+    <div class="top-bar-right">
+        <ul class="dropdown menu" data-dropdown-menu>
+            <li>
+                <loading-indicator [isLoading]="isLoading" [loadingMessage]="loadingMessage"></loading-indicator>
+            </li>
+            <li>
+                <a>Layouts</a>
+                <ul class="menu vertical">
+                    <li><a (click)="selectDetailOnlyLayout()">Detail List Only</a></li>
+                    <li><a (click)="selectDetailAndGroupsLayout()">Layout Two</a></li>
+                </ul>
+            </li>
+        </ul>
     </div>
 </div>
