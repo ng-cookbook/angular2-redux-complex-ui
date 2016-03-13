@@ -13,17 +13,17 @@ export class TitleBar {
     @Input() public isLoading: boolean = true
     public loadingMessage: string = 'Loading Images ...'
 
-    ngAfterViewInit() {
+    public ngAfterViewInit() {
         // For menu functionality
         resetZurbFoundation();
     }
 
-    selectDetailOnlyLayout() {
-        console.log("Select detail only layout ...")
+    public selectDetailOnlyLayout() {
+        console.log('Select detail only layout ...')
     }
 
-    selectDetailAndGroupsLayout() {
-        console.log("Select detail and groups layout ...")
+    public selectDetailAndGroupsLayout() {
+        console.log('Select detail and groups layout ...')
     }
 
 }

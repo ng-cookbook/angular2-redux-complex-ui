@@ -4,11 +4,11 @@ import {TitleBar} from '../title-bar'
 import {ImageDetailList} from '../../image-detail-list/image-detail-list'
 
 @Component({
-    selector: 'detail-only-layout',
+    selector: 'list-layout',
     directives: [TitleBar, ImageDetailList],
-    templateUrl: 'app/components/demo-app/layouts/detail-only-layout.html',
-    styleUrls: ['app/components/demo-app/layouts/detail-only-layout.css']
+    templateUrl: 'app/components/demo-app/layouts/list-layout.html',
+    styleUrls: ['app/components/demo-app/layouts/list-layout.css']
 })
-export class DetailOnlyLayout {
+export class ListLayout {
     @Input() public isLoading: boolean = true
 }

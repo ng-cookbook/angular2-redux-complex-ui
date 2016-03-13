@@ -4,7 +4,7 @@ import {Http} from 'angular2/http'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 import {imageDataRequest} from '../../actions/images-actions'
-import {AppLayouts} from './app-layouts'
+import {AppLayouts} from './layouts/app-layouts'
 
 @Component({
     selector: 'demo-app',
