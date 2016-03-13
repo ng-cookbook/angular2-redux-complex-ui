@@ -4,33 +4,21 @@ import {Http} from 'angular2/http'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 import {imageDataRequest} from '../../actions/images-actions'
-import {LoadingIndicator} from '../loading-indicator/loading-indicator'
-import {ImageDetailList} from '../image-detail-list/image-detail-list'
+import {AppLayouts} from './app-layouts'
 
 @Component({
     selector: 'demo-app',
-    directives: [LoadingIndicator, ImageDetailList],
+    directives: [AppLayouts],
     template: `
-        <div class="row">
-            <div class="small-12 columns">
-                <h1>
-                    Demo App
-                    <loading-indicator [isLoading]="isLoading" [loadingMessage]="loadingMessage"></loading-indicator>
-                </h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="small-12 columns">
-                <image-detail-list></image-detail-list>
-            </div>
-        </div>
+        <app-layouts
+            [isLoading]="state.isLoading"
+            [layoutMode]="state.layoutMode"></app-layouts>
     `
 })
 @AppStoreSubscriber()
 export class DemoApp implements IAppStoreSubscriber {
 
-    public isLoading: boolean = true
-    public loadingMessage: string = 'Loading Images ...'
+    public state = {};
 
     constructor(
         private appStore: AppStore,
@@ -39,12 +27,16 @@ export class DemoApp implements IAppStoreSubscriber {
 
     public onInitAppStoreSubscription(source: any): void {
         return source
-            .subscribe((state: any) => {
-                this.isLoading = state.imageData.isLoading
+            .map((state: any) => ({
+                isLoading: state.imageData.isLoading,
+                layoutMode: state.imageData.layoutMode
+            }))
+            .subscribe((componentState: any) => {
+                this.state = componentState
             })
     }
 
     public ngOnInit() {
-        this.appStore.dispatch(imageDataRequest(this.http))
+        setTimeout(() => this.appStore.dispatch(imageDataRequest(this.http)), 2000)
     }
 }

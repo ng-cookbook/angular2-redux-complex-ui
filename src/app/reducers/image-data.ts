@@ -5,7 +5,8 @@ import {
     LOAD_IMAGE_DATA,
     SORT_IMAGES,
     EXCLUDE_IMAGE_TAGS,
-    ImageSortBy
+    ImageSortBy,
+    LayoutModes
 } from '../actions/images-actions'
 import {areAllTagsExcluded} from '../utils/tag-utils';
 
@@ -15,7 +16,8 @@ const defaultState = {
     isLoading: true,
     dataSet: {},
     displayedItems: [],
-    excludedTags: []
+    excludedTags: [],
+    layoutMode: LayoutModes.detailsOnly
 }
 
 export function imageData(state: any = defaultState, action: any = {}) {

@@ -10,6 +10,9 @@ export enum ImageSortBy {
     size,
     date
 }
+export enum LayoutModes {
+    detailsOnly = 1
+}
 
 export function loadingImages() {
     return {

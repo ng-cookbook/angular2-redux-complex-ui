@@ -5,7 +5,8 @@ import {
     LOAD_IMAGE_DATA,
     SORT_IMAGES,
     EXCLUDE_IMAGE_TAGS,
-    ImageSortBy
+    ImageSortBy,
+    LayoutModes
 } from '../../../src/app/actions/images-actions'
 import {imageData} from '../../../src/app/reducers/image-data'
 
@@ -48,7 +49,8 @@ const initialDefaultState = {
     isLoading: true,
     dataSet: {},
     displayedItems: [],
-    excludedTags: []
+    excludedTags: [],
+    layoutMode: LayoutModes.detailsOnly
 }
 
 const initialLoadedState = {
@@ -61,7 +63,8 @@ const initialLoadedState = {
         c: testImageData[2]
     },
     displayedItems: ['a', 'b', 'c'],
-    excludedTags: []
+    excludedTags: [],
+    layoutMode: LayoutModes.detailsOnly
 }
 
 describe('Image Data reducer', () => {
@@ -99,8 +102,10 @@ describe('Image Data reducer', () => {
                 },
                 error: true
             })
-            expect(state.isLoading).toEqual(false)
-            expect(state.errorMessage).toEqual('err msg')
+            expect(state).toEqual(Object.assign({}, initialDefaultState, {
+                isLoading: false,
+                errorMessage: 'err msg'
+            }))
         })
 
         it('should load and sort data', () => {
@@ -108,18 +113,7 @@ describe('Image Data reducer', () => {
                 type: LOAD_IMAGE_DATA,
                 payload: testImageData
             })
-            expect(state).toEqual({
-                sortBy: ImageSortBy.name,
-                isAscending: true,
-                isLoading: false,
-                dataSet: {
-                    a: testImageData[0],
-                    b: testImageData[1],
-                    c: testImageData[2]
-                },
-                displayedItems: ['a', 'b', 'c'],
-                excludedTags: []
-            })
+            expect(state).toEqual(initialLoadedState)
         })
 
     })
