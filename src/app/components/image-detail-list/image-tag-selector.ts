@@ -1,10 +1,9 @@
 
-import _ from 'lodash'
 import {Component} from 'angular2/core'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 import {excludeImageTags} from '../../actions/images-actions'
-import {isMatchingTag, tagCompareValue} from '../../utils/tag-utils'
+import {isMatchingTag, getSelectedTagsList, getExcludedTagsFromSelectedTagsList} from '../../utils/tag-utils'
 
 @Component({
     selector: '[image-tag-selector]',
@@ -15,7 +14,9 @@ import {isMatchingTag, tagCompareValue} from '../../utils/tag-utils'
         </div>
         <div>
             <label *ngFor="#tag of imageTags">
-                <input type="checkbox" [(ngModel)]="tag.isSelected" (change)="onSelectionChanged()">
+                <input #tagInput type="checkbox"
+                    [ngModel]="tag.isSelected"
+                    (ngModelChange)="toggleSelectedTag(tag.tag, tagInput.checked)">
                 {{tag.tag}}
             </label>
         </div>
@@ -31,36 +32,29 @@ export class ImageTagSelector implements IAppStoreSubscriber {
 
     public onInitAppStoreSubscription(source: any): void {
         return source
-            .subscribe((state: any) => {
-                this.imageTags = _(_.values(state.imageData.dataSet))
-                    .map((v: any, k: any) => v.tags)
-                    .flatten()
-                    .filter(v => !!v)
-                    .uniq()
-                    .sortBy((v: string) => tagCompareValue(v))
-                    .map((tag: string) => ({
-                        tag,
-                        isSelected: !_.some(state.excludedTags, (exTag: string) => isMatchingTag(tag, exTag))
-                    }))
-                    .value()
+            .map((state: any) => state.imageData)
+            .subscribe((imageData: any) => {
+                this.imageTags = getSelectedTagsList(imageData.dataSet, imageData.excludedTags)
             })
     }
 
     public selectAll(): void {
-        this.imageTags = this.imageTags.map(tag => ({ tag: tag.tag, isSelected: true }));
+        this.imageTags = this.imageTags.map(v => ({ tag: v.tag, isSelected: true }))
         this.onSelectionChanged()
     }
 
     public selectNone(): void {
-        this.imageTags = this.imageTags.map(tag => ({ tag: tag.tag, isSelected: false }));
+        this.imageTags = this.imageTags.map(v => ({ tag: v.tag, isSelected: false }))
         this.onSelectionChanged()
     }
 
-    public onSelectionChanged(): void {
-        let excludedTags = _(this.imageTags)
-            .filter((v: any) => !v.isSelected)
-            .map((v: any) => v.tag)
-            .value()
+    public toggleSelectedTag(tag, isSelected) {
+        this.imageTags = this.imageTags.map(v => isMatchingTag(v.tag, tag) ? {tag, isSelected} : v)
+        this.onSelectionChanged()
+    }
+
+    private onSelectionChanged(): void {
+        let excludedTags = getExcludedTagsFromSelectedTagsList(this.imageTags);
         this.appStore.dispatch(excludeImageTags(excludedTags))
     }
 }

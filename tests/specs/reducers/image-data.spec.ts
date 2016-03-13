@@ -82,7 +82,7 @@ describe('Image Data reducer', () => {
 
         it('should reset to default state', () => {
             let state = imageData(initialLoadedState, {
-                type: 'LOADING_IMAGE_DATA'
+                type: LOADING_IMAGE_DATA
             })
             expect(state).toEqual(initialDefaultState)
         })
@@ -93,7 +93,7 @@ describe('Image Data reducer', () => {
 
         it('should handle error', () => {
             let state = imageData(initialDefaultState, {
-                type: 'LOAD_IMAGE_DATA',
+                type: LOAD_IMAGE_DATA,
                 payload: {
                     message: 'err msg'
                 },
@@ -105,7 +105,7 @@ describe('Image Data reducer', () => {
 
         it('should load and sort data', () => {
             let state = imageData(initialDefaultState, {
-                type: 'LOAD_IMAGE_DATA',
+                type: LOAD_IMAGE_DATA,
                 payload: testImageData
             })
             expect(state).toEqual({
@@ -128,7 +128,7 @@ describe('Image Data reducer', () => {
 
         it('should sort by name ascending', () => {
             let state = imageData(initialLoadedState, {
-                type: 'SORT_IMAGES',
+                type: SORT_IMAGES,
                 payload: {
                     sortBy: ImageSortBy.name,
                     isAscending: true
@@ -143,7 +143,7 @@ describe('Image Data reducer', () => {
 
         it('should sort by name descending', () => {
             let state = imageData(initialLoadedState, {
-                type: 'SORT_IMAGES',
+                type: SORT_IMAGES,
                 payload: {
                     sortBy: ImageSortBy.name,
                     isAscending: false
@@ -158,7 +158,7 @@ describe('Image Data reducer', () => {
 
         it('should sort by date ascending', () => {
             let state = imageData(initialLoadedState, {
-                type: 'SORT_IMAGES',
+                type: SORT_IMAGES,
                 payload: {
                     sortBy: ImageSortBy.date,
                     isAscending: true
@@ -173,7 +173,7 @@ describe('Image Data reducer', () => {
 
         it('should sort by date descending', () => {
             let state = imageData(initialLoadedState, {
-                type: 'SORT_IMAGES',
+                type: SORT_IMAGES,
                 payload: {
                     sortBy: ImageSortBy.date,
                     isAscending: false
@@ -188,7 +188,7 @@ describe('Image Data reducer', () => {
 
         it('should sort by size ascending', () => {
             let state = imageData(initialLoadedState, {
-                type: 'SORT_IMAGES',
+                type: SORT_IMAGES,
                 payload: {
                     sortBy: ImageSortBy.size,
                     isAscending: true
@@ -203,7 +203,7 @@ describe('Image Data reducer', () => {
 
         it('should sort by size descending', () => {
             let state = imageData(initialLoadedState, {
-                type: 'SORT_IMAGES',
+                type: SORT_IMAGES,
                 payload: {
                     sortBy: ImageSortBy.size,
                     isAscending: false
@@ -222,7 +222,7 @@ describe('Image Data reducer', () => {
 
         it('should exclude no images', () => {
             let state = imageData(initialLoadedState, {
-                type: 'EXCLUDE_IMAGE_TAGS',
+                type: EXCLUDE_IMAGE_TAGS,
                 payload: {
                     excludedTags: []
                 }
@@ -235,27 +235,27 @@ describe('Image Data reducer', () => {
 
         it('should exclude all images', () => {
             let state = imageData(initialLoadedState, {
-                type: 'EXCLUDE_IMAGE_TAGS',
+                type: EXCLUDE_IMAGE_TAGS,
                 payload: {
-                    excludedTags: ['bb', 'dd', 'ee']
+                    excludedTags: ['aa', 'bb', 'cc', 'dd', 'ee']
                 }
             })
             expect(state).toEqual(Object.assign({}, initialLoadedState, {
                 displayedItems: [],
-                excludedTags: ['bb', 'dd', 'ee']
+                excludedTags: ['aa', 'bb', 'cc', 'dd', 'ee']
             }));
         })
 
         it('should exclude some images', () => {
             let state = imageData(initialLoadedState, {
-                type: 'EXCLUDE_IMAGE_TAGS',
+                type: EXCLUDE_IMAGE_TAGS,
                 payload: {
-                    excludedTags: ['cc']
+                    excludedTags: ['cc', 'dd']
                 }
             })
             expect(state).toEqual(Object.assign({}, initialLoadedState, {
-                displayedItems: ['c'],
-                excludedTags: ['cc']
+                displayedItems: ['a', 'c'],
+                excludedTags: ['cc', 'dd']
             }));
         })
 

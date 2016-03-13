@@ -7,7 +7,7 @@ import {
     EXCLUDE_IMAGE_TAGS,
     ImageSortBy
 } from '../actions/images-actions'
-import {containsSelectedTag} from '../utils/tag-utils'
+import {areAllTagsExcluded} from '../utils/tag-utils';
 
 const defaultState = {
     sortBy: ImageSortBy.name,
@@ -96,7 +96,7 @@ function getDisplayedItems(options) {
     }
 
     return _(_.values(options.dataSet))
-        .filter((img: any) => !containsSelectedTag(img.tags, options.excludedTags))
+        .filter((img: any) => !areAllTagsExcluded(img.tags, options.excludedTags))
         .orderBy([sortOperator], [options.isAscending ? 'asc' : 'desc'])
         .map((img: any) => img.id)
         .value()
