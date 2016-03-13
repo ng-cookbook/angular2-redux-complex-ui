@@ -10,15 +10,18 @@ import {ImageDetailTable} from './image-detail-table'
     selector: 'image-detail-list',
     directives: [ImageDetailTable],
     template: `
-        <p>Image Details</p>
-        <image-detail-table
-            [tableData]="imageList"
-            [sortBy]="sortBy"
-            [isAscending]="isAscending"
-            (toggleNameSort)="sortByName()"
-            (toggleSizeSort)="sortBySize()"
-            (toggleDateSort)="sortByDate()"
-            ></image-detail-table>
+        <div class="row expanded">
+            <div class="small-12 columns">
+                <image-detail-table
+                    [tableData]="imageList"
+                    [sortBy]="sortBy"
+                    [isAscending]="isAscending"
+                    (toggleNameSort)="sortByName()"
+                    (toggleSizeSort)="sortBySize()"
+                    (toggleDateSort)="sortByDate()"
+                    ></image-detail-table>
+            </div>
+        </div>
     `
 })
 @AppStoreSubscriber()
