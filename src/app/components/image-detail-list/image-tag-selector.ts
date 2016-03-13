@@ -7,20 +7,8 @@ import {isMatchingTag, getSelectedTagsList, getExcludedTagsFromSelectedTagsList}
 
 @Component({
     selector: '[image-tag-selector]',
-    template: `
-        <div>
-            <button class="small button" (click)="selectAll()">Select All</button>
-            <button class="small button" (click)="selectNone()">Select None</button>
-        </div>
-        <div>
-            <label *ngFor="#tag of imageTags">
-                <input #tagInput type="checkbox"
-                    [ngModel]="tag.isSelected"
-                    (ngModelChange)="toggleSelectedTag(tag.tag, tagInput.checked)">
-                {{tag.tag}}
-            </label>
-        </div>
-    `
+    templateUrl: 'app/components/image-detail-list/image-tag-selector.html',
+    styleUrls: ['app/components/image-detail-list/image-tag-selector.css']
 })
 @AppStoreSubscriber()
 export class ImageTagSelector implements IAppStoreSubscriber {
