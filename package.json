@@ -10,7 +10,7 @@
     "lint:js": "standard",
     "clean": "rimraf dist",
     "typings": "typings install",
-    "build": "npm-run-all lint clean build:css build:ts build:es6",
+    "build": "npm-run-all lint clean build:css build:ts build:es6 test",
     "build:css": "babel-node scripts/build-css",
     "build:src": "npm-run-all build:ts build:es6",
     "build:ts": "tsc",
