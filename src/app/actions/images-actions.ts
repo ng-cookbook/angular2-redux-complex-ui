@@ -5,13 +5,15 @@ export const LOADING_IMAGE_DATA = 'LOADING_IMAGE_DATA'
 export const LOAD_IMAGE_DATA = 'LOAD_IMAGE_DATA'
 export const SORT_IMAGES = 'SORT_IMAGES'
 export const EXCLUDE_IMAGE_TAGS = 'EXCLUDE_IMAGE_TAGS'
+export const CHANGE_LAYOUT = 'CHANGE_LAYOUT'
 export enum ImageSortBy {
     name,
     size,
     date
 }
 export enum LayoutModes {
-    detailsOnly = 1
+    list = 1,
+    listGroup = 2
 }
 
 export function loadingImages() {
@@ -63,5 +65,12 @@ export function imageDataRequest(http: Http) {
                 (imageData: any) => dispatch(loadImageData(imageData)),
                 (err: Response) => dispatch(loadImageDataError(err.json().error || 'Server error'))
             )
+    }
+}
+
+export function changeLayout(layoutMode: LayoutModes) {
+    return {
+        type: CHANGE_LAYOUT,
+        payload: { layoutMode }
     }
 }
