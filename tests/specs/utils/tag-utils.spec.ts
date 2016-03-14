@@ -2,7 +2,7 @@
 
 import {
     areAllTagsExcluded,
-    isExcludedTag,
+    isTagIncludedInList,
     isMatchingTag,
     tagCompareValue,
     getSelectedTagsList,
@@ -33,19 +33,19 @@ describe('Tag utils', () => {
 
     })
 
-    describe('isExcludedTag', () => {
+    describe('isTagIncludedInList', () => {
 
         it('should handled undefined input', () => {
-            expect(isExcludedTag(undefined, undefined)).toBe(false)
-            expect(isExcludedTag('abc', undefined)).toBe(false)
+            expect(isTagIncludedInList(undefined, undefined)).toBe(false)
+            expect(isTagIncludedInList('abc', undefined)).toBe(false)
         })
 
         it('should return true if tag is in list', () => {
-            expect(isExcludedTag('b', ['a', 'b', 'c'])).toBe(true)
+            expect(isTagIncludedInList('b', ['a', 'b', 'c'])).toBe(true)
         })
 
         it('should return false if tag is not in list', () => {
-            expect(isExcludedTag('x', ['a', 'b', 'c'])).toBe(false)
+            expect(isTagIncludedInList('x', ['a', 'b', 'c'])).toBe(false)
         })
 
     })

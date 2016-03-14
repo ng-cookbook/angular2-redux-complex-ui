@@ -3,7 +3,7 @@ import _ from 'lodash'
 import {Component} from 'angular2/core'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
-import {tagCompareValue} from '../../utils/tag-utils'
+import {tagCompareValue, isTagIncludedInList} from '../../utils/tag-utils'
 
 @Component({
     selector: 'image-group-list',
@@ -12,6 +12,11 @@ import {tagCompareValue} from '../../utils/tag-utils'
         <div class="row expanded">
             <div class="small-12 columns" *ngFor="#group of imageGroups">
                 <h2>{{group.name}}</h2>
+                <div>
+                    <span *ngFor="#img of group.included">
+                        {{img.name}}
+                    </span>
+                </div>
             </div>
         </div>
     `
@@ -35,7 +40,14 @@ export class ImageGroupList implements IAppStoreSubscriber {
                     .uniq()
                     .orderBy(tag => tag)
                     .map((tag: string) => ({
-                        name: tag
+                        name: tag,
+                        included: _(imageData.displayedItems)
+                            .map((id: string) => imageData.dataSet[id])
+                            .filter((img: any) => isTagIncludedInList(tag, img.tags))
+                            .map((img: any) => ({
+                                name: img.name
+                            }))
+                            .value()
                     }))
                     .value()
             })

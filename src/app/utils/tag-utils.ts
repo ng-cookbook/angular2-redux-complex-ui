@@ -2,10 +2,10 @@ import _ from 'lodash'
 
 export function areAllTagsExcluded(tagList, excludedTags) {
     tagList = tagList || []
-    return tagList.length > 0 && _.every(tagList, tag => isExcludedTag(tag, excludedTags))
+    return tagList.length > 0 && _.every(tagList, tag => isTagIncludedInList(tag, excludedTags))
 }
 
-export function isExcludedTag(tag, selectedTags) {
+export function isTagIncludedInList(tag, selectedTags) {
     return _.some(selectedTags || [], selectedTag => isMatchingTag(selectedTag, tag));
 }
 
