@@ -17,12 +17,12 @@ router.get('/images/:id', findImage, (req, res) => {
 })
 
 router.get('/images/:id/image', findImage, (req, res) => {
-  let imageFile = path.join(dataPath, 'images', 'full', req.imageInfo.name)
+  let imageFile = path.join(dataPath, 'images', 'full', req.imageInfo.fileName)
   res.sendFile(imageFile)
 })
 
 router.get('/images/:id/thumb', findImage, (req, res) => {
-  let imageFile = path.join(dataPath, 'images', 'thumbs', req.imageInfo.name)
+  let imageFile = path.join(dataPath, 'images', 'thumbs', req.imageInfo.fileName)
   res.sendFile(imageFile)
 })
 

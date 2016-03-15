@@ -2,9 +2,10 @@
     <div class="small-12 columns" *ngFor="#group of imageGroups">
         <h2>{{group.name}}</h2>
         <div>
-            <span *ngFor="#img of group.included">
-                {{img.title}}
-            </span>
+            <div class="thumbnail-panel" *ngFor="#img of group.included">
+                <img class="thumbnail" [src]="img.url" [alt]="img.title">
+                <div>{{img.title}}</div>
+            </div>
         </div>
     </div>
 </div>
