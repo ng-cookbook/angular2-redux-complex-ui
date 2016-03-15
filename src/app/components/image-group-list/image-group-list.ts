@@ -3,7 +3,7 @@ import _ from 'lodash'
 import {Component} from 'angular2/core'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
-import {tagCompareValue, isTagIncludedInList, getUniqueTagsList} from '../../utils/tag-utils'
+import {isTagIncludedInList, getUniqueTagsList} from '../../utils/tag-utils'
 
 @Component({
     selector: 'image-group-list',
