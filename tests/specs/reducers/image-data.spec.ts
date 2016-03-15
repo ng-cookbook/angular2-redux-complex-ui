@@ -5,9 +5,7 @@ import {
     LOAD_IMAGE_DATA,
     SORT_IMAGES,
     EXCLUDE_IMAGE_TAGS,
-    CHANGE_LAYOUT,
-    ImageSortBy,
-    LayoutModes
+    ImageSortBy
 } from '../../../src/app/actions/images-actions'
 import {imageData} from '../../../src/app/reducers/image-data'
 
@@ -53,8 +51,7 @@ const initialDefaultState = {
     isLoading: true,
     dataSet: {},
     displayedItems: [],
-    excludedTags: [],
-    layoutMode: LayoutModes.list
+    excludedTags: []
 }
 
 const initialLoadedState = {
@@ -67,8 +64,7 @@ const initialLoadedState = {
         c: testImageData[2]
     },
     displayedItems: ['a', 'b', 'c'],
-    excludedTags: [],
-    layoutMode: LayoutModes.list
+    excludedTags: []
 }
 
 describe('Image Data reducer', () => {
@@ -254,22 +250,6 @@ describe('Image Data reducer', () => {
             expect(state).toEqual(Object.assign({}, initialLoadedState, {
                 displayedItems: ['a', 'c'],
                 excludedTags: ['cc', 'dd']
-            }));
-        })
-
-    })
-
-    describe('CHANGE_LAYOUT action', () => {
-
-        it('should select new layout', () => {
-            let state = imageData(initialLoadedState, {
-                type: CHANGE_LAYOUT,
-                payload: {
-                    layoutMode: LayoutModes.listGroup
-                }
-            })
-            expect(state).toEqual(Object.assign({}, initialLoadedState, {
-                layoutMode: LayoutModes.listGroup
             }));
         })
 

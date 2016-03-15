@@ -5,16 +5,13 @@ import {
     LOAD_IMAGE_DATA,
     SORT_IMAGES,
     EXCLUDE_IMAGE_TAGS,
-    CHANGE_LAYOUT,
     ImageSortBy,
-    LayoutModes,
     loadingImages,
     loadImageData,
     loadImageDataError,
     sortImages,
     excludeImageTags,
-    imageDataRequest,
-    changeLayout
+    imageDataRequest
 } from '../../../src/app/actions/images-actions'
 import {imageData} from '../../../src/app/reducers/image-data'
 
@@ -81,20 +78,6 @@ describe('Image actions creators', () => {
                 type: EXCLUDE_IMAGE_TAGS,
                 payload: {
                     excludedTags: ['a', 'b', 'c']
-                }
-            })
-        })
-
-    })
-
-    describe('changeLayout', () => {
-
-        it('should create CHANGE_LAYOUT action', () => {
-            let action = changeLayout(LayoutModes.listGroup)
-            expect(action).toEqual({
-                type: CHANGE_LAYOUT,
-                payload: {
-                    layoutMode: LayoutModes.listGroup
                 }
             })
         })

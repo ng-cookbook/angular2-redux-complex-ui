@@ -5,9 +5,7 @@ import {
     LOAD_IMAGE_DATA,
     SORT_IMAGES,
     EXCLUDE_IMAGE_TAGS,
-    CHANGE_LAYOUT,
-    ImageSortBy,
-    LayoutModes
+    ImageSortBy
 } from '../actions/images-actions'
 import {areAllTagsExcluded} from '../utils/tag-utils';
 
@@ -17,8 +15,7 @@ const defaultState = {
     isLoading: true,
     dataSet: {},
     displayedItems: [],
-    excludedTags: [],
-    layoutMode: LayoutModes.list
+    excludedTags: []
 }
 
 export function imageData(state: any = defaultState, action: any = {}) {
@@ -31,8 +28,6 @@ export function imageData(state: any = defaultState, action: any = {}) {
             return sortImageData(state, action)
         case EXCLUDE_IMAGE_TAGS:
             return excludeImageTags(state, action)
-        case CHANGE_LAYOUT:
-            return changeLayout(state, action)
         default:
             return state
     }
@@ -82,12 +77,6 @@ function excludeImageTags(state, action) {
             isAscending: state.isAscending,
             excludedTags: action.payload.excludedTags
         })
-    })
-}
-
-function changeLayout(state, action) {
-    return Object.assign({}, state, {
-        layoutMode: action.payload.layoutMode
     })
 }
 

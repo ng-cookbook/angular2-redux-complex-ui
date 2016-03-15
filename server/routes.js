@@ -25,7 +25,7 @@ app.use('/api', imagesRouter)
 app.use('/app', express.static('dist/es5/src/app'))
 
 let clientRoutes = /^\/($|images(\/|$))/i
-let indexHtml = path.join(__dirname, "..", "src", "index.html")
+let indexHtml = path.join(__dirname, '..', 'src', 'index.html')
 app.get(clientRoutes, (req, res) => {
   res.sendFile(indexHtml)
 })

@@ -39,8 +39,7 @@ export class ImagesSection implements IAppStoreSubscriber {
     public onInitAppStoreSubscription(source: any): void {
         return source
             .map((state: any) => ({
-                isLoading: state.imageData.isLoading,
-                layoutMode: state.imageData.layoutMode
+                isLoading: state.imageData.isLoading
             }))
             .subscribe((componentState: any) => {
                 this.state = componentState
