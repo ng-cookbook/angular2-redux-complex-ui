@@ -3,7 +3,7 @@ import _ from 'lodash'
 import {Component} from 'angular2/core'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
-import {tagCompareValue, isTagIncludedInList} from '../../utils/tag-utils'
+import {tagCompareValue, isTagIncludedInList, getUniqueTagsList} from '../../utils/tag-utils'
 
 @Component({
     selector: 'image-group-list',
@@ -23,16 +23,12 @@ export class ImageGroupList implements IAppStoreSubscriber {
         return source
             .map((state: any) => state.imageData)
             .subscribe((imageData: any) => {
-                this.imageGroups = _(imageData.displayedItems)
-                    .map((id: string) => imageData.dataSet[id].tags || [])
-                    .flatten()
-                    .map((tag: string) => tagCompareValue(tag))
-                    .uniq()
+                this.imageGroups = _(getUniqueTagsList(imageData.dataSet))
+                    .filter((tag: string) => !isTagIncludedInList(tag, imageData.excludedTags))
                     .orderBy(tag => tag)
                     .map((tag: string) => ({
                         name: tag,
-                        included: _(imageData.displayedItems)
-                            .map((id: string) => imageData.dataSet[id])
+                        included: _(_.values(imageData.dataSet))
                             .filter((img: any) => isTagIncludedInList(tag, img.tags))
                             .map((img: any) => ({
                                 title: img.title,

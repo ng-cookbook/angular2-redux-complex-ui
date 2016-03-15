@@ -17,7 +17,7 @@ export function tagCompareValue(tag) {
     return (tag || '').toLocaleLowerCase();
 }
 
-export function getSelectedTagsList(imageDataSet, excludedTags) {
+export function getUniqueTagsList(imageDataSet) {
     return _(_.values(imageDataSet))
         .map((v: any, k: any) => v.tags || [])
         .flatten()
@@ -25,6 +25,11 @@ export function getSelectedTagsList(imageDataSet, excludedTags) {
         .map(tagCompareValue)
         .uniq()
         .sortBy(v => v)
+        .value()
+}
+
+export function getSelectedTagsList(imageDataSet, excludedTags) {
+    return _(getUniqueTagsList(imageDataSet))
         .map((tag: string) => ({
             tag,
             isSelected: !_.some(excludedTags, (exTag: string) => isMatchingTag(tag, exTag))
