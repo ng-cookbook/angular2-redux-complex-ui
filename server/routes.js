@@ -1,4 +1,5 @@
 import express from 'express'
+import path from 'path'
 import imagesRouter from './api/images-api'
 
 let app = express()
@@ -22,6 +23,12 @@ for (let [name, path] of Object.entries(vendorFiles)) {
 
 app.use('/api', imagesRouter)
 app.use('/app', express.static('dist/es5/src/app'))
+
+let clientRoutes = /^\/($|images(\/|$))/i
+let indexHtml = path.join(__dirname, "..", "src", "index.html")
+app.get(clientRoutes, (req, res) => {
+  res.sendFile(indexHtml)
+})
 app.use('/', express.static('src'))
 
 export default app

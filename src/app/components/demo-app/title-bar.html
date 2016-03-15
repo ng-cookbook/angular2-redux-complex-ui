@@ -14,8 +14,8 @@
             <li>
                 <a>Layouts</a>
                 <ul class="menu vertical">
-                    <li><a (click)="selectListLayout()">List</a></li>
-                    <li><a (click)="selectListGroupLayout()">List/Grouped</a></li>
+                    <li><a [routerLink]="['/Images', 'List']">List</a></li>
+                    <li><a [routerLink]="['/Images', 'Groups']">List/Grouped</a></li>
                 </ul>
             </li>
         </ul>
