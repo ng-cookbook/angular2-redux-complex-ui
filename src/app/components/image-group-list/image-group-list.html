@@ -1,0 +1,10 @@
+<div class="row expanded">
+    <div class="small-12 columns" *ngFor="#group of imageGroups">
+        <h2>{{group.name}}</h2>
+        <div>
+            <span *ngFor="#img of group.included">
+                {{img.title}}
+            </span>
+        </div>
+    </div>
+</div>

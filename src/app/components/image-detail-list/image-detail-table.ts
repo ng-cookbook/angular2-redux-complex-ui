@@ -17,7 +17,7 @@ import {ImageSortBy} from '../../actions/images-actions'
         <table class="hover">
             <thead>
             <tr>
-                <th class="sortable-column-header" [sortIndicator]="nameSortIndicator" (toggleSort)="sortByName()">Name</th>
+                <th class="sortable-column-header" [sortIndicator]="titleSortIndicator" (toggleSort)="sortByTitle()">Title</th>
                 <th class="sortable-column-header" [sortIndicator]="sizeSortIndicator" (toggleSort)="sortBySize()">Size (bytes)</th>
                 <th class="sortable-column-header" [sortIndicator]="dateSortIndicator" (toggleSort)="sortByDate()">Taken</th>
                 <th>Dimensions</th>
@@ -43,7 +43,7 @@ export class ImageDetailTable {
     @Input() public tableData: any;
     @Input() public sortBy: ImageSortBy;
     @Input() public isAscending: boolean;
-    @Output() public toggleNameSort: EventEmitter<any> = new EventEmitter();
+    @Output() public toggleTitleSort: EventEmitter<any> = new EventEmitter();
     @Output() public toggleSizeSort: EventEmitter<any> = new EventEmitter();
     @Output() public toggleDateSort: EventEmitter<any> = new EventEmitter();
 
@@ -52,8 +52,8 @@ export class ImageDetailTable {
     constructor(private appStore: AppStore) {
     }
 
-    public get nameSortIndicator() {
-        return this.sortBy === ImageSortBy.name ? this.isAscending ? 1 : -1 : 0;
+    public get titleSortIndicator() {
+        return this.sortBy === ImageSortBy.title ? this.isAscending ? 1 : -1 : 0;
     }
 
     public get sizeSortIndicator() {
@@ -64,8 +64,8 @@ export class ImageDetailTable {
         return this.sortBy === ImageSortBy.date ? this.isAscending ? 1 : -1 : 0;
     }
 
-    public sortByName() {
-        this.toggleNameSort.emit(null);
+    public sortByTitle() {
+        this.toggleTitleSort.emit(null);
     }
 
     public sortBySize() {

@@ -26,10 +26,10 @@ router.get('/images/:id/thumb', findImage, (req, res) => {
   res.sendFile(imageFile)
 })
 
-function findImage(req, res, next) {
+function findImage (req, res, next) {
   let id = req.params.id
-  let imageInfo = imageData.find(img => isMatchingText(img.id, id))
-  if(!imageInfo) {
+  let imageInfo = imageData.find((img) => isMatchingText(img.id, id))
+  if (!imageInfo) {
     return res.sendStatus(404)
   }
   req.imageInfo = imageInfo

@@ -1,7 +1,8 @@
 [
   {
     "id": "beach",
-    "name": "Beach.jpg",
+    "fileName": "Beach.jpg",
+    "title": "Beach",
     "size": 4497665,
     "dateTaken": "2014-02-16T10:58:34",
     "width": 2000,
@@ -14,7 +15,8 @@
   },
   {
     "id": "christmas-cactus",
-    "name": "Christmas Cactus.jpg",
+    "fileName": "Christmas Cactus.jpg",
+    "title": "Christmas Cactus",
     "size": 2296281,
     "dateTaken": "2014-11-22T10:46:13",
     "width": 3552,
@@ -26,7 +28,8 @@
   },
   {
     "id": "clouds",
-    "name": "Clouds.jpg",
+    "fileName": "Clouds.jpg",
+    "title": "Clouds",
     "size": 1567612,
     "dateTaken": "2014-06-17T20:56:56",
     "width": 3552,
@@ -38,7 +41,8 @@
   },
   {
     "id": "creek-and-rocks",
-    "name": "Creek and Rocks.jpg",
+    "fileName": "Creek and Rocks.jpg",
+    "title": "Creek and Rocks",
     "size": 3406175,
     "dateTaken": "2014-08-03T11:40:41",
     "width": 3552,
@@ -51,7 +55,8 @@
   },
   {
     "id": "creek",
-    "name": "Creek.jpg",
+    "fileName": "Creek.jpg",
+    "title": "Creek",
     "size": 3957470,
     "dateTaken": "2014-02-03T13:00:16",
     "width": 3552,
@@ -63,7 +68,8 @@
   },
   {
     "id": "field",
-    "name": "Field.jpg",
+    "fileName": "Field.jpg",
+    "title": "Field",
     "size": 2343100,
     "dateTaken": "2014-01-05T14:03:32",
     "width": 3552,
@@ -75,7 +81,8 @@
   },
   {
     "id": "flower",
-    "name": "Flower.jpg",
+    "fileName": "Flower.jpg",
+    "title": "Flower",
     "size": 1445708,
     "dateTaken": "2014-11-02T16:28:27",
     "width": 2000,
@@ -87,7 +94,8 @@
   },
   {
     "id": "icicles",
-    "name": "Icicles.jpg",
+    "fileName": "Icicles.jpg",
+    "title": "Icicles",
     "size": 2783533,
     "dateTaken": "2014-02-16T14:31:38",
     "width": 3552,
@@ -100,7 +108,8 @@
   },
   {
     "id": "lake",
-    "name": "Lake.jpg",
+    "fileName": "Lake.jpg",
+    "title": "Lake",
     "size": 2127018,
     "dateTaken": "2014-07-02T21:01:58",
     "width": 3552,
@@ -112,7 +121,8 @@
   },
   {
     "id": "leaves-one",
-    "name": "Leaves One.jpg",
+    "fileName": "Leaves One.jpg",
+    "title": "Leaves One",
     "size": 3531544,
     "dateTaken": "2014-10-04T14:59:54",
     "width": 3552,
@@ -125,7 +135,8 @@
   },
   {
     "id": "leaves-two",
-    "name": "Leaves Two.jpg",
+    "fileName": "Leaves Two.jpg",
+    "title": "Leaves Two",
     "size": 3296138,
     "dateTaken": "2014-10-04T14:59:50",
     "width": 3552,
@@ -138,7 +149,8 @@
   },
   {
     "id": "luna-moth",
-    "name": "Luna Moth.jpg",
+    "fileName": "Luna Moth.jpg",
+    "title": "Luna Moth",
     "size": 2203407,
     "dateTaken": "2014-08-02T13:16:29",
     "width": 2000,
@@ -150,7 +162,8 @@
   },
   {
     "id": "moonlight",
-    "name": "Moonlight.jpg",
+    "fileName": "Moonlight.jpg",
+    "title": "Moonlight",
     "size": 2089603,
     "dateTaken": "2014-07-12T23:12:32",
     "width": 3552,
@@ -162,7 +175,8 @@
   },
   {
     "id": "moss-and-leaf",
-    "name": "Moss and Leaf.jpg",
+    "fileName": "Moss and Leaf.jpg",
+    "title": "Moss and Leaf",
     "size": 2849103,
     "dateTaken": "2014-08-03T11:44:36",
     "width": 3552,
@@ -175,7 +189,8 @@
   },
   {
     "id": "mountains",
-    "name": "Mountains.jpg",
+    "fileName": "Mountains.jpg",
+    "title": "Mountains",
     "size": 2013406,
     "dateTaken": "2014-01-15T11:00:20",
     "width": 3552,
@@ -187,7 +202,8 @@
   },
   {
     "id": "ocean",
-    "name": "Ocean.jpg",
+    "fileName": "Ocean.jpg",
+    "title": "Ocean",
     "size": 3988856,
     "dateTaken": "2014-02-16T10:58:24",
     "width": 3552,
@@ -200,7 +216,8 @@
   },
   {
     "id": "octopus",
-    "name": "Octopus.jpg",
+    "fileName": "Octopus.jpg",
+    "title": "Octopus",
     "size": 3003644,
     "dateTaken": "2014-08-28T19:29:30",
     "width": 3552,
@@ -213,7 +230,8 @@
   },
   {
     "id": "pond-steps",
-    "name": "Pond Steps.jpg",
+    "fileName": "Pond Steps.jpg",
+    "title": "Pond Steps",
     "size": 2860438,
     "dateTaken": "2014-10-30T15:49:29",
     "width": 2000,
@@ -226,7 +244,8 @@
   },
   {
     "id": "pond",
-    "name": "Pond.jpg",
+    "fileName": "Pond.jpg",
+    "title": "Pond",
     "size": 3631675,
     "dateTaken": "2014-10-30T15:50:26",
     "width": 2000,
@@ -239,7 +258,8 @@
   },
   {
     "id": "reef",
-    "name": "Reef.jpg",
+    "fileName": "Reef.jpg",
+    "title": "Reef",
     "size": 5565099,
     "dateTaken": "2014-02-16T11:25:16",
     "width": 2000,
@@ -252,7 +272,8 @@
   },
   {
     "id": "river",
-    "name": "River.jpg",
+    "fileName": "River.jpg",
+    "title": "River",
     "size": 2735207,
     "dateTaken": "2013-12-22T16:43:10",
     "width": 3552,
@@ -265,7 +286,8 @@
   },
   {
     "id": "smoky-mountains",
-    "name": "Smoky Mountains.jpg",
+    "fileName": "Smoky Mountains.jpg",
+    "title": "Smoky Mountains",
     "size": 2123949,
     "dateTaken": "2014-11-15T15:03:14",
     "width": 3552,
@@ -279,7 +301,8 @@
   },
   {
     "id": "stream",
-    "name": "Stream.jpg",
+    "fileName": "Stream.jpg",
+    "title": "Stream",
     "size": 2579914,
     "dateTaken": "2014-08-03T11:39:42",
     "width": 3552,
@@ -292,7 +315,8 @@
   },
   {
     "id": "tree-one",
-    "name": "Tree One.jpg",
+    "fileName": "Tree One.jpg",
+    "title": "Tree One",
     "size": 3896088,
     "dateTaken": "2014-10-29T14:43:50",
     "width": 2000,
@@ -304,7 +328,8 @@
   },
   {
     "id": "tree-two",
-    "name": "Tree Two.jpg",
+    "fileName": "Tree Two.jpg",
+    "title": "Tree Two",
     "size": 3481590,
     "dateTaken": "2014-10-29T14:42:30",
     "width": 3552,
@@ -316,7 +341,8 @@
   },
   {
     "id": "waterfall",
-    "name": "Waterfall.jpg",
+    "fileName": "Waterfall.jpg",
+    "title": "Waterfall",
     "size": 3961798,
     "dateTaken": "2014-02-03T13:02:57",
     "width": 2000,
@@ -329,7 +355,8 @@
   },
   {
     "id": "woods",
-    "name": "Woods.jpg",
+    "fileName": "Woods.jpg",
+    "title": "Woods",
     "size": 3364043,
     "dateTaken": "2014-06-19T19:06:57",
     "width": 3552,

@@ -12,7 +12,7 @@ import {
 import {areAllTagsExcluded} from '../utils/tag-utils';
 
 const defaultState = {
-    sortBy: ImageSortBy.name,
+    sortBy: ImageSortBy.title,
     isAscending: true,
     isLoading: true,
     dataSet: {},
@@ -102,7 +102,7 @@ function getDisplayedItems(options) {
             sortOperator = (v: any) => v.dateTaken
             break
         default:
-            sortOperator = (v: any) => v.name.toLocaleLowerCase()
+            sortOperator = (v: any) => v.title.toLocaleLowerCase()
             break
     }
 

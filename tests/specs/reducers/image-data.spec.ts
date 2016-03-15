@@ -14,7 +14,8 @@ import {imageData} from '../../../src/app/reducers/image-data'
 const testImageData = [
     {
         "id": "a",
-        "name": "A.jpg",
+        "fileName": "A.jpg",
+        "title": "A",
         "size": 22222,
         "dateTaken": "2015-01-03T00:00:00",
         "width": 200,
@@ -24,7 +25,8 @@ const testImageData = [
     },
     {
         "id": "b",
-        "name": "B.jpg",
+        "fileName": "B.jpg",
+        "title": "B",
         "size": 33333,
         "dateTaken": "2015-01-01T00:00:00",
         "width": 300,
@@ -34,7 +36,8 @@ const testImageData = [
     },
     {
         "id": "c",
-        "name": "C.jpg",
+        "fileName": "C.jpg",
+        "title": "C",
         "size": 11111,
         "dateTaken": "2015-01-02T00:00:00",
         "width": 300,
@@ -45,7 +48,7 @@ const testImageData = [
 ]
 
 const initialDefaultState = {
-    sortBy: ImageSortBy.name,
+    sortBy: ImageSortBy.title,
     isAscending: true,
     isLoading: true,
     dataSet: {},
@@ -55,7 +58,7 @@ const initialDefaultState = {
 }
 
 const initialLoadedState = {
-    sortBy: ImageSortBy.name,
+    sortBy: ImageSortBy.title,
     isAscending: true,
     isLoading: false,
     dataSet: {
@@ -121,31 +124,31 @@ describe('Image Data reducer', () => {
 
     describe('SORT_IMAGES action', () => {
 
-        it('should sort by name ascending', () => {
+        it('should sort by title ascending', () => {
             let state = imageData(initialLoadedState, {
                 type: SORT_IMAGES,
                 payload: {
-                    sortBy: ImageSortBy.name,
+                    sortBy: ImageSortBy.title,
                     isAscending: true
                 }
             })
             expect(state).toEqual(Object.assign({}, initialLoadedState, {
-                sortBy: ImageSortBy.name,
+                sortBy: ImageSortBy.title,
                 isAscending: true,
                 displayedItems: ['a', 'b', 'c']
             }));
         })
 
-        it('should sort by name descending', () => {
+        it('should sort by title descending', () => {
             let state = imageData(initialLoadedState, {
                 type: SORT_IMAGES,
                 payload: {
-                    sortBy: ImageSortBy.name,
+                    sortBy: ImageSortBy.title,
                     isAscending: false
                 }
             })
             expect(state).toEqual(Object.assign({}, initialLoadedState, {
-                sortBy: ImageSortBy.name,
+                sortBy: ImageSortBy.title,
                 isAscending: false,
                 displayedItems: ['c', 'b', 'a']
             }));

@@ -16,7 +16,7 @@ import {ImageDetailTable} from './image-detail-table'
                     [tableData]="imageList"
                     [sortBy]="sortBy"
                     [isAscending]="isAscending"
-                    (toggleNameSort)="sortByName()"
+                    (toggleTitleSort)="sortByTitle()"
                     (toggleSizeSort)="sortBySize()"
                     (toggleDateSort)="sortByDate()"
                     ></image-detail-table>
@@ -27,8 +27,8 @@ import {ImageDetailTable} from './image-detail-table'
 @AppStoreSubscriber()
 export class ImageDetailList implements IAppStoreSubscriber {
 
-    public imageList: any[] = [];
-    private sortBy: ImageSortBy = ImageSortBy.name;
+    public imageList: any[];
+    private sortBy: ImageSortBy;
     private isAscending: boolean = true;
 
     constructor(private appStore: AppStore) {
@@ -45,8 +45,8 @@ export class ImageDetailList implements IAppStoreSubscriber {
             })
     }
 
-    public sortByName() {
-        this.appStore.dispatch(sortImages(ImageSortBy.name, this.sortAscending(ImageSortBy.name)))
+    public sortByTitle() {
+        this.appStore.dispatch(sortImages(ImageSortBy.title, this.sortAscending(ImageSortBy.title)))
     }
 
     public sortBySize() {

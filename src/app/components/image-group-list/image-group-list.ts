@@ -8,21 +8,12 @@ import {tagCompareValue, isTagIncludedInList} from '../../utils/tag-utils'
 @Component({
     selector: 'image-group-list',
     directives: [],
-    template: `
-        <div class="row expanded">
-            <div class="small-12 columns" *ngFor="#group of imageGroups">
-                <h2>{{group.name}}</h2>
-                <div>
-                    <span *ngFor="#img of group.included">
-                        {{img.name}}
-                    </span>
-                </div>
-            </div>
-        </div>
-    `
+    templateUrl: 'app/components/image-group-list/image-group-list.html'
 })
 @AppStoreSubscriber()
 export class ImageGroupList implements IAppStoreSubscriber {
+
+    // /api/images/woods/thumb
 
     public imageGroups: any[] = [];
 
@@ -45,7 +36,7 @@ export class ImageGroupList implements IAppStoreSubscriber {
                             .map((id: string) => imageData.dataSet[id])
                             .filter((img: any) => isTagIncludedInList(tag, img.tags))
                             .map((img: any) => ({
-                                name: img.name
+                                title: img.title
                             }))
                             .value()
                     }))

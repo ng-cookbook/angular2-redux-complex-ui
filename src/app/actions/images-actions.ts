@@ -7,7 +7,7 @@ export const SORT_IMAGES = 'SORT_IMAGES'
 export const EXCLUDE_IMAGE_TAGS = 'EXCLUDE_IMAGE_TAGS'
 export const CHANGE_LAYOUT = 'CHANGE_LAYOUT'
 export enum ImageSortBy {
-    name,
+    title,
     size,
     date
 }
