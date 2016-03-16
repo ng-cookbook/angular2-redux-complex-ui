@@ -1,13 +1,14 @@
 
 import _ from 'lodash'
 import {Component} from 'angular2/core'
+import {RouterLink} from 'angular2/router'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 import {isTagIncludedInList, getUniqueTagsList} from '../../utils/tag-utils'
 
 @Component({
     selector: 'image-group-list',
-    directives: [],
+    directives: [RouterLink],
     templateUrl: 'app/components/image-group-list/image-group-list.html',
     styleUrls: ['app/components/image-group-list/image-group-list.css']
 })
@@ -31,6 +32,7 @@ export class ImageGroupList implements IAppStoreSubscriber {
                         included: _(_.values(imageData.dataSet))
                             .filter((img: any) => isTagIncludedInList(tag, img.tags))
                             .map((img: any) => ({
+                                id: img.id,
                                 title: img.title,
                                 url: ['api', 'images', img.id, 'thumb'].join('/')
                             }))
