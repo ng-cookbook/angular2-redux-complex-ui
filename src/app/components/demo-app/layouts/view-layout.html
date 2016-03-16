@@ -1,0 +1,26 @@
+<div class="root-layout">
+    <div>
+        <title-bar [isLoading]="isLoading"></title-bar>
+    </div>
+    <div>
+        <img [src]="imageUrl" [style.width]="imageWidth" [style.height]="imageHeight" />
+    </div>
+    <div>
+        <div class="row expanded">
+            <div class="small-12 columns">
+                <h4>{{imageInfo.title}}</h4>
+                <p>
+                    <strong>Taken:</strong>
+                    <span>{{imageInfo.dateTaken | date:'medium' }}</span>
+                    <strong>Specs:</strong>
+                    <span>
+                        {{imageInfo.width | number }} x {{imageInfo.height | number }},
+                        {{imageInfo.size | number }} bytes
+                    </span>
+                    <strong>Tags:</strong>
+                    <span>{{imageInfo.tags}}</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

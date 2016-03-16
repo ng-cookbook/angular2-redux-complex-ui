@@ -7,6 +7,7 @@ import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-stor
 import {imageDataRequest} from '../../actions/images-actions'
 import {ListLayout} from './layouts/list-layout'
 import {ListGroupLayout} from './layouts/list-group-layout'
+import {ViewLayout} from './layouts/view-layout'
 
 @Component({
     selector: 'demo-app',
@@ -24,6 +25,11 @@ import {ListGroupLayout} from './layouts/list-group-layout'
         path: '/groups',
         name: 'Groups',
         component: ListGroupLayout
+    },
+    {
+        path: '/view/:id',
+        name: 'View',
+        component: ViewLayout
     }
 ])
 @AppStoreSubscriber()
