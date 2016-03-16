@@ -43,7 +43,8 @@ export class ImageGroupList implements IAppStoreSubscriber {
                     .orderBy(tag => tag)
                     .map((tag: string) => ({
                         name: tag,
-                        included: _(_.values(imageData.dataSet))
+                        included: _(imageData.displayedItems)
+                            .map((id: string) => imageData.dataSet[id])
                             .filter((img: any) => isTagIncludedInList(tag, img.tags))
                             .map((img: any) => ({
                                 id: img.id,
