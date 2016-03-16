@@ -1,0 +1,43 @@
+
+.root-layout {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+
+.root-layout > div:nth-of-type(1) {
+    flex: 0 0 auto;
+}
+
+.root-layout > div:nth-of-type(2) {
+    flex: 1 1 50%;
+    position: relative;
+    overflow: auto;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+
+.root-layout > div:nth-of-type(2) > div:nth-of-type(1) {
+    flex: 0 0 50%;
+    position: relative;
+    overflow: auto;
+}
+
+.root-layout > div:nth-of-type(2) > div:nth-of-type(2) {
+    flex: 0 0 50%;
+    position: relative;
+    overflow: auto;
+}
+
+.root-layout > div:nth-of-type(3) {
+    flex: 1 1 50%;
+}

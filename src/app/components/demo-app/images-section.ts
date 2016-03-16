@@ -8,6 +8,7 @@ import {imageDataRequest} from '../../actions/images-actions'
 import {ListLayout} from './layouts/list-layout'
 import {ListGroupLayout} from './layouts/list-group-layout'
 import {ViewLayout} from './layouts/view-layout'
+import {EditLayout} from './layouts/edit-layout'
 
 @Component({
     selector: 'demo-app',
@@ -30,6 +31,11 @@ import {ViewLayout} from './layouts/view-layout'
         path: '/view/:id',
         name: 'View',
         component: ViewLayout
+    },
+    {
+        path: '/edit/:id',
+        name: 'Edit',
+        component: EditLayout
     }
 ])
 @AppStoreSubscriber()
