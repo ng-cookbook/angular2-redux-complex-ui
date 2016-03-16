@@ -1,7 +1,7 @@
 
 import _ from 'lodash'
 import {Component} from 'angular2/core'
-import {RouterLink} from 'angular2/router'
+import {RouterLink, RouteData} from 'angular2/router'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 import {isTagIncludedInList, getUniqueTagsList} from '../../utils/tag-utils'
@@ -17,7 +17,21 @@ export class ImageGroupList implements IAppStoreSubscriber {
 
     public imageGroups: any[];
 
-    constructor(private appStore: AppStore) {
+    private isEditRoute: boolean;
+
+    constructor(
+        private appStore: AppStore,
+        private routeData: RouteData) {
+
+        this.isEditRoute = routeData.get("isEditRoute")
+    }
+
+    public imageRouteFor(img) {
+        return [
+            '/Images',
+            this.isEditRoute ? 'Edit' : 'View',
+            { id: img.id }
+        ];
     }
 
     public onInitAppStoreSubscription(source: any): void {

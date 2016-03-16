@@ -35,7 +35,10 @@ import {EditLayout} from './layouts/edit-layout'
     {
         path: '/edit/:id',
         name: 'Edit',
-        component: EditLayout
+        component: EditLayout,
+        data: {
+            isEditRoute: true
+        }
     }
 ])
 @AppStoreSubscriber()

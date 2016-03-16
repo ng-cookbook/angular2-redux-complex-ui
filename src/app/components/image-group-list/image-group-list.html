@@ -3,7 +3,7 @@
         <h2>{{group.name}} ({{group.included.length}})</h2>
         <div>
             <div class="thumbnail-panel" *ngFor="#img of group.included">
-                <a [routerLink]="['/Images', 'View', { id: img.id }]">
+                <a [routerLink]="imageRouteFor(img)">
                     <img class="thumbnail" [src]="img.url" [alt]="img.title">
                 </a>
                 <div>{{img.title}}</div>
