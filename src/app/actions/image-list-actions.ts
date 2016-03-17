@@ -72,7 +72,7 @@ export function clearCurrentImage() {
     }
 }
 
-export function selectCurrentImage(imageId: any) {
+export function selectCurrentImage(imageId: string) {
     return {
         type: SELECT_CURRENT_IMAGE,
         payload: { imageId }
