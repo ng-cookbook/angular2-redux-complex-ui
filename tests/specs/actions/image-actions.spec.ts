@@ -12,8 +12,8 @@ import {
     sortImages,
     excludeImageTags,
     imageDataRequest
-} from '../../../src/app/actions/images-actions'
-import {imageData} from '../../../src/app/reducers/image-data'
+} from '../../../src/app/actions/image-list-actions'
+import {imageData} from '../../../src/app/reducers/image-list'
 
 describe('Image actions creators', () => {
 

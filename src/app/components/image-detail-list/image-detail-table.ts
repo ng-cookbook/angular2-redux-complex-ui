@@ -4,7 +4,7 @@ import {ImageDetailRow} from './image-detail-row'
 import {AppStore} from '../../services/app-store'
 import {SortableColumnHeader} from './sortable-column-header'
 import {ImageTagSelector} from './image-tag-selector'
-import {ImageSortBy} from '../../actions/images-actions'
+import {ImageSortBy} from '../../actions/image-list-actions'
 
 @Component({
     selector: 'image-detail-table',

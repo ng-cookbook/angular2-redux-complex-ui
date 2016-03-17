@@ -5,7 +5,7 @@ import {ROUTER_PROVIDERS} from 'angular2/router'
 import {DemoApp} from './components/demo-app/demo-app'
 
 import {provideAppStore, provideReducer} from './services/app-store'
-import {imageData} from './reducers/image-data'
+import {imageData} from './reducers/image-list'
 
 bootstrap(DemoApp, [
     HTTP_PROVIDERS,

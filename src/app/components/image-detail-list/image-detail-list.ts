@@ -3,7 +3,7 @@ import _ from 'lodash'
 import {Component} from 'angular2/core'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
-import {sortImages, ImageSortBy} from '../../actions/images-actions'
+import {sortImages, ImageSortBy} from '../../actions/image-list-actions'
 import {ImageDetailTable} from './image-detail-table'
 
 @Component({

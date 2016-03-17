@@ -2,7 +2,7 @@
 import {Component} from 'angular2/core'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
-import {excludeImageTags} from '../../actions/images-actions'
+import {excludeImageTags} from '../../actions/image-list-actions'
 import {isMatchingTag, getSelectedTagsList, getExcludedTagsFromSelectedTagsList} from '../../utils/tag-utils'
 
 @Component({

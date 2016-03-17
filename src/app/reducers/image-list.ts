@@ -6,7 +6,7 @@ import {
     SORT_IMAGES,
     EXCLUDE_IMAGE_TAGS,
     ImageSortBy
-} from '../actions/images-actions'
+} from '../actions/image-list-actions'
 import {areAllTagsExcluded} from '../utils/tag-utils';
 
 const defaultState = {
