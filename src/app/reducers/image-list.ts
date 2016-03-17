@@ -5,6 +5,8 @@ import {
     LOAD_IMAGE_DATA,
     SORT_IMAGES,
     EXCLUDE_IMAGE_TAGS,
+    CLEAR_CURRENT_IMAGE,
+    SELECT_CURRENT_IMAGE,
     ImageSortBy
 } from '../actions/image-list-actions'
 import {areAllTagsExcluded} from '../utils/tag-utils';
@@ -15,7 +17,8 @@ const defaultState = {
     isLoading: true,
     dataSet: {},
     displayedItems: [],
-    excludedTags: []
+    excludedTags: [],
+    currentImageId: null
 }
 
 export function imageData(state: any = defaultState, action: any = {}) {
@@ -28,6 +31,10 @@ export function imageData(state: any = defaultState, action: any = {}) {
             return sortImageData(state, action)
         case EXCLUDE_IMAGE_TAGS:
             return excludeImageTags(state, action)
+        case CLEAR_CURRENT_IMAGE:
+            return Object.assign({}, state, { currentImageId: null })
+        case SELECT_CURRENT_IMAGE:
+            return selectCurrentImage(state, action)
         default:
             return state
     }
@@ -100,4 +107,11 @@ function getDisplayedItems(options) {
         .orderBy([sortOperator], [options.isAscending ? 'asc' : 'desc'])
         .map((img: any) => img.id)
         .value()
+}
+
+function selectCurrentImage(state, action) {
+    let imageId = action.payload.imageId;
+    return Object.assign({}, state, {
+        currentImageId: state.dataSet[imageId] ? imageId : null
+    })
 }

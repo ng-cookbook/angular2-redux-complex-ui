@@ -5,13 +5,17 @@ import {
     LOAD_IMAGE_DATA,
     SORT_IMAGES,
     EXCLUDE_IMAGE_TAGS,
+    CLEAR_CURRENT_IMAGE,
+    SELECT_CURRENT_IMAGE,
     ImageSortBy,
     loadingImages,
     loadImageData,
     loadImageDataError,
     sortImages,
     excludeImageTags,
-    imageDataRequest
+    imageDataRequest,
+    clearCurrentImage,
+    selectCurrentImage
 } from '../../../src/app/actions/image-list-actions'
 import {imageData} from '../../../src/app/reducers/image-list'
 
@@ -78,6 +82,31 @@ describe('Image actions creators', () => {
                 type: EXCLUDE_IMAGE_TAGS,
                 payload: {
                     excludedTags: ['a', 'b', 'c']
+                }
+            })
+        })
+
+    })
+
+    describe('clearCurrentImage', () => {
+
+        it('should create CLEAR_CURRENT_IMAGE action', () => {
+            let action = clearCurrentImage()
+            expect(action).toEqual({
+                type: CLEAR_CURRENT_IMAGE
+            })
+        })
+
+    })
+
+    describe('selectCurrentImage', () => {
+
+        it('should create SELECT_CURRENT_IMAGE action', () => {
+            let action = selectCurrentImage('abcxyz')
+            expect(action).toEqual({
+                type: SELECT_CURRENT_IMAGE,
+                payload: {
+                    imageId: 'abcxyz'
                 }
             })
         })

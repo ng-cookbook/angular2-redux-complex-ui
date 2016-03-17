@@ -5,6 +5,8 @@ import {
     LOAD_IMAGE_DATA,
     SORT_IMAGES,
     EXCLUDE_IMAGE_TAGS,
+    CLEAR_CURRENT_IMAGE,
+    SELECT_CURRENT_IMAGE,
     ImageSortBy
 } from '../../../src/app/actions/image-list-actions'
 import {imageData} from '../../../src/app/reducers/image-list'
@@ -51,7 +53,8 @@ const initialDefaultState = {
     isLoading: true,
     dataSet: {},
     displayedItems: [],
-    excludedTags: []
+    excludedTags: [],
+    currentImageId: null
 }
 
 const initialLoadedState = {
@@ -64,7 +67,8 @@ const initialLoadedState = {
         c: testImageData[2]
     },
     displayedItems: ['a', 'b', 'c'],
-    excludedTags: []
+    excludedTags: [],
+    currentImageId: null
 }
 
 describe('Image Data reducer', () => {
@@ -251,6 +255,48 @@ describe('Image Data reducer', () => {
                 displayedItems: ['a', 'c'],
                 excludedTags: ['cc', 'dd']
             }));
+        })
+
+    })
+
+    describe('CLEAR_CURRENT_IMAGE action', () => {
+
+        it('should clear the selected image', () => {
+            let initialState = Object.assign({}, initialLoadedState, {
+                currentImageId: 'abc'
+            })
+            let state = imageData(initialState, {
+                type: CLEAR_CURRENT_IMAGE
+            })
+            expect(state).toEqual(initialLoadedState)
+        })
+
+    })
+
+    describe('SELECT_CURRENT_IMAGE action', () => {
+
+        it('should set the selected image id', () => {
+            let state = imageData(initialLoadedState, {
+                type: SELECT_CURRENT_IMAGE,
+                payload: {
+                    imageId: 'b'
+                }
+            })
+            expect(state).toEqual(Object.assign({}, initialLoadedState, {
+                currentImageId: 'b'
+            }))
+        })
+
+        it('should set null for invalid image id', () => {
+            let state = imageData(initialLoadedState, {
+                type: SELECT_CURRENT_IMAGE,
+                payload: {
+                    imageId: 'unknown'
+                }
+            })
+            expect(state).toEqual(Object.assign({}, initialLoadedState, {
+                currentImageId: null
+            }))
         })
 
     })
