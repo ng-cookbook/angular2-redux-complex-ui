@@ -1,8 +1,8 @@
 
-import {Component, Input} from 'angular2/core'
+import {Component} from 'angular2/core'
 import {RouteParams} from 'angular2/router'
 import {TitleBar} from '../title-bar'
-import {Http, Response} from 'angular2/http'
+import {Http} from 'angular2/http'
 
 @Component({
     selector: 'view-layout',
@@ -12,11 +12,11 @@ import {Http, Response} from 'angular2/http'
 })
 export class ViewLayout {
 
-    imageUrl: string
-    imageInfo: any = {}
+    public imageUrl: string
+    public imageInfo: any = {}
 
     constructor(params: RouteParams, http: Http) {
-        let imageId = params.get("id")
+        let imageId = params.get('id')
         this.imageUrl = ['/api', 'images', imageId, 'image'].join('/')
         http.get(['/api', 'images', imageId].join('/'))
             .map(res => res.json())

@@ -1,5 +1,5 @@
 
-import {Component, Input} from 'angular2/core'
+import {Component} from 'angular2/core'
 import {RouterLink} from 'angular2/router'
 import {LoadingIndicator} from '../loading-indicator/loading-indicator'
 import {resetZurbFoundation} from '../../services/zurb-foundation-services'

@@ -25,7 +25,7 @@ export class ImageDetailRow {
 
     constructor(
         private routeData: RouteData) {
-        this.isEditRoute = routeData.get("isEditRoute")
+        this.isEditRoute = routeData.get('isEditRoute')
     }
 
     public imageRouteFor(img) {
