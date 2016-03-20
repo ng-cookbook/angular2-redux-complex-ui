@@ -15,11 +15,10 @@ export class ImageView implements IAppStoreSubscriber {
 
     public onInitAppStoreSubscription(source: any): void {
         return source
-            .do((state: any) => console.log('state', state))
             .filter((state: any) => state.imageData.currentImageId)
             .map((state: any) => ({
-                selectedImage: state.imageData.dataSet[state.imageData.currentImageId],
-                imageUrl: ['/api', 'images', state.imageData.currentImageId, 'image'].join('/')
+                details: state.imageData.dataSet[state.imageData.currentImageId],
+                url: ['/api', 'images', state.imageData.currentImageId, 'image'].join('/')
             }))
             .subscribe((image: any) => this.image = image)
     }

@@ -5,6 +5,7 @@ import {TitleBar} from '../title-bar'
 import {ImageView} from '../../image-view/image-view'
 import {AppStore} from '../../../services/app-store'
 import {selectCurrentImage} from '../../../actions/image-list-actions'
+import {AppStoreSubscriber, IAppStoreSubscriber} from '../../../decorators/app-store-subscriber'
 
 @Component({
     selector: 'view-layout',
@@ -12,12 +13,21 @@ import {selectCurrentImage} from '../../../actions/image-list-actions'
     templateUrl: 'app/components/demo-app/layouts/view-layout.html',
     styleUrls: ['app/components/demo-app/layouts/view-layout.css']
 })
-export class ViewLayout {
+@AppStoreSubscriber()
+export class ViewLayout implements IAppStoreSubscriber {
 
     @Input() public isLoading: boolean = true
 
-    constructor(params: RouteParams, appStore: AppStore) {
-        let imageId = params.get('id')
-        appStore.dispatch(selectCurrentImage(imageId))
+    private imageId: string;
+
+    constructor(params: RouteParams, private appStore: AppStore) {
+        this.imageId = params.get('id')
+    }
+
+    public onInitAppStoreSubscription(source: any): void {
+        return source
+            .filter((state: any) => !state.imageData.isLoading)
+            .take(1)
+            .subscribe((state: any) => this.appStore.dispatch(selectCurrentImage(this.imageId)))
     }
 }

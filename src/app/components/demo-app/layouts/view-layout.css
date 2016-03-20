@@ -19,18 +19,5 @@
 
 .root-layout > div:nth-of-type(2) {
     flex: 1 1 auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    overflow: hidden;
-}
-.root-layout > div:nth-of-type(2) > img {
-    width: 100%;
-    heigth: 100%;
-    padding: 2rem;
-    object-fit: contain; /* Not supported in Edge yet */
-}
-
-.root-layout > div:nth-of-type(3) {
-    flex: 0 0 auto;
+    position: relative;
 }
