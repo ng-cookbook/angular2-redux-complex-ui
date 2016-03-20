@@ -62,6 +62,7 @@ export class ImagesSection implements IAppStoreSubscriber {
     }
 
     public ngOnInit() {
+        // simulate a long load time
         setTimeout(() => this.appStore.dispatch(imageDataRequest(this.http)), 2000)
     }
 }
