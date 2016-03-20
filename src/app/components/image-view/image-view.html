@@ -5,7 +5,11 @@
     <div>
         <div class="row expanded">
             <div class="small-12 columns">
-                <h4>{{image.details.title}}</h4>
+                <h4>
+                    <a [routerLink]="['/Images', 'Edit', {id: image.details.id }]">
+                        <i class="fa fa-pencil-square-o"></i> {{image.details.title}}
+                    </a>
+                </h4>
                 <p>
                     <strong>Taken:</strong>
                     <span>{{image.details.dateTaken | date:'medium' }}</span>
