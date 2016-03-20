@@ -1,32 +1,35 @@
 
-import {Component} from 'angular2/core'
+import {Component, Input} from 'angular2/core'
 import {RouteParams} from 'angular2/router'
 import {TitleBar} from '../title-bar'
-import {ImageDetailList} from '../../image-detail-list/image-detail-list'
 import {ImageGroupList} from '../../image-group-list/image-group-list'
-import {Http} from 'angular2/http'
+import {ImageDetailList} from '../../image-detail-list/image-detail-list'
+import {ImageEdit} from '../../image-edit/image-edit'
+import {AppStore} from '../../../services/app-store'
+import {selectCurrentImage} from '../../../actions/image-list-actions'
+import {AppStoreSubscriber, IAppStoreSubscriber} from '../../../decorators/app-store-subscriber'
 
 @Component({
     selector: 'edit-layout',
-    directives: [TitleBar, ImageDetailList, ImageGroupList],
+    directives: [TitleBar, ImageDetailList, ImageGroupList, ImageEdit],
     templateUrl: 'app/components/demo-app/layouts/edit-layout.html',
     styleUrls: ['app/components/demo-app/layouts/edit-layout.css']
 })
-export class EditLayout {
+@AppStoreSubscriber()
+export class EditLayout implements IAppStoreSubscriber {
 
-    public imageUrl: string
-    public imageInfo: any = {}
+    @Input() public isLoading: boolean = true
 
-    constructor(params: RouteParams, http: Http) {
-        //let imageId = params.get("id")
-        //this.imageUrl = ['/api', 'images', imageId, 'image'].join('/')
-        //http.get(['/api', 'images', imageId].join('/'))
-        //    .map(res => res.json())
-        //    .map(imageInfo => Object.assign(imageInfo, {
-        //        dateTaken: new Date(imageInfo.dateTaken)
-        //    }))
-        //    .subscribe(
-        //        (imageInfo: any) => this.imageInfo = imageInfo,
-        //        console.log.bind(console))
+    private imageId: string;
+
+    constructor(params: RouteParams, private appStore: AppStore) {
+        this.imageId = params.get('id')
+    }
+
+    public onInitAppStoreSubscription(source: any): void {
+        return source
+            .filter((state: any) => !state.imageData.isLoading)
+            .take(1)
+            .subscribe((state: any) => this.appStore.dispatch(selectCurrentImage(this.imageId)))
     }
 }
