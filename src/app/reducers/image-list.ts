@@ -7,6 +7,7 @@ import {
     EXCLUDE_IMAGE_TAGS,
     CLEAR_CURRENT_IMAGE,
     SELECT_CURRENT_IMAGE,
+    CHANGE_IMAGE_TITLE,
     ImageSortBy
 } from '../actions/image-list-actions'
 import {areAllTagsExcluded} from '../utils/tag-utils';
@@ -35,6 +36,8 @@ export function imageData(state: any = defaultState, action: any = {}) {
             return Object.assign({}, state, { currentImageId: null })
         case SELECT_CURRENT_IMAGE:
             return selectCurrentImage(state, action)
+        case CHANGE_IMAGE_TITLE:
+            return changeImageTitle(state, action)
         default:
             return state
     }
@@ -114,4 +117,17 @@ function selectCurrentImage(state, action) {
     return Object.assign({}, state, {
         currentImageId: state.dataSet[imageId] ? imageId : null
     })
+}
+
+function changeImageTitle(state, action) {
+    let imageId = action.payload.imageId;
+    let title = action.payload.title;
+    if(imageId && title && state.dataSet[imageId]) {
+        state = Object.assign({}, state, {
+            dataSet: Object.assign({}, state.dataSet, {
+                [imageId]: Object.assign({}, state.dataSet[imageId], { title })
+            })
+        })
+    }
+    return state;
 }

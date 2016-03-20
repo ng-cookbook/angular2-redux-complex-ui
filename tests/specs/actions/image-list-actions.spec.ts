@@ -7,6 +7,7 @@ import {
     EXCLUDE_IMAGE_TAGS,
     CLEAR_CURRENT_IMAGE,
     SELECT_CURRENT_IMAGE,
+    CHANGE_IMAGE_TITLE,
     ImageSortBy,
     loadingImages,
     loadImageData,
@@ -15,7 +16,8 @@ import {
     excludeImageTags,
     imageDataRequest,
     clearCurrentImage,
-    selectCurrentImage
+    selectCurrentImage,
+    changeImageTitle
 } from '../../../src/app/actions/image-list-actions'
 import {imageData} from '../../../src/app/reducers/image-list'
 
@@ -107,6 +109,21 @@ describe('Image actions creators', () => {
                 type: SELECT_CURRENT_IMAGE,
                 payload: {
                     imageId: 'abcxyz'
+                }
+            })
+        })
+
+    })
+
+    describe('changeImageTitle', () => {
+
+        it('should create CHANGE_IMAGE_TITLE action', () => {
+            let action = changeImageTitle('abcxyz', 'New Title')
+            expect(action).toEqual({
+                type: CHANGE_IMAGE_TITLE,
+                payload: {
+                    imageId: 'abcxyz',
+                    title: 'New Title'
                 }
             })
         })

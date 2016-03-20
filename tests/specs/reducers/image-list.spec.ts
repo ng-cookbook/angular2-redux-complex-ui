@@ -7,6 +7,7 @@ import {
     EXCLUDE_IMAGE_TAGS,
     CLEAR_CURRENT_IMAGE,
     SELECT_CURRENT_IMAGE,
+    CHANGE_IMAGE_TITLE,
     ImageSortBy
 } from '../../../src/app/actions/image-list-actions'
 import {imageData} from '../../../src/app/reducers/image-list'
@@ -297,6 +298,54 @@ describe('Image Data reducer', () => {
             expect(state).toEqual(Object.assign({}, initialLoadedState, {
                 currentImageId: null
             }))
+        })
+
+    })
+
+    describe('CHANGE_IMAGE_TITLE action', () => {
+
+        it('should update the image title', () => {
+            let state = imageData(initialLoadedState, {
+                type: CHANGE_IMAGE_TITLE,
+                payload: {
+                    imageId: 'b',
+                    title: 'Changed Title'
+                }
+            })
+            let expected = Object.assign({}, initialLoadedState, {
+                dataSet: Object.assign({}, initialLoadedState.dataSet, {
+                    b: Object.assign({}, initialLoadedState.dataSet.b, {
+                        title: 'Changed Title'
+                    })
+                })
+            })
+            //console.log(JSON.stringify(state, null, 2))
+            //console.log(JSON.stringify(expected, null, 2))
+            expect(state).toEqual(expected)
+        })
+
+        it('should not update the image title for an unknown id', () => {
+            let state = imageData(initialLoadedState, {
+                type: CHANGE_IMAGE_TITLE,
+                payload: {
+                    imageId: 'unknown',
+                    title: 'Changed Title'
+                }
+            })
+            let expected = initialLoadedState
+            expect(state).toEqual(expected)
+        })
+
+        it('should not update the image title for an empty title', () => {
+            let state = imageData(initialLoadedState, {
+                type: CHANGE_IMAGE_TITLE,
+                payload: {
+                    imageId: 'unknown',
+                    title: ''
+                }
+            })
+            let expected = initialLoadedState
+            expect(state).toEqual(expected)
         })
 
     })
