@@ -123,11 +123,16 @@ function changeImageTitle(state, action) {
     let imageId = action.payload.imageId;
     let title = action.payload.title;
     if(imageId && title && state.dataSet[imageId]) {
-        state = Object.assign({}, state, {
-            dataSet: Object.assign({}, state.dataSet, {
-                [imageId]: Object.assign({}, state.dataSet[imageId], { title })
-            })
+        let dataSet = Object.assign({}, state.dataSet, {
+            [imageId]: Object.assign({}, state.dataSet[imageId], { title })
         })
+        let displayedItems = getDisplayedItems({
+            dataSet,
+            sortBy: state.sortBy,
+            isAscending: state.isAscending,
+            excludedTags: state.excludedTags
+        })
+        state = Object.assign({}, state, { dataSet, displayedItems })
     }
     return state;
 }

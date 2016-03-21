@@ -317,7 +317,8 @@ describe('Image Data reducer', () => {
                     b: Object.assign({}, initialLoadedState.dataSet.b, {
                         title: 'Changed Title'
                     })
-                })
+                }),
+                displayedItems: ['a', 'c', 'b']
             })
             //console.log(JSON.stringify(state, null, 2))
             //console.log(JSON.stringify(expected, null, 2))
