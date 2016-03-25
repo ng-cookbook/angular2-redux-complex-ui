@@ -2,7 +2,7 @@
 import {Component} from 'angular2/core'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
-import {changeImageTitle} from '../../actions/image-list-actions'
+import {changeImageTitle, updateImageTags} from '../../actions/image-list-actions'
 import {TagSelector} from '../tag-selector/tag-selector'
 
 @Component({
@@ -33,5 +33,9 @@ export class ImageEdit implements IAppStoreSubscriber {
 
     public updateTitle(newTitle: string) {
         this.appStore.dispatch(changeImageTitle(this.image.details.id, newTitle))
+    }
+
+    public onTagsChanged(eventData: any) {
+        this.appStore.dispatch(updateImageTags(this.image.details.id, eventData.tags))
     }
 }

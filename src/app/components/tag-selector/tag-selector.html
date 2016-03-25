@@ -5,7 +5,7 @@
 <div>
     <span *ngFor="#tag of selectedTags">
         <label>
-            <button>
+            <button (click)="removeSelectedTag(tag)">
                 <i class="fa fa-times-circle"></i>
             </button>
             {{tag}}

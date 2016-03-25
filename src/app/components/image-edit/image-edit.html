@@ -25,7 +25,10 @@
             </div>
             <div class="row expanded">
                 <div class="medium-12 columns">
-                    <tag-selector [tagsList]="tagsList" [selectedTags]="image.details.tags"></tag-selector>
+                    <tag-selector
+                            [tagsList]="tagsList"
+                            [selectedTags]="image.details.tags"
+                            (selectedTagsChanged)="onTagsChanged($event)"></tag-selector>
                 </div>
             </div>
         </form>
