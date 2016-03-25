@@ -3,10 +3,11 @@ import {Component} from 'angular2/core'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 import {changeImageTitle} from '../../actions/image-list-actions'
+import {TagSelector} from '../tag-selector/tag-selector'
 
 @Component({
     selector: 'image-edit',
-    directives: [],
+    directives: [TagSelector],
     templateUrl: 'app/components/image-edit/image-edit.html',
     styleUrls: ['app/components/image-edit/image-edit.css']
 })
@@ -14,6 +15,7 @@ import {changeImageTitle} from '../../actions/image-list-actions'
 export class ImageEdit implements IAppStoreSubscriber {
 
     public image: any
+    public tagsList: string[]
 
     constructor(private appStore: AppStore) {
     }

@@ -11,6 +11,8 @@
                         <input #titleInput type="text" [ngModel]="image.title" (ngModelChange)="updateTitle(titleInput.value)">
                     </label>
                 </div>
+            </div>
+            <div class="row expanded">
                 <div class="medium-12 columns">
                     <strong>Taken:</strong>
                     <span>{{image.details.dateTaken | date:'medium' }}</span>
@@ -19,6 +21,11 @@
                         {{image.details.width | number }} x {{image.details.height | number }},
                         {{image.details.size | number }} bytes
                     </span>
+                </div>
+            </div>
+            <div class="row expanded">
+                <div class="medium-12 columns">
+                    <tag-selector [tagsList]="tagsList" [selectedTags]="image.details.tags"></tag-selector>
                 </div>
             </div>
         </form>

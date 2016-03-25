@@ -1,0 +1,5 @@
+
+span > label {
+    display: inline-block;
+    padding-right: 1rem;
+}

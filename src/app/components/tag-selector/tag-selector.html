@@ -1,0 +1,14 @@
+<label>
+    Image Tags:
+    <input type="text" />
+</label>
+<div>
+    <span *ngFor="#tag of selectedTags">
+        <label>
+            <button>
+                <i class="fa fa-times-circle"></i>
+            </button>
+            {{tag}}
+        </label>
+    </span>
+</div>
