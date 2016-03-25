@@ -8,6 +8,7 @@ export const EXCLUDE_IMAGE_TAGS = 'EXCLUDE_IMAGE_TAGS'
 export const CLEAR_CURRENT_IMAGE = 'CLEAR_CURRENT_IMAGE'
 export const SELECT_CURRENT_IMAGE = 'SELECT_CURRENT_IMAGE'
 export const CHANGE_IMAGE_TITLE = 'CHANGE_IMAGE_TITLE'
+export const UPDATE_IMAGE_TAGS = 'UPDATE_IMAGE_TAGS'
 
 export enum ImageSortBy {
     title,
@@ -84,5 +85,12 @@ export function changeImageTitle(imageId: string, title: string) {
     return {
         type: CHANGE_IMAGE_TITLE,
         payload: { imageId, title }
+    }
+}
+
+export function updateImageTags(imageId: string, tags: string[]) {
+    return {
+        type: UPDATE_IMAGE_TAGS,
+        payload: { imageId, tags }
     }
 }

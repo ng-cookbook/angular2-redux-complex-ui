@@ -8,6 +8,7 @@ import {
     CLEAR_CURRENT_IMAGE,
     SELECT_CURRENT_IMAGE,
     CHANGE_IMAGE_TITLE,
+    UPDATE_IMAGE_TAGS,
     ImageSortBy
 } from '../../../src/app/actions/image-list-actions'
 import {imageData} from '../../../src/app/reducers/image-list'
@@ -346,6 +347,58 @@ describe('Image Data reducer', () => {
                 }
             })
             let expected = initialLoadedState
+            expect(state).toEqual(expected)
+        })
+
+    })
+
+    describe('UPDATE_IMAGE_TAGS action', () => {
+
+        it('should update the image tags', () => {
+            let state = imageData(initialLoadedState, {
+                type: UPDATE_IMAGE_TAGS,
+                payload: {
+                    imageId: 'b',
+                    tags: ['x', 'y', 'z']
+                }
+            })
+            let expected = Object.assign({}, initialLoadedState, {
+                dataSet: Object.assign({}, initialLoadedState.dataSet, {
+                    b: Object.assign({}, initialLoadedState.dataSet.b, {
+                        tags: ['x', 'y', 'z']
+                    })
+                })
+            })
+            expect(state).toEqual(expected)
+        })
+
+        it('should not update the image tags for an unknown id', () => {
+            let state = imageData(initialLoadedState, {
+                type: UPDATE_IMAGE_TAGS,
+                payload: {
+                    imageId: 'unknown',
+                    tags: ['x', 'y', 'z']
+                }
+            })
+            let expected = initialLoadedState
+            expect(state).toEqual(expected)
+        })
+
+        it('should clear the image tags for an empty tag list', () => {
+            let state = imageData(initialLoadedState, {
+                type: UPDATE_IMAGE_TAGS,
+                payload: {
+                    imageId: 'b',
+                    tags: null
+                }
+            })
+            let expected = Object.assign({}, initialLoadedState, {
+                dataSet: Object.assign({}, initialLoadedState.dataSet, {
+                    b: Object.assign({}, initialLoadedState.dataSet.b, {
+                        tags: []
+                    })
+                })
+            })
             expect(state).toEqual(expected)
         })
 
