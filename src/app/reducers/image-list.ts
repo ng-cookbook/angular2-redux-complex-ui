@@ -122,7 +122,7 @@ function selectCurrentImage(state, action) {
 function changeImageTitle(state, action) {
     let imageId = action.payload.imageId;
     let title = action.payload.title;
-    if(imageId && title && state.dataSet[imageId]) {
+    if (imageId && title && state.dataSet[imageId]) {
         let dataSet = Object.assign({}, state.dataSet, {
             [imageId]: Object.assign({}, state.dataSet[imageId], { title })
         })
