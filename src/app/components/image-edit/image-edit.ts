@@ -4,6 +4,7 @@ import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 import {changeImageTitle, updateImageTags} from '../../actions/image-list-actions'
 import {TagSelector} from '../tag-selector/tag-selector'
+import {getUniqueTagsList} from '../../utils/tag-utils'
 
 @Component({
     selector: 'image-edit',
@@ -24,11 +25,17 @@ export class ImageEdit implements IAppStoreSubscriber {
         return source
             .filter((state: any) => state.imageData.currentImageId)
             .map((state: any) => ({
-                details: state.imageData.dataSet[state.imageData.currentImageId],
-                url: ['/api', 'images', state.imageData.currentImageId, 'image'].join('/'),
-                title: state.imageData.dataSet[state.imageData.currentImageId].title
+                image: {
+                    details: state.imageData.dataSet[state.imageData.currentImageId],
+                    url: ['/api', 'images', state.imageData.currentImageId, 'image'].join('/'),
+                    title: state.imageData.dataSet[state.imageData.currentImageId].title
+                },
+                tagsList: getUniqueTagsList(state.imageData.dataSet)
             }))
-            .subscribe((image: any) => this.image = image)
+            .subscribe((data: any) => {
+                this.image = data.image
+                this.tagsList = data.tagsList
+            })
     }
 
     public updateTitle(newTitle: string) {
