@@ -1,47 +1,32 @@
 
-import {Directive, ElementRef} from 'angular2/core'
+import _ from 'lodash'
+import {
+    Directive,
+    Input,
+    ElementRef,
+    OnInit
+} from 'angular2/core'
 
 declare var $: any
 
 @Directive({
     selector: '[type-ahead]'
 })
-export class TypeAheadControl {
+export class TypeAheadControl implements OnInit {
 
-    constructor(el: ElementRef) {
+    @Input() tagsList: string[];
 
-        let substringMatcher = function(strs) {
-            return function findMatches(q, cb) {
-                var matches, substrRegex;
+    constructor(private typeaheadElement: ElementRef) {
+    }
 
-                // an array that will be populated with substring matches
-                matches = [];
-
-                // regex used to determine if a string contains the substring `q`
-                substrRegex = new RegExp(q, 'i');
-
-                // iterate through the pool of strings and for any string that
-                // contains the substring `q`, add it to the `matches` array
-                $.each(strs, function(i, str) {
-                    if (substrRegex.test(str)) {
-                        matches.push(str);
-                    }
-                });
-
-                cb(matches);
-            };
-        };
-
-        var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
-            'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
-            'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
-            'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
-            'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
-            'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
-            'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
-            'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-            'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
-        ];
+    public ngOnInit() {
+        let tagsList = this.tagsList;
+        let matcher = (query, callback) => {
+            let queryRegexText = _.escapeRegExp(query)
+            let tagRegex = new RegExp(queryRegexText, 'i')
+            let selectedTags = _.filter(tagsList, tag => tagRegex.test(tag))
+            callback(selectedTags)
+        }
 
         let options = {
             hint: true,
@@ -54,10 +39,9 @@ export class TypeAheadControl {
         }
         let dataSet = {
             name: 'states',
-            source: substringMatcher(states)
+            source: matcher
         }
 
-        $(el.nativeElement).typeahead(options, dataSet)
-
+        $(this.typeaheadElement.nativeElement).typeahead(options, dataSet)
     }
 }
