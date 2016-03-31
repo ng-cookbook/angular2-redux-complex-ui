@@ -15,7 +15,8 @@ var vendorFiles = {
   'redux': 'node_modules/redux/dist',
   'redux-thunk': 'node_modules/redux-thunk/lib',
   'lodash': 'node_modules/lodash',
-  'font-awesome': 'node_modules/font-awesome'
+  'font-awesome': 'node_modules/font-awesome',
+  'typeahead': 'node_modules/typeahead.js/dist'
 }
 for (let [name, path] of Object.entries(vendorFiles)) {
   app.use('/vendor/' + name, express.static(path))
