@@ -3,6 +3,8 @@ import _ from 'lodash'
 import {
     Directive,
     Input,
+    // Output,
+    // EventEmitter,
     ElementRef,
     OnInit
 } from 'angular2/core'
@@ -10,11 +12,12 @@ import {
 declare var $: any
 
 @Directive({
-    selector: '[type-ahead]'
+    selector: '[tag-selector-input]'
 })
-export class TypeAheadControl implements OnInit {
+export class TagSelectorInput implements OnInit {
 
     @Input() tagsList: string[];
+    // @Output() public tagAdded: EventEmitter<any> = new EventEmitter();
 
     constructor(private typeaheadElement: ElementRef) {
     }
