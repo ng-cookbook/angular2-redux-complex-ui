@@ -10,6 +10,7 @@ import {TagSelectorInput} from './tag-selector-input'
     styleUrls: ['app/components/tag-selector/tag-selector.css']
 })
 export class TagSelector {
+
     @Input() public tagsList: string[];
     @Input() public selectedTags: string[];
     @Output() public selectedTagsChanged: EventEmitter<any> = new EventEmitter();
@@ -17,5 +18,9 @@ export class TagSelector {
     public removeSelectedTag(tag) {
         let tags = (this.selectedTags || []).filter(selectedTag => !isMatchingTag(tag, selectedTag))
         this.selectedTagsChanged.emit({ tags });
+    }
+
+    public addNewTag(tag) {
+        console.log("new", tag)
     }
 }

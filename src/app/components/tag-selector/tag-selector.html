@@ -1,6 +1,6 @@
 <label>
     Image Tags:
-    <input type="text" tag-selector-input [tagsList]="tagsList" />
+    <input type="text" tag-selector-input [tagsList]="tagsList" (addTag)="addNewTag($event)" />
 </label>
 <div>
     <span *ngFor="#tag of selectedTags">

@@ -3,8 +3,8 @@ import _ from 'lodash'
 import {
     Directive,
     Input,
-    // Output,
-    // EventEmitter,
+    Output,
+    EventEmitter,
     ElementRef,
     OnInit
 } from 'angular2/core'
@@ -12,12 +12,15 @@ import {
 declare var $: any
 
 @Directive({
-    selector: '[tag-selector-input]'
+    selector: '[tag-selector-input]',
+    host: {
+        '(keyup)': 'onKeyUp($event)'
+    }
 })
 export class TagSelectorInput implements OnInit {
 
     @Input() tagsList: string[];
-    // @Output() public tagAdded: EventEmitter<any> = new EventEmitter();
+    @Output() public addTag: EventEmitter<any> = new EventEmitter();
 
     constructor(private typeaheadElement: ElementRef) {
     }
@@ -41,10 +44,28 @@ export class TagSelectorInput implements OnInit {
             }
         }
         let dataSet = {
-            name: 'states',
+            name: 'tags',
             source: matcher
         }
 
-        $(this.typeaheadElement.nativeElement).typeahead(options, dataSet)
+        $(this.element).typeahead(options, dataSet)
     }
+
+    public onKeyUp(evt) {
+        if(evt && evt.code === 'Enter') {
+            evt.preventDefault()
+            let inputValue = this.element.value
+            if(inputValue) {
+                this.addTag.emit({
+                    text: inputValue
+                })
+            }
+            this.element.value = ''
+        }
+    }
+
+    private get element() {
+        return this.typeaheadElement.nativeElement
+    }
+
 }
