@@ -21,6 +21,6 @@ export class TagSelector {
     }
 
     public addNewTag(tag) {
-        console.log("new", tag)
+        console.log('new', tag)
     }
 }

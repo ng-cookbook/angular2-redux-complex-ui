@@ -19,7 +19,7 @@ declare var $: any
 })
 export class TagSelectorInput implements OnInit {
 
-    @Input() tagsList: string[];
+    @Input() public tagsList: string[];
     @Output() public addTag: EventEmitter<any> = new EventEmitter();
 
     constructor(private typeaheadElement: ElementRef) {
@@ -52,10 +52,10 @@ export class TagSelectorInput implements OnInit {
     }
 
     public onKeyUp(evt) {
-        if(evt && evt.code === 'Enter') {
+        if (evt && evt.code === 'Enter') {
             evt.preventDefault()
             let inputValue = this.element.value
-            if(inputValue) {
+            if (inputValue) {
                 this.addTag.emit({
                     text: inputValue
                 })
