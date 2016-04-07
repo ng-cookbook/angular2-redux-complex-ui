@@ -1,6 +1,19 @@
 
-svg path, svg rect {
-    fill: #00a1ff;
+svg {
+
+    path, rect {
+        fill: #00a1ff;
+    }
+
+    > rect:nth-of-type(1) {
+        animation: opacity-values 0.8s 0.0s ease infinite;
+    }
+    > rect:nth-of-type(2) {
+        animation: opacity-values 0.8s 0.1s ease infinite;
+    }
+    > rect:nth-of-type(3) {
+        animation: opacity-values 0.8s 0.2s ease infinite;
+    }
 }
 
 .loading-message {
@@ -24,14 +37,4 @@ svg path, svg rect {
         height: 10px;
         y: 10;
     }
-}
-
-svg > rect:nth-of-type(1) {
-    animation: opacity-values 0.8s 0.0s ease infinite;
-}
-svg > rect:nth-of-type(2) {
-    animation: opacity-values 0.8s 0.1s ease infinite;
-}
-svg > rect:nth-of-type(3) {
-    animation: opacity-values 0.8s 0.2s ease infinite;
 }

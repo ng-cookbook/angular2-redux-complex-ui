@@ -1,0 +1,25 @@
+<div class="ui menu">
+    <div class="item">
+        Images Demo
+    </div>
+    <div class="right menu">
+        <div class="item" *ngIf="isLoading">
+            <loading-indicator [loadingMessage]="loadingMessage"></loading-indicator>
+        </div>
+        <div class="ui dropdown item">
+            Views
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                <div class="item">
+                    <a [routerLink]="['/Images', 'List']">Image List</a>
+                </div>
+                <div class="item">
+                    <a [routerLink]="['/Images', 'Groups']">Image Groups</a>
+                </div>
+                <div class="item">
+                    <a [routerLink]="['/Images', 'Edit', {id: null}]">Image Edit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,7 +1,7 @@
 
 import {Component, Input} from 'angular2/core'
 import {RouteParams} from 'angular2/router'
-import {TitleBar} from '../title-bar'
+import {TitleBar} from '../../title-bar/title-bar'
 import {ImageView} from '../../image-view/image-view'
 import {AppStore} from '../../../services/app-store'
 import {selectCurrentImage} from '../../../actions/image-list-actions'

@@ -8,5 +8,4 @@ import {Component, Input} from 'angular2/core'
 })
 export class LoadingIndicator {
     @Input() public loadingMessage: string;
-    @Input() public isLoading: boolean;
 }

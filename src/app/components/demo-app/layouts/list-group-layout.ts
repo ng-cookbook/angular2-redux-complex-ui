@@ -1,6 +1,6 @@
 
 import {Component, Input} from 'angular2/core'
-import {TitleBar} from '../title-bar'
+import {TitleBar} from '../../title-bar/title-bar'
 import {ImageDetailList} from '../../image-detail-list/image-detail-list'
 import {ImageGroupList} from '../../image-group-list/image-group-list'
 
