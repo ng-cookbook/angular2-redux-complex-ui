@@ -7,7 +7,6 @@ let sassRender = Q.nbind(sass.render, sass)
 let writeFile = Q.nbind(FS.writeFile, FS)
 let sassDefaults = {
   includePaths: [
-    'node_modules/foundation-sites/scss/'
   ],
   indentedSyntax: true
 }

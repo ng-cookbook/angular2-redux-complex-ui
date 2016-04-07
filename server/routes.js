@@ -9,14 +9,11 @@ var vendorFiles = {
   'systemjs': 'node_modules/systemjs/dist',
   'angular2': 'node_modules/angular2',
   'rxjs': 'node_modules/rxjs',
-  'foundation': 'node_modules/foundation-sites/dist',
-  'jquery': 'node_modules/foundation-sites/node_modules/jquery/dist',
-  'what-input': 'node_modules/foundation-sites/node_modules/what-input',
+  'jquery': 'node_modules/jquery/dist',
   'redux': 'node_modules/redux/dist',
   'redux-thunk': 'node_modules/redux-thunk/lib',
   'lodash': 'node_modules/lodash',
-  'font-awesome': 'node_modules/font-awesome',
-  'typeahead': 'node_modules/typeahead.js/dist'
+  'font-awesome': 'node_modules/font-awesome'
 }
 for (let [name, path] of Object.entries(vendorFiles)) {
   app.use('/vendor/' + name, express.static(path))

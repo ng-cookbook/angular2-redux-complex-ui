@@ -1,0 +1,29 @@
+body {
+  background: #f0fff6;
+  background: linear-gradient(to left, #f0fff6 0%, white 100%); }
+
+.initial-loading-indicator {
+  padding: 8rem; }
+
+@keyframes opacity-values {
+  0% {
+    opacity: 0.2;
+    height: 10px;
+    y: 10; }
+  50% {
+    opacity: 1;
+    height: 20px;
+    y: 5; }
+  100% {
+    opacity: 0.2;
+    height: 10px;
+    y: 10; } }
+  .initial-loading-indicator > svg > rect:nth-of-type(1) {
+    animation: opacity-values 0.8s 0.0s ease infinite; }
+  .initial-loading-indicator > svg > rect:nth-of-type(2) {
+    animation: opacity-values 0.8s 0.1s ease infinite; }
+  .initial-loading-indicator > svg > rect:nth-of-type(3) {
+    animation: opacity-values 0.8s 0.2s ease infinite; }
+  .initial-loading-indicator > span {
+    font-style: italic;
+    font-size: 1.2rem; }
