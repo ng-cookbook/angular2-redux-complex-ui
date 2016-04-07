@@ -6,25 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="/">
     <title>Complex UI Demo</title>
+    <link rel="stylesheet" href="vendor/semantic-ui/semantic.css" />
     <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" href="css/demo-app.css" />
 </head>
 <body>
 
 <demo-app>
-    <div class="initial-loading-indicator">
-        <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-             x="0px" y="0px" width="24px" height="30px"
-             viewBox="0 0 24 30">
-            <rect x="0" y="10" width="4" height="10"></rect>
-            <rect x="8" y="10" width="4" height="10"></rect>
-            <rect x="16" y="10" width="4" height="10"></rect>
-        </svg>
-        <span>Loading ...</span>
+    <div class="ui container initial-load">
+        <div class="ui segment">
+            <div class="ui active inverted dimmer">
+                <div class="ui text loader">Loading ...</div>
+            </div>
+        </div>
     </div>
 </demo-app>
 
 <script src="vendor/jquery/jquery.js"></script>
+<script src="vendor/semantic-ui/semantic.js"></script>
 
 <script src="vendor/systemjs/system-polyfills.js"></script>
 <script src="vendor/es6-shim/es6-shim.js"></script>
