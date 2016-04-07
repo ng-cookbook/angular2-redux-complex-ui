@@ -13,30 +13,7 @@ import {ImageSortBy} from '../../actions/image-list-actions'
         SortableColumnHeader,
         ImageTagSelector
     ],
-    template: `
-        <table class="hover">
-            <thead>
-            <tr>
-                <th class="sortable-column-header" [sortIndicator]="titleSortIndicator" (toggleSort)="sortByTitle()">Title</th>
-                <th class="sortable-column-header" [sortIndicator]="sizeSortIndicator" (toggleSort)="sortBySize()">Size (bytes)</th>
-                <th class="sortable-column-header" [sortIndicator]="dateSortIndicator" (toggleSort)="sortByDate()">Taken</th>
-                <th>Dimensions</th>
-                <th>Orientation</th>
-                <th>
-                    <a (click)="toggleTagSelector()"><i class="fa fa-folder-open-o"></i></a>
-                    Tags
-                </th>
-            </tr>
-            <tr *ngIf="showTagSelector">
-                <th colspan="6" image-tag-selector>
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="image-detail-row" *ngFor="#rowData of tableData" [rowData]="rowData"></tr>
-            </tbody>
-        </table>
-    `
+    templateUrl: 'app/components/image-detail-list/image-detail-table.html'
 })
 export class ImageDetailTable {
 
