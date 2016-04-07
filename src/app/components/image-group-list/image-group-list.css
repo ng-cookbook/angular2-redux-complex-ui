@@ -1,0 +1,19 @@
+h2 {
+  font-size: 1.4rem;
+  font-weight: normal;
+  font-style: italic;
+  border-bottom: 1px solid #eee;
+  margin-top: 1rem; }
+
+.thumbnail-panel {
+  display: inline-block;
+  margin: 0 1rem 1rem 0; }
+
+.thumbnail-panel img.thumbnail {
+  margin-bottom: 0; }
+
+.thumbnail-panel div {
+  font-size: 0.9rem;
+  text-align: left;
+  overflow-wrap: break-word;
+  word-wrap: break-word; }
