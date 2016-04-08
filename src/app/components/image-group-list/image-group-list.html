@@ -1,5 +1,5 @@
-<div class="row expanded">
-    <div class="small-12 columns" *ngFor="#group of imageGroups">
+<div class="ui grid container">
+    <div class="sixteen wide column" *ngFor="#group of imageGroups">
         <h2>{{group.name}} ({{group.included.length}})</h2>
         <div>
             <div class="thumbnail-panel" *ngFor="#img of group.included">
