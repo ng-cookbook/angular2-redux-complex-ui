@@ -1,5 +1,6 @@
 
 .image-edit {
+
     position: absolute;
     top: 0;
     left: 0;
@@ -11,22 +12,25 @@
     justify-content: flex-start;
     align-items: stretch;
     align-content: stretch;
-}
 
-.image-edit > div:nth-of-type(1) {
-    flex: 0 0 35%;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    overflow: hidden;
-}
-.image-edit > div:nth-of-type(1) > img {
-    width: 100%;
-    heigth: 100%;
-    padding: 2rem;
-    object-fit: contain; /* Not supported in Edge yet */
-}
+    > div:nth-of-type(1) {
 
-.image-edit > div:nth-of-type(2) {
-    flex: 1 1 auto;
+        flex: 0 0 35%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        overflow: hidden;
+
+        > img {
+            width: 100%;
+            heigth: 100%;
+            padding: 2rem;
+            object-fit: contain; /* Not supported in Edge yet */
+        }
+    }
+
+    > div:nth-of-type(2) {
+        flex: 1 1 auto;
+        padding: 1rem;
+    }
 }

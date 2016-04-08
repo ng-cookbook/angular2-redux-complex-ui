@@ -3,36 +3,40 @@
         <img [src]="image.url" />
     </div>
     <div>
-        <form>
-            <div class="row expanded">
-                <div class="medium-12 columns">
+        <div class="ui fluid container">
+            <form class="ui form">
+                <div class="field">
                     <label>
-                        Title
+                        Title:
                         <input #titleInput type="text" [ngModel]="image.title" (ngModelChange)="updateTitle(titleInput.value)">
                     </label>
                 </div>
-            </div>
-            <div class="row expanded">
-                <div class="medium-12 columns">
-                    <strong>Taken:</strong>
-                    <span>{{image.details.dateTaken | date:'medium' }}</span>
-                    <strong>Specs:</strong>
-                    <span>
-                        {{image.details.width | number }} x {{image.details.height | number }},
-                        {{image.details.size | number }} bytes
-                    </span>
+                <div class="field">
+                    <div class="two fields">
+                        <div class="field">
+                            <label>Taken:</label>
+                            <span>{{image.details.dateTaken | date:'medium' }}</span>
+                        </div>
+                        <div class="field">
+                            <label>Specs:</label>
+                        <span>
+                            {{image.details.width | number }} x {{image.details.height | number }},
+                            {{image.details.size | number }} bytes
+                        </span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="row expanded">
-                <div class="medium-12 columns">
-<!--
-                    <tag-selector
-                            [tagsList]="tagsList"
-                            [selectedTags]="image.details.tags"
-                            (selectedTagsChanged)="onTagsChanged($event)"></tag-selector>
--->
+                <div class="field">
+
+                    <!--
+                                        <tag-selector
+                                                [tagsList]="tagsList"
+                                                [selectedTags]="image.details.tags"
+                                                (selectedTagsChanged)="onTagsChanged($event)"></tag-selector>
+                    -->
+
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>
