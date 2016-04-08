@@ -1,26 +1,33 @@
 <div *ngIf="image" class="image-view">
     <div>
-        <img [src]="image.url" />
+        <img [src]="image.url"/>
     </div>
     <div>
-        <div class="row expanded">
-            <div class="small-12 columns">
-                <h4>
-                    <a [routerLink]="['/Images', 'Edit', {id: image.details.id }]">
-                        <i class="fa fa-pencil-square-o"></i> {{image.details.title}}
-                    </a>
-                </h4>
-                <p>
-                    <strong>Taken:</strong>
-                    <span>{{image.details.dateTaken | date:'medium' }}</span>
-                    <strong>Specs:</strong>
-            <span>
-                {{image.details.width | number }} x {{image.details.height | number }},
-                {{image.details.size | number }} bytes
-            </span>
-                    <strong>Tags:</strong>
-                    <span>{{image.details.tags}}</span>
-                </p>
+        <div class="ui grid container">
+            <div class="sixteen wide column">
+
+                <div class="ui fluid card">
+                    <div class="content">
+                        <div class="header">
+                            <a [routerLink]="['/Images', 'Edit', {id: image.details.id }]">
+                                <i class="fa fa-pencil-square-o"></i> {{image.details.title}}
+                            </a>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <p>
+                            <strong>Taken:</strong>
+                            <span>{{image.details.dateTaken | date:'medium' }}</span>
+                            <strong>Specs:</strong>
+                            <span>
+                                {{image.details.width | number }} x {{image.details.height | number }},
+                                {{image.details.size | number }} bytes
+                            </span>
+                            <strong>Tags:</strong>
+                            <span>{{image.details.tags}}</span>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
