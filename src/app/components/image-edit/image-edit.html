@@ -27,14 +27,10 @@
                     </div>
                 </div>
                 <div class="field">
-
-                    <!--
-                                        <tag-selector
-                                                [tagsList]="tagsList"
-                                                [selectedTags]="image.details.tags"
-                                                (selectedTagsChanged)="onTagsChanged($event)"></tag-selector>
-                    -->
-
+                    <tag-selector
+                        [tagsList]="tagsList"
+                        [selectedTags]="image.details.tags"
+                        (selectedTagsChanged)="onTagsChanged($event)"></tag-selector>
                 </div>
             </form>
         </div>

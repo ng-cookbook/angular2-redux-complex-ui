@@ -1,14 +1,11 @@
 <label>
     Image Tags:
-    <input type="text" tag-selector-input [tagsList]="tagsList" (addTag)="addNewTag($event)" />
+    <input type="text" />
+    <!--<input type="text" tag-selector-input [tagsList]="tagsList" (addTag)="addNewTag($event)" />-->
 </label>
-<div>
-    <span *ngFor="#tag of selectedTags">
-        <label>
-            <button (click)="removeSelectedTag(tag)">
-                <i class="fa fa-times-circle"></i>
-            </button>
-            {{tag}}
-        </label>
-    </span>
+<div class="ui buttons">
+    <button class="ui basic button" *ngFor="#tag of selectedTags" (click)="removeSelectedTag(tag)">
+        <i class="remove icon"></i>
+        {{tag}}
+    </button>
 </div>
