@@ -1,7 +1,12 @@
 <label>
     Image Tags:
-    <input type="text" />
-    <!--<input type="text" tag-selector-input [tagsList]="tagsList" (addTag)="addNewTag($event)" />-->
+    <div class="ui search" [tagsList]="tagsList" (addTag)="addNewTag($event)">
+        <div class="ui icon input">
+            <input class="prompt" type="text" placeholder="Search countries...">
+            <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
+    </div>
 </label>
 <div class="ui buttons">
     <button class="ui basic button" *ngFor="#tag of selectedTags" (click)="removeSelectedTag(tag)">

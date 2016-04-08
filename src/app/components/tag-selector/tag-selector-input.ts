@@ -12,60 +12,49 @@ import {
 declare var $: any
 
 @Directive({
-    selector: '[tag-selector-input]',
-    host: {
-        '(keyup)': 'onKeyUp($event)'
-    }
+    selector: '[.ui.search]'
+    // host: {
+    //     '(keyup)': 'onKeyUp($event)'
+    // }
 })
 export class TagSelectorInput implements OnInit {
 
     @Input() public tagsList: string[];
     @Output() public addTag: EventEmitter<any> = new EventEmitter();
 
-    constructor(private typeaheadElement: ElementRef) {
+    constructor(private searchBox: ElementRef) {
     }
 
     public ngOnInit() {
-        let tagsList = this.tagsList;
-        let matcher = (query, callback) => {
-            let queryRegexText = _.escapeRegExp(query)
-            let tagRegex = new RegExp(queryRegexText, 'i')
-            let selectedTags = _.filter(tagsList, tag => tagRegex.test(tag))
-            callback(selectedTags)
-        }
-
-        let options = {
-            hint: true,
-            highlight: true,
-            minLength: 1,
-            classNames: {
-                menu: 'dropdown-pane',
-                open: 'is-open'
-            }
-        }
-        let dataSet = {
-            name: 'tags',
-            source: matcher
-        }
-
-        $(this.element).typeahead(options, dataSet)
+        let tagMap = this.tagsList.map(tag => ({ title: tag }))
+        $(this.element)
+            .search({
+                source: tagMap,
+                minCharacters : 1,
+                onSelect: (result) => {
+                    this.onTagSelected(result.title)
+                }
+            })
     }
 
-    public onKeyUp(evt) {
-        if (evt && evt.code === 'Enter') {
-            evt.preventDefault()
-            let inputValue = this.element.value
-            if (inputValue) {
-                this.addTag.emit({
-                    text: inputValue
-                })
-            }
-            this.element.value = ''
-        }
+    // public onKeyUp(evt) {
+    //     if (evt && evt.code === 'Enter') {
+    //         evt.preventDefault()
+    //         let inputValue = this.element.value
+    //         if (inputValue) {
+    //             this.addTag.emit({
+    //                 text: inputValue
+    //             })
+    //         }
+    //         this.element.value = ''
+    //     }
+    // }
+
+    private onTagSelected(tag: string) {
+        this.addTag.emit(tag)
     }
 
     private get element() {
-        return this.typeaheadElement.nativeElement
+        return this.searchBox.nativeElement
     }
-
 }
