@@ -4,6 +4,8 @@
 
 Example of using Angular2 and Redux together to manage a "complex" user interface.
 
+![Screen shot](ScreenShot.png)
+
 ## Building and Running
 
 ```
