@@ -2,8 +2,9 @@
     Image Tags:
     <div class="ui search" [tagsList]="tagsList" (addTag)="addNewTag($event)">
         <div class="ui icon input">
-            <input class="prompt" type="text" placeholder="Search countries...">
-            <i class="search icon"></i>
+            <input #tagInput class="prompt" type="text" placeholder="Add tags ..."
+                   (selectTagOnEnter)="addNewTag($event)">
+            <i *ngIf="tagInput.value" class="add square icon"></i>
         </div>
         <div class="results"></div>
     </div>

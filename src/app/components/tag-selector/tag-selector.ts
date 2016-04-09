@@ -1,11 +1,11 @@
 
 import {Component, Input, Output, EventEmitter} from 'angular2/core'
 import {isMatchingTag} from '../../utils/tag-utils'
-import {TagSelectorInput} from './tag-selector-input'
+import {TagSelectorInput, SelectTagOnEnter} from './tag-selector-input'
 
 @Component({
     selector: 'tag-selector',
-    directives: [TagSelectorInput],
+    directives: [TagSelectorInput, SelectTagOnEnter],
     templateUrl: 'app/components/tag-selector/tag-selector.html',
     styleUrls: ['app/components/tag-selector/tag-selector.css']
 })
