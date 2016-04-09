@@ -11,11 +11,11 @@ export class InitializeDropdown implements OnInit, OnDestroy {
     constructor(private el: ElementRef) {
     }
 
-    ngOnInit() {
+    public ngOnInit() {
         $(this.el.nativeElement).dropdown();
     }
 
-    ngOnDestroy() {
+    public ngOnDestroy() {
         $(this.el.nativeElement).dropdown('destroy');
     }
 }

@@ -1,14 +1,14 @@
 
 # Angular/Redux Complex UI Example
-[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 Example of using Angular2 and Redux together to manage a "complex" user interface.
 
 ## Building and Running
 
 ```
-git clone https://github.com/dfbaskin/angular2-redux-decorators-example.git
-cd angular2-redux-decorators-example
+git clone https://github.com/ng-cookbook/angular2-redux-complex-ui.git
+cd angular2-redux-complex-ui
 npm install
 npm run typings
 npm run build

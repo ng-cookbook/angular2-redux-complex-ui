@@ -35,7 +35,7 @@ export class TagSelectorInput implements OnInit, OnDestroy {
                 templates: {
                     message: (message, type) => {
                         let html = ''
-                        if(message != null && type != null) {
+                        if (message != null && type != null) {
                             html = [
                                 `<div class="message ${type}">`,
                                 type === 'empty' ?

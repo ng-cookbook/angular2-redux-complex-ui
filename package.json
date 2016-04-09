@@ -24,10 +24,10 @@
     "Angular2"
   ],
   "author": "Dave F. Baskin <dfbaskin@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dfbaskin/angular2-redux-decorators-example.git"
+    "url": "https://github.com/ng-cookbook/angular2-redux-complex-ui.git"
   },
   "standard": {
     "ignore": [
