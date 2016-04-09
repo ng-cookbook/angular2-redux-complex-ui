@@ -3,6 +3,7 @@ import {
     Directive,
     Input,
     Output,
+    Optional,
     EventEmitter,
     ElementRef,
     OnInit,
@@ -53,8 +54,12 @@ export class TagSelectorInput implements OnInit, OnDestroy {
         $(this.element).search('destroy');
     }
 
-    private onTagSelected(tag: string) {
+    public onTagSelected(tag: string) {
         this.addTag.emit(tag)
+        setTimeout(() => {
+            $(this.element).search('set value', '')
+            $(this.element).search('hide results')
+        })
     }
 
     private get element() {
@@ -63,30 +68,28 @@ export class TagSelectorInput implements OnInit, OnDestroy {
 }
 
 @Directive({
-    selector: '[selectTagOnEnter]',
+    selector: '[add-tag-on-enter]',
     host: {
-        '(keyup)': 'onKeyUp($event)'
+        '(keypress)': 'onKeyPress($event)'
     }
 })
-export class SelectTagOnEnter {
+export class AddTagOnEnter {
 
-    @Output('selectTagOnEnter') public addTag: EventEmitter<any> = new EventEmitter();
-
-    constructor(private el: ElementRef) {
+    constructor(
+        private el: ElementRef,
+        @Optional() private tagSelectorInput: TagSelectorInput) {
     }
 
-    public onKeyUp(evt) {
+    public onKeyPress(evt) {
         if (evt && evt.code === 'Enter') {
 
             evt.preventDefault()
             evt.stopPropagation()
 
             let tag = this.el.nativeElement.value
-            if (tag) {
-                this.addTag.emit(tag)
+            if (tag && this.tagSelectorInput) {
+                this.tagSelectorInput.onTagSelected(tag)
             }
-
-            this.el.nativeElement.value = ''
         }
     }
 }
