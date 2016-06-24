@@ -1,7 +1,7 @@
 <div class="ui centered grid">
     <div class="twelve wide column">
         <div class="ui horizontal list">
-            <div class="item" *ngFor="#tag of imageTags">
+            <div class="item" *ngFor="let tag of imageTags">
                 <label>
                     <input #tagInput type="checkbox"
                            [ngModel]="tag.isSelected"

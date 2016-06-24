@@ -9,7 +9,7 @@
     </div>
 </label>
 <div class="ui buttons">
-    <button class="ui basic button" *ngFor="#tag of selectedTags" (click)="removeSelectedTag(tag)">
+    <button class="ui basic button" *ngFor="let tag of selectedTags" (click)="removeSelectedTag(tag)">
         <i class="remove icon"></i>
         {{tag}}
     </button>

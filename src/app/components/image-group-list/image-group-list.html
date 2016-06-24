@@ -1,8 +1,8 @@
 <div class="ui grid container">
-    <div class="sixteen wide column" *ngFor="#group of imageGroups">
+    <div class="sixteen wide column" *ngFor="let group of imageGroups">
         <h2>{{group.name}} ({{group.included.length}})</h2>
         <div>
-            <div class="thumbnail-panel" *ngFor="#img of group.included">
+            <div class="thumbnail-panel" *ngFor="let img of group.included">
                 <a [routerLink]="imageRouteFor(img)">
                     <img class="thumbnail" [src]="img.url" [alt]="img.title">
                 </a>
