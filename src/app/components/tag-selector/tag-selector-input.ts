@@ -8,7 +8,7 @@ import {
     ElementRef,
     OnInit,
     OnDestroy
-} from 'angular2/core'
+} from '@angular/core'
 
 declare var $: any
 

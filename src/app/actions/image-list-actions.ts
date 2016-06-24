@@ -1,5 +1,5 @@
 
-import {Http, Response} from 'angular2/http'
+import {Http, Response} from '@angular/http'
 
 export const LOADING_IMAGE_DATA = 'LOADING_IMAGE_DATA'
 export const LOAD_IMAGE_DATA = 'LOAD_IMAGE_DATA'

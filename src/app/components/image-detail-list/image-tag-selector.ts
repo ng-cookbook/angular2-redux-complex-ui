@@ -1,5 +1,5 @@
 
-import {Component} from 'angular2/core'
+import {Component} from '@angular/core'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 import {excludeImageTags} from '../../actions/image-list-actions'

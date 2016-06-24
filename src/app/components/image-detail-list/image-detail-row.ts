@@ -1,6 +1,6 @@
 
-import {Component, Input} from 'angular2/core'
-import {RouterLink, RouteData} from 'angular2/router'
+import {Component, Input} from '@angular/core'
+import {RouterLink, RouteData} from '@angular/router-deprecated'
 
 @Component({
     selector: '.image-detail-row',

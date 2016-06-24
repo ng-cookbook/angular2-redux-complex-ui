@@ -24,27 +24,11 @@
 
 <script src="vendor/jquery/jquery.js"></script>
 <script src="vendor/semantic-ui/semantic.js"></script>
-
-<script src="vendor/systemjs/system-polyfills.js"></script>
-<script src="vendor/es6-shim/es6-shim.js"></script>
-<script src="vendor/angular2/bundles/angular2-polyfills.js"></script>
+<script src="vendor/corejs/shim.min.js"></script>
+<script src="vendor/zonejs/zone.js"></script>
+<script src="vendor/reflect-metadata/Reflect.js"></script>
 <script src="vendor/systemjs/system.src.js"></script>
-
-<script>
-    System.config({
-        defaultJSExtensions: true,
-        map: {
-            "angular2": "vendor/angular2",
-            "rxjs": "vendor/rxjs",
-            "lodash": "vendor/lodash/lodash.js",
-            "redux": "vendor/redux/redux.js",
-            "redux-thunk": "vendor/redux-thunk/index.js"
-        }
-    });
-    System
-        .import('app/app-bootstrap')
-        .then(null, console.error.bind(console));
-</script>
+<script src="system.config.js"></script>
 
 </body>
 </html>

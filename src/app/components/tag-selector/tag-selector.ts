@@ -1,5 +1,5 @@
 
-import {Component, Input, Output, EventEmitter} from 'angular2/core'
+import {Component, Input, Output, EventEmitter} from '@angular/core'
 import {isMatchingTag} from '../../utils/tag-utils'
 import {TagSelectorInput, AddTagOnEnter} from './tag-selector-input'
 

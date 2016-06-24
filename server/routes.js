@@ -5,9 +5,11 @@ import imagesRouter from './api/images-api'
 let app = express()
 
 var vendorFiles = {
-  'es6-shim': 'node_modules/es6-shim',
   'systemjs': 'node_modules/systemjs/dist',
-  'angular2': 'node_modules/angular2',
+  'corejs': 'node_modules/core-js/client',
+  'zonejs': 'node_modules/zone.js/dist',
+  'reflect-metadata': 'node_modules/reflect-metadata',
+  'angular': 'node_modules/@angular',
   'rxjs': 'node_modules/rxjs',
   'jquery': 'node_modules/jquery/dist',
   'redux': 'node_modules/redux/dist',

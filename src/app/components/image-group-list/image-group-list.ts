@@ -1,7 +1,7 @@
 
 import _ from 'lodash'
-import {Component} from 'angular2/core'
-import {RouterLink, RouteData} from 'angular2/router'
+import {Component} from '@angular/core'
+import {RouterLink, RouteData} from '@angular/router-deprecated'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 import {isTagIncludedInList, getUniqueTagsList} from '../../utils/tag-utils'

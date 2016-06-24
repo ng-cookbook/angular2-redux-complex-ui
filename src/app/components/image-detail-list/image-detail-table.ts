@@ -1,5 +1,5 @@
 
-import {Component, Input, Output, EventEmitter} from 'angular2/core'
+import {Component, Input, Output, EventEmitter} from '@angular/core'
 import {ImageDetailRow} from './image-detail-row'
 import {AppStore} from '../../services/app-store'
 import {SortableColumnHeader} from './sortable-column-header'

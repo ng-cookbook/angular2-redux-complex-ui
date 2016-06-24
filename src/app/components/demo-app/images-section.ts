@@ -1,7 +1,7 @@
 
-import {Component} from 'angular2/core'
-import {RouteConfig, RouterOutlet} from 'angular2/router'
-import {Http} from 'angular2/http'
+import {Component} from '@angular/core'
+import {RouteConfig, RouterOutlet} from '@angular/router-deprecated'
+import {Http} from '@angular/http'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 import {imageDataRequest} from '../../actions/image-list-actions'

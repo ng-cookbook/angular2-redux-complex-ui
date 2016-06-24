@@ -1,5 +1,5 @@
 
-import {Directive, ElementRef, OnInit, OnDestroy} from 'angular2/core'
+import {Directive, ElementRef, OnInit, OnDestroy} from '@angular/core'
 
 declare var $: any
 

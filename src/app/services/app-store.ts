@@ -1,6 +1,6 @@
 
-import {Provider} from 'angular2/core'
-import {OpaqueToken} from 'angular2/router'
+import {Provider} from '@angular/core'
+import {OpaqueToken} from '@angular/router-deprecated'
 import {createStore, applyMiddleware, combineReducers} from 'redux'
 import * as Rx from 'rxjs/Rx'
 import thunkMiddleware from 'redux-thunk'

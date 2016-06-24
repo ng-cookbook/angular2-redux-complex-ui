@@ -1,6 +1,6 @@
 
-import {Component, Input} from 'angular2/core'
-import {RouteParams} from 'angular2/router'
+import {Component, Input} from '@angular/core'
+import {RouteParams} from '@angular/router-deprecated'
 import {TitleBar} from '../../title-bar/title-bar'
 import {ImageView} from '../../image-view/image-view'
 import {AppStore} from '../../../services/app-store'

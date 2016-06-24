@@ -1,5 +1,5 @@
 
-import {Component, Input} from 'angular2/core'
+import {Component, Input} from '@angular/core'
 import {TitleBar} from '../../title-bar/title-bar'
 import {ImageDetailList} from '../../image-detail-list/image-detail-list'
 
