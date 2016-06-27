@@ -1,13 +1,13 @@
 
 import {Component} from '@angular/core'
-import {RouterLink} from '@angular/router-deprecated'
+import {ROUTER_DIRECTIVES} from '@angular/router'
 import {LoadingIndicator} from '../loading-indicator/loading-indicator'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 import {InitializeDropdown} from '../../directives/semanti-ui-init'
 
 @Component({
     selector: 'title-bar',
-    directives: [LoadingIndicator, RouterLink, InitializeDropdown],
+    directives: [LoadingIndicator, ROUTER_DIRECTIVES, InitializeDropdown],
     templateUrl: 'app/components/title-bar/title-bar.html'
 })
 @AppStoreSubscriber()

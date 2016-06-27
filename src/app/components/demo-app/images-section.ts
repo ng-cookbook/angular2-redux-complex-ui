@@ -1,6 +1,6 @@
 
 import {Component} from '@angular/core'
-import {RouteConfig, RouterOutlet} from '@angular/router-deprecated'
+import {provideRouter, RouterConfig, ROUTER_DIRECTIVES} from '@angular/router'
 import {Http} from '@angular/http'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
@@ -10,41 +10,23 @@ import {ListGroupLayout} from './layouts/list-group-layout'
 import {ViewLayout} from './layouts/view-layout'
 import {EditLayout} from './layouts/edit-layout'
 
+const routes: RouterConfig = [
+    { path: '/list', component: ListLayout },
+    { path: '/groups', component: ListGroupLayout },
+    { path: '/view/:id', component: ViewLayout },
+    { path: '/edit/:id', component: EditLayout }
+]
+
 @Component({
     selector: 'demo-app',
-    directives: [RouterOutlet],
-    template: `<router-outlet></router-outlet>`
+    directives: [ROUTER_DIRECTIVES],
+    template: `<router-outlet></router-outlet>`,
+    providers: [provideRouter(routes)]
 })
-@RouteConfig([
-    {
-        path: '/list',
-        name: 'List',
-        component: ListLayout,
-        useAsDefault: true
-    },
-    {
-        path: '/groups',
-        name: 'Groups',
-        component: ListGroupLayout
-    },
-    {
-        path: '/view/:id',
-        name: 'View',
-        component: ViewLayout
-    },
-    {
-        path: '/edit/:id',
-        name: 'Edit',
-        component: EditLayout,
-        data: {
-            isEditRoute: true
-        }
-    }
-])
 @AppStoreSubscriber()
 export class ImagesSection implements IAppStoreSubscriber {
 
-    public state = {};
+    public state = {}
 
     constructor(
         private appStore: AppStore,

@@ -1,10 +1,10 @@
 
 import {Component, Input} from '@angular/core'
-import {RouterLink, RouteData} from '@angular/router-deprecated'
+import {ROUTER_DIRECTIVES, ActivatedRoute} from '@angular/router'
 
 @Component({
     selector: '.image-detail-row',
-    directives: [RouterLink],
+    directives: [ROUTER_DIRECTIVES],
     template: `
         <td>
             <a [routerLink]="imageRouteFor(rowData)">
@@ -19,13 +19,20 @@ import {RouterLink, RouteData} from '@angular/router-deprecated'
     `
 })
 export class ImageDetailRow {
-    @Input() public rowData: any;
+    @Input() public rowData: any
 
-    private isEditRoute: boolean;
+    private isEditRoute: boolean = false;
 
     constructor(
-        private routeData: RouteData) {
-        this.isEditRoute = routeData.get('isEditRoute')
+        private route: ActivatedRoute) {
+    }
+
+    public ngOnInit() {
+        // this.route.params
+        //     .map((params) => params.isEditRoute)
+        //     .subscribe((isEditRoute) => {
+        //         this.isEditRoute = isEditRoute
+        //     })
     }
 
     public imageRouteFor(img) {
@@ -33,6 +40,6 @@ export class ImageDetailRow {
             '/Images',
             this.isEditRoute ? 'Edit' : 'View',
             { id: img.id }
-        ];
+        ]
     }
 }

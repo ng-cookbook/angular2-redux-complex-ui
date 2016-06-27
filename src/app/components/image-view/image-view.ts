@@ -1,11 +1,11 @@
 
 import {Component} from '@angular/core'
-import {RouterLink} from '@angular/router-deprecated'
+import {ROUTER_DIRECTIVES} from '@angular/router'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 
 @Component({
     selector: 'image-view',
-    directives: [RouterLink],
+    directives: [ROUTER_DIRECTIVES],
     templateUrl: 'app/components/image-view/image-view.html',
     styleUrls: ['app/components/image-view/image-view.css']
 })

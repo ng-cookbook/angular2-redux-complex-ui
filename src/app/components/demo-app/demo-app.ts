@@ -1,20 +1,17 @@
 
 import {Component} from '@angular/core'
-import {RouteConfig, RouterOutlet} from '@angular/router-deprecated'
+import {provideRouter, RouterConfig, ROUTER_DIRECTIVES} from '@angular/router'
 import {ImagesSection} from './images-section'
+
+const routes: RouterConfig = [
+    { path: '/images', component: ImagesSection }
+];
 
 @Component({
     selector: 'demo-app',
-    directives: [RouterOutlet],
-    template: `<router-outlet></router-outlet>`
+    directives: [ROUTER_DIRECTIVES],
+    template: `<router-outlet></router-outlet>`,
+    providers: [provideRouter(routes)]
 })
-@RouteConfig([
-    {
-        path: '/images/...',
-        name: 'Images',
-        component: ImagesSection,
-        useAsDefault: true
-    }
-])
 export class DemoApp {
 }

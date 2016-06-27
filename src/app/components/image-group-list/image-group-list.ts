@@ -1,14 +1,14 @@
 
 import _ from 'lodash'
 import {Component} from '@angular/core'
-import {RouterLink, RouteData} from '@angular/router-deprecated'
+import {ROUTER_DIRECTIVES, ActivatedRoute} from '@angular/router'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 import {isTagIncludedInList, getUniqueTagsList} from '../../utils/tag-utils'
 
 @Component({
     selector: 'image-group-list',
-    directives: [RouterLink],
+    directives: [ROUTER_DIRECTIVES],
     templateUrl: 'app/components/image-group-list/image-group-list.html',
     styleUrls: ['app/components/image-group-list/image-group-list.css']
 })
@@ -17,13 +17,19 @@ export class ImageGroupList implements IAppStoreSubscriber {
 
     public imageGroups: any[];
 
-    private isEditRoute: boolean;
+    private isEditRoute: boolean = false;
 
     constructor(
         private appStore: AppStore,
-        private routeData: RouteData) {
+        private route: ActivatedRoute) {
+    }
 
-        this.isEditRoute = routeData.get('isEditRoute')
+    public ngOnInit() {
+        // this.route.params
+        //     .map((params) => params.isEditRoute)
+        //     .subscribe((isEditRoute) => {
+        //         this.isEditRoute = isEditRoute;
+        //     });
     }
 
     public imageRouteFor(img) {
