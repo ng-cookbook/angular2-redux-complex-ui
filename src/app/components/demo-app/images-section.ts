@@ -1,27 +1,15 @@
 
 import {Component} from '@angular/core'
-import {provideRouter, RouterConfig, ROUTER_DIRECTIVES} from '@angular/router'
+import {ROUTER_DIRECTIVES} from '@angular/router'
 import {Http} from '@angular/http'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 import {imageDataRequest} from '../../actions/image-list-actions'
-import {ListLayout} from './layouts/list-layout'
-import {ListGroupLayout} from './layouts/list-group-layout'
-import {ViewLayout} from './layouts/view-layout'
-import {EditLayout} from './layouts/edit-layout'
-
-const routes: RouterConfig = [
-    { path: '/list', component: ListLayout },
-    { path: '/groups', component: ListGroupLayout },
-    { path: '/view/:id', component: ViewLayout },
-    { path: '/edit/:id', component: EditLayout }
-]
 
 @Component({
     selector: 'demo-app',
     directives: [ROUTER_DIRECTIVES],
-    template: `<router-outlet></router-outlet>`,
-    providers: [provideRouter(routes)]
+    template: `<router-outlet></router-outlet>`
 })
 @AppStoreSubscriber()
 export class ImagesSection implements IAppStoreSubscriber {

@@ -37,9 +37,9 @@ export class ImageDetailRow {
 
     public imageRouteFor(img) {
         return [
-            '/Images',
-            this.isEditRoute ? 'Edit' : 'View',
-            { id: img.id }
+            '/images',
+            this.isEditRoute ? 'edit' : 'view',
+            img.id
         ]
     }
 }
