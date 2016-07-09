@@ -1,15 +1,13 @@
 
-import {Component, Input, OnInit} from '@angular/core'
+import {Component, Input} from '@angular/core'
+import {Observable, Subscription} from "rxjs"
 import {ActivatedRoute} from '@angular/router'
 import {TitleBar} from '../../title-bar/title-bar'
 import {ImageView} from '../../image-view/image-view'
 import {AppStore} from '../../../services/app-store'
 import {selectCurrentImage} from '../../../actions/image-list-actions'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../../decorators/app-store-subscriber'
-
-interface IViewLayoutRouteParams {
-    id: string;
-}
+import {waitForImageListToLoad, watchForImageIdChanges} from "../../../utils/app-utils";
 
 @Component({
     selector: 'view-layout',
@@ -18,28 +16,21 @@ interface IViewLayoutRouteParams {
     styleUrls: ['app/components/demo-app/layouts/view-layout.css']
 })
 @AppStoreSubscriber()
-export class ViewLayout implements IAppStoreSubscriber, OnInit {
+export class ViewLayout implements IAppStoreSubscriber {
 
-    @Input() public isLoading: boolean = true
-
-    private imageId: string
+    public isLoading: boolean = true;
 
     constructor(
         private route: ActivatedRoute,
         private appStore: AppStore) {
     }
 
-    public ngOnInit() {
-        this.route.params
-            .subscribe((params: IViewLayoutRouteParams) => {
-                this.imageId = params.id;
-            });
-    }
-
-    public onInitAppStoreSubscription(source: any): void {
-        return source
-            .filter((state: any) => !state.imageData.isLoading)
-            .take(1)
-            .subscribe((state: any) => this.appStore.dispatch(selectCurrentImage(this.imageId)))
+    public onInitAppStoreSubscription(source: Observable<any>): Subscription {
+        return waitForImageListToLoad(source)
+            .do(() => this.isLoading = false)
+            .switchMapTo(watchForImageIdChanges(this.route.params))
+            .subscribe((imageId: string) => {
+                this.appStore.dispatch(selectCurrentImage(imageId))
+            })
     }
 }

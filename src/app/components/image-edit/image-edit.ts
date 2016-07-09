@@ -1,5 +1,6 @@
 
 import {Component} from '@angular/core'
+import {Observable, Subscription} from "rxjs"
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 import {changeImageTitle, updateImageTags} from '../../actions/image-list-actions'
@@ -21,7 +22,7 @@ export class ImageEdit implements IAppStoreSubscriber {
     constructor(private appStore: AppStore) {
     }
 
-    public onInitAppStoreSubscription(source: any): void {
+    public onInitAppStoreSubscription(source: Observable<any>): Subscription {
         return source
             .filter((state: any) => state.imageData.currentImageId)
             .map((state: any) => ({

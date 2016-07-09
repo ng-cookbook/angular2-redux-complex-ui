@@ -1,5 +1,6 @@
 import _ from 'lodash'
 import {Component} from '@angular/core'
+import {Observable, Subscription} from "rxjs"
 import {ROUTER_DIRECTIVES, ActivatedRoute} from '@angular/router'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
@@ -38,7 +39,7 @@ export class ImageGroupList implements IAppStoreSubscriber {
         ]
     }
 
-    public onInitAppStoreSubscription(source: any): void {
+    public onInitAppStoreSubscription(source: Observable<any>): Subscription {
         return source
             .map((state: any) => state.imageData)
             .subscribe((imageData: any) => {

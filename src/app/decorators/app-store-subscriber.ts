@@ -1,5 +1,6 @@
 
 import {AppStore} from '../services/app-store'
+import {Observable, Subscription} from "rxjs"
 
 const onDestroyName = 'ngOnDestroy'
 const onInitName = 'ngOnInit'
@@ -7,7 +8,7 @@ const onInitAppStoreSubscriptionName = 'onInitAppStoreSubscription'
 const componentSubscriptionsName = Symbol('ComponentSubscriptions')
 
 export interface IAppStoreSubscriber {
-    onInitAppStoreSubscription(source: any): void
+    onInitAppStoreSubscription(source: Observable<any>): Subscription
 }
 
 export function AppStoreSubscriber() {

@@ -1,5 +1,6 @@
 
 import {Component} from '@angular/core'
+import {Observable, Subscription} from "rxjs"
 import {ROUTER_DIRECTIVES} from '@angular/router'
 import {Http} from '@angular/http'
 import {AppStore} from '../../services/app-store'
@@ -21,7 +22,7 @@ export class ImagesSection implements IAppStoreSubscriber {
         private http: Http) {
     }
 
-    public onInitAppStoreSubscription(source: any): void {
+    public onInitAppStoreSubscription(source: Observable<any>): Subscription {
         return source
             .map((state: any) => ({
                 isLoading: state.imageData.isLoading

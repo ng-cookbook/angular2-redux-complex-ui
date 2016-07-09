@@ -1,5 +1,6 @@
 
 import {Component} from '@angular/core'
+import {Observable, Subscription} from "rxjs"
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 import {excludeImageTags} from '../../actions/image-list-actions'
@@ -18,7 +19,7 @@ export class ImageTagSelector implements IAppStoreSubscriber {
     constructor(private appStore: AppStore) {
     }
 
-    public onInitAppStoreSubscription(source: any): void {
+    public onInitAppStoreSubscription(source: Observable<any>): Subscription {
         return source
             .map((state: any) => state.imageData)
             .subscribe((imageData: any) => {

@@ -1,5 +1,6 @@
 
 import {Component} from '@angular/core'
+import {Observable, Subscription} from "rxjs"
 import {ROUTER_DIRECTIVES} from '@angular/router'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 
@@ -14,7 +15,7 @@ export class ImageView implements IAppStoreSubscriber {
 
     public image: any
 
-    public onInitAppStoreSubscription(source: any): void {
+    public onInitAppStoreSubscription(source: Observable<any>): Subscription {
         return source
             .filter((state: any) => state.imageData.currentImageId)
             .map((state: any) => ({
