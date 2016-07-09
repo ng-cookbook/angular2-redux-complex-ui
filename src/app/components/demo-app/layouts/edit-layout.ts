@@ -1,5 +1,4 @@
-
-import {Component, Input, OnInit} from '@angular/core'
+import {Component, Input} from '@angular/core'
 import {ActivatedRoute} from '@angular/router'
 import {TitleBar} from '../../title-bar/title-bar'
 import {ImageGroupList} from '../../image-group-list/image-group-list'
@@ -20,28 +19,28 @@ interface IEditLayoutRouteParams {
     styleUrls: ['app/components/demo-app/layouts/edit-layout.css']
 })
 @AppStoreSubscriber()
-export class EditLayout implements IAppStoreSubscriber, OnInit {
+export class EditLayout implements IAppStoreSubscriber {
 
     @Input() public isLoading: boolean = true
-
-    private imageId: string
 
     constructor(
         private route: ActivatedRoute,
         private appStore: AppStore) {
     }
 
-    public ngOnInit() {
-        this.route.params
-            .subscribe((params: IEditLayoutRouteParams) => {
-                this.imageId = params.id;
-            })
-    }
-
     public onInitAppStoreSubscription(source: any): void {
-        return source
+
+        let imageDataLoading = source
             .filter((state: any) => !state.imageData.isLoading)
             .take(1)
-            .subscribe((state: any) => this.appStore.dispatch(selectCurrentImage(this.imageId)))
+
+        let routeParamsChanging = this.route.params
+            .map((params: IEditLayoutRouteParams) => params.id)
+
+        return imageDataLoading
+            .switchMapTo(routeParamsChanging)
+            .subscribe((imageId: string) => {
+                this.appStore.dispatch(selectCurrentImage(imageId))
+            })
     }
 }

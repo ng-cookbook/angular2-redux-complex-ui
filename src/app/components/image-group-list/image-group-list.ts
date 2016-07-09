@@ -1,4 +1,3 @@
-
 import _ from 'lodash'
 import {Component} from '@angular/core'
 import {ROUTER_DIRECTIVES, ActivatedRoute} from '@angular/router'
@@ -25,11 +24,10 @@ export class ImageGroupList implements IAppStoreSubscriber {
     }
 
     public ngOnInit() {
-        // this.route.params
-        //     .map((params) => params.isEditRoute)
-        //     .subscribe((isEditRoute) => {
-        //         this.isEditRoute = isEditRoute;
-        //     });
+        this.route.url
+            .subscribe((urlPaths) => {
+                this.isEditRoute = urlPaths[0] && urlPaths[0].path && urlPaths[0].path === "edit";
+            })
     }
 
     public imageRouteFor(img) {
@@ -37,7 +35,7 @@ export class ImageGroupList implements IAppStoreSubscriber {
             '/images',
             this.isEditRoute ? 'edit' : 'view',
             img.id
-        ];
+        ]
     }
 
     public onInitAppStoreSubscription(source: any): void {
