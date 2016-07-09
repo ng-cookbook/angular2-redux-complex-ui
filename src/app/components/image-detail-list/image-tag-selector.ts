@@ -1,6 +1,6 @@
 
 import {Component} from '@angular/core'
-import {Observable, Subscription} from "rxjs"
+import {Observable, Subscription} from 'rxjs'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 import {excludeImageTags} from '../../actions/image-list-actions'

@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import {Component} from '@angular/core'
-import {Observable, Subscription} from "rxjs"
+import {Observable, Subscription} from 'rxjs'
 import {ROUTER_DIRECTIVES, ActivatedRoute} from '@angular/router'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
@@ -27,7 +27,7 @@ export class ImageGroupList implements IAppStoreSubscriber {
     public ngOnInit() {
         this.route.url
             .subscribe((urlPaths) => {
-                this.isEditRoute = urlPaths[0] && urlPaths[0].path && urlPaths[0].path === "edit";
+                this.isEditRoute = urlPaths[0] && urlPaths[0].path && urlPaths[0].path === 'edit';
             })
     }
 

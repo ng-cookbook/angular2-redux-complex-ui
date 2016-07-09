@@ -1,7 +1,7 @@
 
 import _ from 'lodash'
 import {Component} from '@angular/core'
-import {Observable, Subscription} from "rxjs"
+import {Observable, Subscription} from 'rxjs'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 import {sortImages, ImageSortBy} from '../../actions/image-list-actions'

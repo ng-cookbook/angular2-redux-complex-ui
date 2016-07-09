@@ -1,6 +1,6 @@
 
 import {Component} from '@angular/core'
-import {Observable, Subscription} from "rxjs"
+import {Observable, Subscription} from 'rxjs'
 import {ROUTER_DIRECTIVES} from '@angular/router'
 import {Http} from '@angular/http'
 import {AppStore} from '../../services/app-store'

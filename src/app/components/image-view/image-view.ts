@@ -1,6 +1,6 @@
 
 import {Component} from '@angular/core'
-import {Observable, Subscription} from "rxjs"
+import {Observable, Subscription} from 'rxjs'
 import {ROUTER_DIRECTIVES} from '@angular/router'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 

@@ -1,13 +1,13 @@
 
-import {Component, Input} from '@angular/core'
-import {Observable, Subscription} from "rxjs"
+import {Component} from '@angular/core'
+import {Observable, Subscription} from 'rxjs'
 import {ActivatedRoute} from '@angular/router'
 import {TitleBar} from '../../title-bar/title-bar'
 import {ImageView} from '../../image-view/image-view'
 import {AppStore} from '../../../services/app-store'
 import {selectCurrentImage} from '../../../actions/image-list-actions'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../../decorators/app-store-subscriber'
-import {waitForImageListToLoad, watchForImageIdChanges} from "../../../utils/app-utils";
+import {waitForImageListToLoad, watchForImageIdChanges} from '../../../utils/app-utils';
 
 @Component({
     selector: 'view-layout',

@@ -29,7 +29,7 @@ export class ImageDetailRow {
     public ngOnInit() {
         this.route.url
             .subscribe((urlPaths) => {
-                this.isEditRoute = urlPaths[0] && urlPaths[0].path && urlPaths[0].path === "edit";
+                this.isEditRoute = urlPaths[0] && urlPaths[0].path && urlPaths[0].path === 'edit';
             })
     }
 
