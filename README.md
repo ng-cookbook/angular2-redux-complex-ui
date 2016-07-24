@@ -12,7 +12,6 @@ Example of using Angular2 and Redux together to manage a "complex" user interfac
 git clone https://github.com/ng-cookbook/angular2-redux-complex-ui.git
 cd angular2-redux-complex-ui
 npm install
-npm run typings
 npm run build
 npm run web
 ```
