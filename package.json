@@ -17,7 +17,8 @@
     "build:es6": "babel dist/es6/**/*.js --out-dir dist/temp",
     "prebuild:es6": "babel-node scripts/pre-babel-compile",
     "postbuild:es6": "babel-node scripts/post-babel-compile",
-    "test": "babel-node scripts/run-tests"
+    "test": "babel-node scripts/run-tests",
+    "postinstall": "typings install"
   },
   "keywords": [
     "Redux",
