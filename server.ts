@@ -1,3 +1,4 @@
+import 'core-js'
 import {app} from './server/routes'
 
 const portNum = process.env.PORT || 9988
