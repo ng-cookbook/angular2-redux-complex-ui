@@ -1,11 +1,12 @@
 {
-  "globalDependencies": {
-    "jasmine": "registry:dt/jasmine#2.2.0+20160621224255",
-    "node": "registry:dt/node#6.0.0+20160621231320"
-  },
+  "name": "angular2-redux-complex-ui",
   "dependencies": {
-    "lodash": "registry:npm/lodash#4.0.0+20160305082308",
-    "redux": "registry:npm/redux#3.0.6+20160214194820",
-    "redux-thunk": "registry:npm/redux-thunk#1.0.4+20160207154919"
+    "lodash": "registry:npm/lodash#4.0.0+20160723033700",
+    "redux-thunk": "registry:npm/redux-thunk#2.0.0+20160525185520"
+  },
+  "globalDependencies": {
+    "core-js": "registry:dt/core-js#0.0.0+20160725163759",
+    "jasmine": "registry:dt/jasmine#2.2.0+20160621224255",
+    "node": "registry:env/node#4.0.0+20160813135048"
   }
 }

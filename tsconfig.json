@@ -1,24 +1,14 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "es2015",
+    "target": "es5",
+    "module": "commonjs",
     "moduleResolution": "node",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false,
-    "outDir": "dist/es6",
     "declaration": true,
     "allowSyntheticDefaultImports": true
-  },
-  "filesGlob": [
-    "src/app/**/*.ts",
-    "tests/**/*.ts"
-  ],
-  "exclude": [
-    ".git",
-    "dist",
-    "node_modules"
-  ]
+  }
 }

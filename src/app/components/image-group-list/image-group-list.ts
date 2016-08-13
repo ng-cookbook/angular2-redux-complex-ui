@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import * as _ from 'lodash'
 import {Component} from '@angular/core'
 import {Observable, Subscription} from 'rxjs'
 import {ROUTER_DIRECTIVES, ActivatedRoute} from '@angular/router'

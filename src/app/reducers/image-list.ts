@@ -1,5 +1,5 @@
 
-import _ from 'lodash'
+import * as _ from 'lodash'
 import {
     LOADING_IMAGE_DATA,
     LOAD_IMAGE_DATA,

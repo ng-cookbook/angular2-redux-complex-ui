@@ -2,5 +2,12 @@
 node_modules/
 src/app/**/*.js
 src/app/**/*.js.map
+src/app/**/*.d.ts
+tests/**/*.js
+tests/**/*.js.map
+tests/**/*.d.ts
+scripts/**/*.js
+scripts/**/*.js.map
+scripts/**/*.d.ts
 typings/
 dist/
