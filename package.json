@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "web": "node server",
-    "lint": "tslint src/**/*.ts --exclude src/**/*.d.ts --exclude node_modules/**/*.ts",
+    "lint": "tslint **/*.ts --exclude **/*.d.ts --exclude node_modules/**/*.ts",
     "build": "npm-run-all lint build:css build:ts test",
     "build:css": "node scripts/build-css",
     "build:ts": "tsc",

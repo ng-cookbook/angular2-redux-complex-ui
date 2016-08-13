@@ -14,37 +14,37 @@ import {imageData} from '../../../src/app/reducers/image-list'
 
 const testImageData = [
     {
-        "id": "a",
-        "fileName": "A.jpg",
-        "title": "A",
-        "size": 22222,
-        "dateTaken": "2015-01-03T00:00:00",
-        "width": 200,
-        "height": 300,
-        "portrait": true,
-        "tags": [ "aa", "bb", "cc" ]
+        'id': 'a',
+        'fileName': 'A.jpg',
+        'title': 'A',
+        'size': 22222,
+        'dateTaken': '2015-01-03T00:00:00',
+        'width': 200,
+        'height': 300,
+        'portrait': true,
+        'tags': [ 'aa', 'bb', 'cc' ]
     },
     {
-        "id": "b",
-        "fileName": "B.jpg",
-        "title": "B",
-        "size": 33333,
-        "dateTaken": "2015-01-01T00:00:00",
-        "width": 300,
-        "height": 200,
-        "landscape": true,
-        "tags": [ "cc", "dd" ]
+        'id': 'b',
+        'fileName': 'B.jpg',
+        'title': 'B',
+        'size': 33333,
+        'dateTaken': '2015-01-01T00:00:00',
+        'width': 300,
+        'height': 200,
+        'landscape': true,
+        'tags': [ 'cc', 'dd' ]
     },
     {
-        "id": "c",
-        "fileName": "C.jpg",
-        "title": "C",
-        "size": 11111,
-        "dateTaken": "2015-01-02T00:00:00",
-        "width": 300,
-        "height": 200,
-        "landscape": true,
-        "tags": [ "aa", "dd", "ee" ]
+        'id': 'c',
+        'fileName': 'C.jpg',
+        'title': 'C',
+        'size': 11111,
+        'dateTaken': '2015-01-02T00:00:00',
+        'width': 300,
+        'height': 200,
+        'landscape': true,
+        'tags': [ 'aa', 'dd', 'ee' ]
     }
 ]
 

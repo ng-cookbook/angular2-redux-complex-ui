@@ -83,7 +83,7 @@ describe('Tag utils', () => {
                 { tag: 'ccc', isSelected: true },
                 { tag: 'xxx', isSelected: true },
                 { tag: 'yyy', isSelected: true },
-                { tag: 'zzz', isSelected: true },
+                { tag: 'zzz', isSelected: true }
             ])
         })
 
@@ -99,7 +99,7 @@ describe('Tag utils', () => {
                 { tag: 'ccc', isSelected: true },
                 { tag: 'xxx', isSelected: true },
                 { tag: 'yyy', isSelected: true },
-                { tag: 'zzz', isSelected: false },
+                { tag: 'zzz', isSelected: false }
             ])
         })
 
@@ -115,7 +115,7 @@ describe('Tag utils', () => {
                 { tag: 'ccc', isSelected: true },
                 { tag: 'xxx', isSelected: true },
                 { tag: 'yyy', isSelected: true },
-                { tag: 'zzz', isSelected: true },
+                { tag: 'zzz', isSelected: true }
             ])
         })
 

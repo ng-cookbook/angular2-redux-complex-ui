@@ -19,7 +19,6 @@ import {
     changeImageTitle,
     updateImageTags
 } from '../../../src/app/actions/image-list-actions'
-import {imageData} from '../../../src/app/reducers/image-list'
 
 describe('Image actions creators', () => {
 
