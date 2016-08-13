@@ -9,5 +9,11 @@ tests/**/*.d.ts
 scripts/**/*.js
 scripts/**/*.js.map
 scripts/**/*.d.ts
+server/**/*.js
+server/**/*.js.map
+server/**/*.d.ts
+server.js
+server.js.map
+server.d.ts
 typings/
 dist/

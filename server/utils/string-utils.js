@@ -1,7 +1,9 @@
-
-export function isMatchingText (text1, text2) {
-  if (text1 == null || text2 == null) {
-    return false
-  }
-  return String(text1).trim().toLocaleLowerCase() === String(text2).trim().toLocaleLowerCase()
+"use strict";
+function isMatchingText(text1, text2) {
+    if (text1 == null || text2 == null) {
+        return false;
+    }
+    return String(text1).trim().toLocaleLowerCase() === String(text2).trim().toLocaleLowerCase();
 }
+exports.isMatchingText = isMatchingText;
+//# sourceMappingURL=string-utils.js.map

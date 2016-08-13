@@ -1,7 +1,7 @@
-import app from './server/routes'
-
-const portNum = process.env.PORT || 9988
-
-app.listen(portNum, () => {
-  console.log('Web application listening on port ' + portNum)
-})
+"use strict";
+var routes_1 = require('./server/routes');
+var portNum = process.env.PORT || 9988;
+routes_1.app.listen(portNum, function () {
+    console.log('Web application listening on port ' + portNum);
+});
+//# sourceMappingURL=server.js.map
