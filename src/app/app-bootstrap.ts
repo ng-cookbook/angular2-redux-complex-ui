@@ -4,9 +4,9 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic'
 import {BrowserModule} from '@angular/platform-browser'
 import {HttpModule} from '@angular/http'
 import {appRouting} from './app-routes'
-import {imagesRouting} from './components/demo-app/images-routes'
 import {FormsModule} from '@angular/forms'
 import {DemoApp} from './demo-app'
+import {ImagesModule} from './components/demo-app/images-module'
 
 import {provideAppStore, provideReducer} from './services/app-store'
 import {imageData} from './reducers/image-list'
@@ -20,7 +20,7 @@ import {imageData} from './reducers/image-list'
         HttpModule,
         FormsModule,
         appRouting,
-        imagesRouting
+        ImagesModule
     ],
     providers: [
         provideReducer('imageData', imageData),
