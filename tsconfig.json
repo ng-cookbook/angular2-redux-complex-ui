@@ -7,8 +7,6 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "removeComments": false,
-    "noImplicitAny": false,
-    "declaration": true,
-    "allowSyntheticDefaultImports": true
+    "noImplicitAny": false
   }
 }

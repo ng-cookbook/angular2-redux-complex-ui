@@ -1,12 +1,12 @@
 
-import {RouterConfig} from '@angular/router'
+import {Routes, RouterModule} from '@angular/router'
 import {ImagesSection} from './images-section'
 import {ListLayout} from './layouts/list-layout'
 import {ListGroupLayout} from './layouts/list-group-layout'
 import {ViewLayout} from './layouts/view-layout'
 import {EditLayout} from './layouts/edit-layout'
 
-export const imagesRoutes: RouterConfig = [
+const imagesRoutes: Routes = [
     {
         path: 'images',
         component: ImagesSection,
@@ -18,3 +18,5 @@ export const imagesRoutes: RouterConfig = [
         ]
     }
 ]
+
+export const imagesRouting = RouterModule.forChild(imagesRoutes)

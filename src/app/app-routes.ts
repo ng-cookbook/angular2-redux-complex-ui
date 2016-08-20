@@ -1,12 +1,8 @@
 
-import {provideRouter, RouterConfig} from '@angular/router'
-import {imagesRoutes} from './components/demo-app/images-routes'
+import {Routes, RouterModule} from '@angular/router'
 
-const routes: RouterConfig = [
-    { path: '', redirectTo: '/images/list', terminal: true },
-    ...imagesRoutes
+const routes: Routes = [
+    { path: '', redirectTo: '/images/list', terminal: true }
 ]
 
-export const APP_ROUTER_PROVIDERS = [
-    provideRouter(routes)
-]
+export const appRouting = RouterModule.forRoot(routes)
