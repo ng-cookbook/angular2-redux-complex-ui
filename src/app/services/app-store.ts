@@ -1,8 +1,14 @@
 
 import {Provider, OpaqueToken} from '@angular/core'
-import {createStore, applyMiddleware, combineReducers} from 'redux'
+import {createStore, applyMiddleware, combineReducers, compose} from 'redux'
 import * as Rx from 'rxjs/Rx'
 import thunkMiddleware from 'redux-thunk'
+
+interface DevToolsWindow extends Window {
+    devToolsExtension: any
+}
+
+declare var window: DevToolsWindow;
 
 export const APP_STORE_REDUCERS: OpaqueToken = new OpaqueToken('AppStoreReducers')
 
@@ -15,7 +21,11 @@ export class AppStore {
 
     constructor(reducer) {
 
-        this.appStore = createStore(reducer, applyMiddleware(thunkMiddleware))
+        this.appStore = createStore(reducer, compose(
+            applyMiddleware(thunkMiddleware),
+            window.devToolsExtension ? window.devToolsExtension() : f => f
+        ))
+
         this.stateObservable = Rx.Observable.create(observer => {
             let dispose = this.appStore.subscribe(() => observer.next(this.currentState))
             observer.next(this.currentState)
