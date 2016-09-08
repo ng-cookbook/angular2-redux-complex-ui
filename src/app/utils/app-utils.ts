@@ -1,5 +1,5 @@
 
-import {Observable} from 'rxjs'
+import {Observable} from 'rxjs/Observable'
 
 export interface IImageIdRouteParam {
     id: string;

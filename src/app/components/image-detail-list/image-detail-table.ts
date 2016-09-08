@@ -1,18 +1,10 @@
 
 import {Component, Input, Output, EventEmitter} from '@angular/core'
-import {ImageDetailRow} from './image-detail-row'
 import {AppStore} from '../../services/app-store'
-import {SortableColumnHeader} from './sortable-column-header'
-import {ImageTagSelector} from './image-tag-selector'
 import {ImageSortBy} from '../../actions/image-list-actions'
 
 @Component({
     selector: 'image-detail-table',
-    directives: [
-        ImageDetailRow,
-        SortableColumnHeader,
-        ImageTagSelector
-    ],
     templateUrl: 'app/components/image-detail-list/image-detail-table.html'
 })
 export class ImageDetailTable {

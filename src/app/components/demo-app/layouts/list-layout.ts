@@ -1,14 +1,12 @@
 
 import {Component} from '@angular/core'
-import {Observable, Subscription} from 'rxjs'
-import {TitleBar} from '../../title-bar/title-bar'
-import {ImageDetailList} from '../../image-detail-list/image-detail-list'
+import {Observable} from 'rxjs/Observable'
+import {Subscription} from 'rxjs/Subscription'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../../decorators/app-store-subscriber';
 import {waitForImageListToLoad} from '../../../utils/app-utils';
 
 @Component({
     selector: 'list-layout',
-    directives: [TitleBar, ImageDetailList],
     templateUrl: 'app/components/demo-app/layouts/list-layout.html',
     styleUrls: ['app/components/demo-app/layouts/list-layout.css']
 })

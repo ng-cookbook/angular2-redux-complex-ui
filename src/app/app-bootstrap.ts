@@ -11,6 +11,12 @@ import {ImagesModule} from './components/demo-app/images-module'
 import {provideAppStore, provideReducer} from './services/app-store'
 import {imageData} from './reducers/image-list'
 
+import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/filter'
+import 'rxjs/add/operator/do'
+import 'rxjs/add/operator/take'
+import 'rxjs/add/operator/switchMapTo'
+
 @NgModule({
     declarations: [
         DemoApp

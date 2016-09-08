@@ -1,15 +1,14 @@
 
 import * as _ from 'lodash'
 import {Component} from '@angular/core'
-import {Observable, Subscription} from 'rxjs'
+import {Observable} from 'rxjs/Observable'
+import {Subscription} from 'rxjs/Subscription'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 import {sortImages, ImageSortBy} from '../../actions/image-list-actions'
-import {ImageDetailTable} from './image-detail-table'
 
 @Component({
     selector: 'image-detail-list',
-    directives: [ImageDetailTable],
     template: `
         <div class="row expanded">
             <div class="small-12 columns">

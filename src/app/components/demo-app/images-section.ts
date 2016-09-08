@@ -1,7 +1,7 @@
 
 import {Component} from '@angular/core'
-import {Observable, Subscription} from 'rxjs'
-import {ROUTER_DIRECTIVES} from '@angular/router'
+import {Observable} from 'rxjs/Observable'
+import {Subscription} from 'rxjs/Subscription'
 import {Http} from '@angular/http'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
@@ -9,7 +9,6 @@ import {imageDataRequest} from '../../actions/image-list-actions'
 
 @Component({
     selector: 'demo-app',
-    directives: [ROUTER_DIRECTIVES],
     template: `<router-outlet></router-outlet>`
 })
 @AppStoreSubscriber()

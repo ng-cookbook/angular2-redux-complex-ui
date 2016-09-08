@@ -1,14 +1,14 @@
 import * as _ from 'lodash'
 import {Component} from '@angular/core'
-import {Observable, Subscription} from 'rxjs'
-import {ROUTER_DIRECTIVES, ActivatedRoute} from '@angular/router'
+import {Observable} from 'rxjs/Observable'
+import {Subscription} from 'rxjs/Subscription'
+import {ActivatedRoute} from '@angular/router'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 import {isTagIncludedInList, getUniqueTagsList} from '../../utils/tag-utils'
 
 @Component({
     selector: 'image-group-list',
-    directives: [ROUTER_DIRECTIVES],
     templateUrl: 'app/components/image-group-list/image-group-list.html',
     styleUrls: ['app/components/image-group-list/image-group-list.css']
 })

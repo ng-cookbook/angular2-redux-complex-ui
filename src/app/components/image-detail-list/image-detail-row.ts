@@ -1,9 +1,8 @@
 import {Component, Input} from '@angular/core'
-import {ROUTER_DIRECTIVES, ActivatedRoute} from '@angular/router'
+import {ActivatedRoute} from '@angular/router'
 
 @Component({
     selector: '.image-detail-row',
-    directives: [ROUTER_DIRECTIVES],
     template: `
         <td>
             <a [routerLink]="imageRouteFor(rowData)">

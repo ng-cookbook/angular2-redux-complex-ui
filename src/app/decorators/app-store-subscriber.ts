@@ -1,6 +1,7 @@
 
 import {AppStore} from '../services/app-store'
-import {Observable, Subscription} from 'rxjs'
+import {Observable} from 'rxjs/Observable'
+import {Subscription} from 'rxjs/Subscription'
 
 const onDestroyName = 'ngOnDestroy'
 const onInitName = 'ngOnInit'

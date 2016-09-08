@@ -1,15 +1,14 @@
 
 import {Component} from '@angular/core'
-import {Observable, Subscription} from 'rxjs'
+import {Observable} from 'rxjs/Observable'
+import {Subscription} from 'rxjs/Subscription'
 import {AppStore} from '../../services/app-store'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 import {changeImageTitle, updateImageTags} from '../../actions/image-list-actions'
-import {TagSelector} from '../tag-selector/tag-selector'
 import {getUniqueTagsList} from '../../utils/tag-utils'
 
 @Component({
     selector: 'image-edit',
-    directives: [TagSelector],
     templateUrl: 'app/components/image-edit/image-edit.html',
     styleUrls: ['app/components/image-edit/image-edit.css']
 })

@@ -1,12 +1,11 @@
 
 import {Component} from '@angular/core'
-import {Observable, Subscription} from 'rxjs'
-import {ROUTER_DIRECTIVES} from '@angular/router'
+import {Observable} from 'rxjs/Observable'
+import {Subscription} from 'rxjs/Subscription'
 import {AppStoreSubscriber, IAppStoreSubscriber} from '../../decorators/app-store-subscriber'
 
 @Component({
     selector: 'image-view',
-    directives: [ROUTER_DIRECTIVES],
     templateUrl: 'app/components/image-view/image-view.html',
     styleUrls: ['app/components/image-view/image-view.css']
 })
